@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { supabaseAdmin, STORAGE_BUCKET } from '@/lib/supabase';
 import { isValidCode, normalizeCode } from '@/lib/code';
-import PhotoActions from './PhotoActions';
+import Carousel, { type Photo } from './Carousel';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -30,7 +30,7 @@ export default async function PhotoPage({
 
   const { data: guest, error } = await supabaseAdmin
     .from('guests')
-    .select('code, name, composited_path')
+    .select('code, name, composited_path, sent_at, created_at')
     .eq('code', code)
     .maybeSingle();
 
@@ -38,10 +38,58 @@ export default async function PhotoPage({
     console.error('[/p/[code]] lookup failed', error);
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? '';
-  const viewerUrl = `${baseUrl}/p/${code}`;
+  // Fetch extras (table may not exist yet — handle gracefully)
+  let extras: { storage_path: string; created_at: string }[] = [];
+  try {
+    const { data, error: extrasErr } = await supabaseAdmin
+      .from('guest_extras')
+      .select('storage_path, created_at')
+      .eq('code', code)
+      .order('created_at', { ascending: true });
+    if (!extrasErr && data) {
+      extras = data;
+    }
+  } catch {
+    // guest_extras table may not exist — that's fine
+  }
 
-  if (!guest || !guest.composited_path) {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? '';
+  const viewUrl = `${baseUrl}/p/${code}`;
+
+  // Build photo array
+  const photos: Photo[] = [];
+
+  if (guest?.composited_path) {
+    const { data: pub } = supabaseAdmin.storage
+      .from(STORAGE_BUCKET)
+      .getPublicUrl(guest.composited_path);
+    photos.push({
+      url: pub.publicUrl,
+      isHero: true,
+      createdAt: guest.sent_at ?? guest.created_at,
+      filename: `euphoria-${code}-hero.jpg`,
+    });
+  }
+
+  for (let i = 0; i < extras.length; i++) {
+    const e = extras[i];
+    const { data: pub } = supabaseAdmin.storage
+      .from(STORAGE_BUCKET)
+      .getPublicUrl(e.storage_path);
+    photos.push({
+      url: pub.publicUrl,
+      isHero: false,
+      createdAt: e.created_at,
+      filename: `euphoria-${code}-${i + 1}.jpg`,
+    });
+  }
+
+  // Sort chronologically
+  photos.sort(
+    (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+  );
+
+  if (photos.length === 0) {
     return (
       <main className="min-h-screen bg-black text-white flex items-center justify-center px-6">
         <p className="text-white/80 text-base lowercase text-center max-w-md">
@@ -51,27 +99,5 @@ export default async function PhotoPage({
     );
   }
 
-  const { data: pub } = supabaseAdmin.storage
-    .from(STORAGE_BUCKET)
-    .getPublicUrl(guest.composited_path);
-  const imageUrl = pub.publicUrl;
-
-  return (
-    <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-4 py-6">
-      <div className="w-full flex-1 flex items-center justify-center">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={imageUrl}
-          alt="your euphoria photo"
-          className="block max-h-[92vh] max-w-[92vw] object-contain"
-        />
-      </div>
-
-      <PhotoActions imageUrl={imageUrl} viewerUrl={viewerUrl} code={code} />
-
-      <p className="mt-8 text-white/40 text-[11px] lowercase tracking-[0.15em]">
-        calvin klein × euphoria
-      </p>
-    </main>
-  );
+  return <Carousel photos={photos} code={code} viewUrl={viewUrl} />;
 }
