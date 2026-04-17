@@ -9,6 +9,15 @@
 - Health check: https://event-photo-six.vercel.app/api/health
 - Guest photo viewer: https://event-photo-six.vercel.app/p/{CODE}
 
+### V3 UPDATES (2026-04-17)
+
+- **Photo template**: photo area is now white — guest portraits sit cleanly in frame with no bleed from underlying imagery
+- **Check-in form**: branded Euphoria background added to the form step. QR step intentionally stays on pure black for reliable QR code scanning by the photographer.
+- **Email template**: new Calvin Klein × Euphoria elixir collection design with three product sections, outlined CTA button, first-name personalization. Template lives in `public/brand/email.html` — to update the design, edit the file and git push.
+- **Known email limitation**: Gmail iOS app in dark mode inverts the background to dark grey on some sections. This is a Gmail app rendering behavior that cannot be reliably suppressed. Content is fully intact, all links and images work. Affects only guests using Gmail iOS with dark mode enabled.
+- **Photo viewer**: `/p/{code}` is now a swipeable carousel supporting multiple photos per guest (hero + extras). Individual photos can be downloaded per slide. "Download all" delivers a zip.
+- **iOS zip download note**: on iPhone Safari, tapping "download all" may open the Files app rather than starting an immediate download. This is normal iOS behavior — the zip is saved to Downloads in Files.
+
 ### BEFORE EVENT (30 min before doors)
 - Hit `/api/health`. Both `db` and `smtp` must say `"ok"`. If either says `"error"`, call Adriaan.
 - Open `/checkin` on the iPad, confirm full-screen display (add to home screen for kiosk mode).
@@ -85,3 +94,6 @@ VERTICAL only, 4:5 crop ideal. Headroom above head, include some body. System ce
 - Guest-facing screens (check-in, photo viewer, email): pure black, violet accent `#6B2BD9`, lowercase Inter.
 - Booth/admin/ops: utilitarian dark. Function over form.
 - Template photo window: 965 × 1190 inset 57 px from top and sides. Bottom 690 px is fixed CK Euphoria branding.
+
+### TETHERED BOOTH MODE (`/booth-live`)
+Coming soon — will be documented once built.
