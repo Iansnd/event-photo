@@ -19,6 +19,7 @@ export async function sendPhotoEmail(opts: {
   name: string;
   photoUrl: string;
   previewUrl: string;
+  extrasCount?: number;
 }) {
   const fromName = process.env.GMAIL_FROM_NAME ?? 'Calvin Klein Euphoria';
   return transporter.sendMail({
@@ -29,6 +30,7 @@ export async function sendPhotoEmail(opts: {
       name: opts.name,
       photoUrl: opts.photoUrl,
       previewUrl: opts.previewUrl,
+      extrasCount: opts.extrasCount,
     }),
   });
 }
