@@ -95,5 +95,11 @@ VERTICAL only, 4:5 crop ideal. Headroom above head, include some body. System ce
 - Booth/admin/ops: utilitarian dark. Function over form.
 - Template photo window: 965 × 1190 inset 57 px from top and sides. Bottom 690 px is fixed CK Euphoria branding.
 
+### KNOWN CONFIGURATION
+- **Email sender**: emails send from `euphoriaelixirscollection@gmail.com` via Gmail SMTP with display name "Calvin Klein"
+- **Account type**: personal Gmail (not Workspace)
+- **Daily send limit**: 500 emails/day. Fine for ~130 guests/day across 3 days.
+- **If sending fails mid-event**: check `/api/health` — look at the `smtp` field. Most likely cause is the app password being revoked or 2-Step Verification being turned off on the sender account. In that emergency: contact Adriaan, or generate a new app password at myaccount.google.com and update the Vercel env var `GMAIL_APP_PASSWORD`.
+
 ### TETHERED BOOTH MODE (`/booth-live`)
 Coming soon — will be documented once built.
