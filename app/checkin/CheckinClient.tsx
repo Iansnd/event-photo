@@ -145,63 +145,78 @@ export default function CheckinClient({ eventName }: CheckinClientProps) {
   }
 
   return (
-    <main className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 py-10">
-      <form onSubmit={onSubmit} className="w-full max-w-[480px]">
-        <p
-          className="text-white text-xs lowercase"
-          style={{ letterSpacing: '0.15em' }}
-        >
-          euphoria
-        </p>
-        <h1 className="mt-10 text-white text-3xl sm:text-4xl lowercase tracking-tight font-normal leading-tight">
-          tell us who you are
-        </h1>
+    <div
+      className="min-h-screen flex flex-col relative"
+      style={{
+        backgroundImage: "url('/brand/checkin-bg-form.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Legibility overlay */}
+      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+      {/* Form content */}
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <main className="relative min-h-screen text-white flex flex-col items-center justify-center px-6 py-10">
+          <form onSubmit={onSubmit} className="w-full max-w-[480px]">
+            <p
+              className="text-white text-xs lowercase"
+              style={{ letterSpacing: '0.15em' }}
+            >
+              euphoria
+            </p>
+            <h1 className="mt-10 text-white text-3xl sm:text-4xl lowercase tracking-tight font-normal leading-tight">
+              tell us who you are
+            </h1>
 
-        <div className="mt-14 space-y-10">
-          <input
-            type="text"
-            autoComplete="name"
-            placeholder="your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="block w-full bg-transparent border-0 border-b border-white/80 focus:border-[var(--color-euphoria-violet)] focus:outline-none text-white placeholder-white/40 text-lg sm:text-xl py-4 rounded-none"
-            style={{ letterSpacing: '0.01em' }}
-          />
-          <input
-            type="email"
-            inputMode="email"
-            autoCapitalize="off"
-            autoComplete="email"
-            placeholder="your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="block w-full bg-transparent border-0 border-b border-white/80 focus:border-[var(--color-euphoria-violet)] focus:outline-none text-white placeholder-white/40 text-lg sm:text-xl py-4 rounded-none"
-            style={{ letterSpacing: '0.01em' }}
-          />
-        </div>
+            <div className="mt-14 space-y-10">
+              <input
+                type="text"
+                autoComplete="name"
+                placeholder="your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="block w-full bg-transparent border-0 border-b border-white/80 focus:border-[var(--color-euphoria-violet)] focus:outline-none text-white placeholder-white/40 text-lg sm:text-xl py-4 rounded-none"
+                style={{ letterSpacing: '0.01em' }}
+              />
+              <input
+                type="email"
+                inputMode="email"
+                autoCapitalize="off"
+                autoComplete="email"
+                placeholder="your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="block w-full bg-transparent border-0 border-b border-white/80 focus:border-[var(--color-euphoria-violet)] focus:outline-none text-white placeholder-white/40 text-lg sm:text-xl py-4 rounded-none"
+                style={{ letterSpacing: '0.01em' }}
+              />
+            </div>
 
-        {error && (
-          <p className="mt-6 text-sm lowercase" style={{ color: '#ff5d5d' }}>
-            {error}
+            {error && (
+              <p className="mt-6 text-sm lowercase" style={{ color: '#ff5d5d' }}>
+                {error}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              disabled={!canSubmit}
+              className="mt-14 w-full py-4 text-base sm:text-lg lowercase bg-white text-black disabled:bg-white/30 disabled:text-black/60 transition-colors"
+              style={{ borderRadius: 0 }}
+            >
+              {submitting ? 'checking in…' : 'continue'}
+            </button>
+          </form>
+
+          <p
+            className="absolute bottom-6 text-white/30 text-xs lowercase"
+            style={{ letterSpacing: '0.15em' }}
+          >
+            {eventName.toLowerCase()}
           </p>
-        )}
-
-        <button
-          type="submit"
-          disabled={!canSubmit}
-          className="mt-14 w-full py-4 text-base sm:text-lg lowercase bg-white text-black disabled:bg-white/30 disabled:text-black/60 transition-colors"
-          style={{ borderRadius: 0 }}
-        >
-          {submitting ? 'checking in…' : 'continue'}
-        </button>
-      </form>
-
-      <p
-        className="absolute bottom-6 text-white/30 text-xs lowercase"
-        style={{ letterSpacing: '0.15em' }}
-      >
-        {eventName.toLowerCase()}
-      </p>
-    </main>
+        </main>
+      </div>
+    </div>
   );
 }
