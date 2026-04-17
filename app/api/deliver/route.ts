@@ -3,6 +3,7 @@ import { supabaseAdmin, STORAGE_BUCKET } from '@/lib/supabase';
 import { composite } from '@/lib/composite';
 import { sendPhotoEmail } from '@/lib/mailer';
 import { isValidCode, normalizeCode } from '@/lib/code';
+import convert from 'heic-convert';
 
 export const runtime = 'nodejs';
 export const maxDuration = 30;
@@ -44,18 +45,27 @@ export async function POST(req: NextRequest) {
   if (!guest) return failJson('guest not found', 404);
   log('guest fetched', { code, name: guest.name });
 
-  // 2) Decode portrait
+  // 2) Decode portrait + HEIC normalization
   let portraitBuffer: Buffer;
   try {
     const commaIx = portraitBase64.indexOf(',');
     const raw = commaIx >= 0 ? portraitBase64.slice(commaIx + 1) : portraitBase64;
     portraitBuffer = Buffer.from(raw, 'base64');
     if (portraitBuffer.length < 1000) throw new Error('portrait too small');
+    log('decoded', { bytes: portraitBuffer.length });
+
+    // Detect HEIC/HEIF by magic bytes at offset 4-12
+    const sig = portraitBuffer.subarray(4, 12).toString('ascii');
+    if (/ftyp(heic|mif1|heix|hevc)/.test(sig)) {
+      log('HEIC detected, converting to JPEG');
+      const out = await convert({ buffer: portraitBuffer.buffer.slice(portraitBuffer.byteOffset, portraitBuffer.byteOffset + portraitBuffer.byteLength) as ArrayBuffer, format: 'JPEG', quality: 0.92 });
+      portraitBuffer = Buffer.from(out);
+      log('HEIC converted', { bytes: portraitBuffer.length });
+    }
   } catch (err) {
-    console.error('[deliver] decode failed', err);
-    return failJson('could not decode portrait');
+    console.error('[deliver] decode/convert failed', err);
+    return failJson('Image format not supported. Try JPEG or PNG.', 400);
   }
-  log('decoded', { bytes: portraitBuffer.length });
 
   // 3) Composite
   let finalBuffer: Buffer;
