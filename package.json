@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test:composite": "tsx scripts/test-composite.ts"
+    "test:composite": "tsx scripts/test-composite.ts",
+    "test:email": "tsx scripts/test-email-render.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.103.3",
