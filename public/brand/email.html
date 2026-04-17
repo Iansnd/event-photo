@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="x-apple-disable-message-reformatting" />
   <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no" />
-  <meta name="color-scheme" content="light" />
-  <meta name="supported-color-schemes" content="light" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="supported-color-schemes" content="light only" />
   <title>Your Euphoria moment</title>
 
   <!--[if mso]>
@@ -26,15 +26,45 @@
   <![endif]-->
 
   <style>
+    /* Force light mode — prevent Gmail / Apple Mail / Outlook from auto-inverting */
+    :root {
+      color-scheme: light only;
+      supported-color-schemes: light only;
+    }
+
+    /* Gmail dark mode override */
+    u + .body .dark-force-white { background-color: #ffffff !important; color: #000000 !important; }
+    u + .body .dark-force-black-text { color: #000000 !important; }
+    u + .body .dark-force-mid-text { color: #333333 !important; }
+    u + .body .dark-force-footer-text { color: #999999 !important; }
+
+    /* Outlook.com / Office 365 dark mode */
+    [data-ogsc] .dark-force-white { background-color: #ffffff !important; color: #000000 !important; }
+    [data-ogsc] .dark-force-black-text { color: #000000 !important; }
+    [data-ogsc] .dark-force-mid-text { color: #333333 !important; }
+    [data-ogsc] .dark-force-footer-text { color: #999999 !important; }
+
+    /* Apple Mail dark mode */
+    @media (prefers-color-scheme: dark) {
+      .dark-force-white { background-color: #ffffff !important; color: #000000 !important; }
+      .dark-force-black-text { color: #000000 !important; }
+      .dark-force-mid-text { color: #333333 !important; }
+      .dark-force-footer-text { color: #999999 !important; }
+      .dark-force-border { border-color: #000000 !important; }
+      body, .body-bg { background-color: #ffffff !important; }
+    }
+
+    /* Reset */
     body, table, td, p, a, li, blockquote { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
     table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; }
     img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; display: block; }
-    body { margin: 0 !important; padding: 0 !important; width: 100% !important; min-width: 100%; background-color: #ffffff; }
+    body { margin: 0 !important; padding: 0 !important; width: 100% !important; min-width: 100%; background-color: #ffffff !important; }
     a { color: inherit; text-decoration: none; }
 
     .ExternalClass { width: 100%; }
     .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; }
 
+    /* Mobile */
     @media screen and (max-width: 620px) {
       .email-container { width: 100% !important; max-width: 100% !important; }
       .fluid-img { width: 100% !important; max-width: 100% !important; height: auto !important; }
@@ -43,15 +73,23 @@
       .body-mobile { font-size: 15px !important; line-height: 1.55 !important; }
       .cta-mobile { font-size: 12px !important; padding: 14px 24px !important; letter-spacing: 0.15em !important; }
       .section-spacer { height: 32px !important; }
-      .product-col { display:block !important; width:100% !important; max-width:100% !important; }
-      .product-img-col img { width:100% !important; max-width:100% !important; height:auto !important; }
+
+      /* Stack elixir sections and center them on mobile */
+      .product-stack { display:block !important; width:100% !important; max-width:100% !important; }
+      .product-img-cell { display:block !important; width:100% !important; max-width:100% !important; padding:0 !important; }
+      .product-img-cell img { width:100% !important; max-width:100% !important; height:auto !important; display:block !important; }
+      .product-text-cell { display:block !important; width:100% !important; max-width:100% !important; padding:32px 24px !important; text-align:center !important; }
+      .product-heading { text-align:center !important; }
+      .product-copy { text-align:center !important; }
+      .product-cta-wrap { text-align:center !important; }
+      .product-section { margin-bottom:24px !important; }
     }
   </style>
 </head>
 
-<body style="margin:0; padding:0; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+<body class="body body-bg dark-force-white" style="margin:0; padding:0; background-color:#ffffff !important; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
 
-  <!-- Preheader (hidden, shows in inbox preview) -->
+  <!-- Preheader -->
   <div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#ffffff;">
     {{GUEST_NAME}}. Bottled. One night, one frame, one unrepeatable you.
   </div>
@@ -59,17 +97,15 @@
     &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
   </div>
 
-  <!-- Outer wrapper -->
-  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#ffffff;">
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="dark-force-white" style="background-color:#ffffff;" bgcolor="#ffffff">
     <tr>
-      <td align="center" style="padding:0;">
+      <td align="center" bgcolor="#ffffff" style="padding:0; background-color:#ffffff;">
 
-        <!-- Email container -->
-        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" class="email-container" style="width:600px; max-width:600px; background-color:#ffffff;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" class="email-container dark-force-white" bgcolor="#ffffff" style="width:600px; max-width:600px; background-color:#ffffff;">
 
           <!-- HERO IMAGE -->
           <tr>
-            <td align="center" style="padding:0; line-height:0; font-size:0;">
+            <td align="center" bgcolor="#ffffff" style="padding:0; line-height:0; font-size:0; background-color:#ffffff;">
               <a href="https://www.calvinklein.us/en/women/fragrance/fragrance?sz=32&start=0" target="_blank" style="text-decoration:none; border:0; outline:none;">
                 <img src="https://event-photo-six.vercel.app/email-assets/Hero_Image.png"
                      alt="Euphoria by Calvin Klein — the new elixir collection"
@@ -81,26 +117,26 @@
           </tr>
 
           <tr>
-            <td class="section-spacer" style="line-height:0; font-size:0; height:56px;">&nbsp;</td>
+            <td class="section-spacer" bgcolor="#ffffff" style="line-height:0; font-size:0; height:56px; background-color:#ffffff;">&nbsp;</td>
           </tr>
 
           <!-- Tagline: "{{GUEST_NAME}}. Bottled." -->
           <tr>
-            <td class="px-mobile" align="center" style="padding:0 40px; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color:#000000;">
-              <p class="h1-mobile" style="margin:0; font-size:32px; line-height:1.2; font-weight:700; letter-spacing:-0.01em;">
+            <td class="px-mobile dark-force-white" align="center" bgcolor="#ffffff" style="padding:0 40px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+              <p class="h1-mobile dark-force-black-text" style="margin:0; font-size:32px; line-height:1.2; font-weight:700; letter-spacing:-0.01em; color:#000000;">
                 {{GUEST_NAME}}. Bottled.
               </p>
             </td>
           </tr>
 
           <tr>
-            <td style="line-height:0; font-size:0; height:20px;">&nbsp;</td>
+            <td bgcolor="#ffffff" style="line-height:0; font-size:0; height:20px; background-color:#ffffff;">&nbsp;</td>
           </tr>
 
           <!-- Intro body copy -->
           <tr>
-            <td class="px-mobile" align="center" style="padding:0 48px; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color:#000000;">
-              <p class="body-mobile" style="margin:0; font-size:15px; line-height:1.6; font-weight:400;">
+            <td class="px-mobile dark-force-white" align="center" bgcolor="#ffffff" style="padding:0 48px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+              <p class="body-mobile dark-force-black-text" style="margin:0; font-size:15px; line-height:1.6; font-weight:400; color:#000000;">
                 One night. One frame. One unrepeatable you.<br />
                 Like the elixir collection itself, concentrated, intense, lasting, this is your evening distilled into a single image. Wear it well, {{GUEST_NAME}}.
               </p>
@@ -108,12 +144,12 @@
           </tr>
 
           <tr>
-            <td class="section-spacer" style="line-height:0; font-size:0; height:48px;">&nbsp;</td>
+            <td class="section-spacer" bgcolor="#ffffff" style="line-height:0; font-size:0; height:48px; background-color:#ffffff;">&nbsp;</td>
           </tr>
 
           <!-- GUEST PHOTO (composited hero) -->
           <tr>
-            <td align="center" style="padding:0 40px; background-color:#ffffff;" class="px-mobile">
+            <td align="center" bgcolor="#ffffff" class="px-mobile dark-force-white" style="padding:0 40px; background-color:#ffffff;">
               <a href="{{VIEW_URL}}" target="_blank" style="text-decoration:none; border:0; outline:none; display:block;">
                 <img src="{{PREVIEW_URL}}"
                      alt="Your Euphoria photo"
@@ -125,17 +161,17 @@
           </tr>
 
           <tr>
-            <td class="section-spacer" style="line-height:0; font-size:0; height:32px;">&nbsp;</td>
+            <td class="section-spacer" bgcolor="#ffffff" style="line-height:0; font-size:0; height:32px; background-color:#ffffff;">&nbsp;</td>
           </tr>
 
-          <!-- CTA BUTTON: outlined rectangle, uppercase, letter-spaced -->
+          <!-- CTA BUTTON: outlined rectangle -->
           <tr>
-            <td align="center" style="padding:0 40px;" class="px-mobile">
+            <td align="center" bgcolor="#ffffff" class="px-mobile" style="padding:0 40px; background-color:#ffffff;">
 
               <!--[if mso]>
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
                 <tr>
-                  <td align="center" valign="middle" style="border:1px solid #000000; padding:16px 40px;">
+                  <td align="center" valign="middle" bgcolor="#ffffff" style="border:1px solid #000000; padding:16px 40px; background-color:#ffffff;">
                     <a href="{{VIEW_URL}}" target="_blank" style="font-family:'Segoe UI', Arial, sans-serif; font-size:13px; font-weight:400; letter-spacing:0.2em; color:#000000; text-decoration:none; text-transform:uppercase;">
                       View &amp; download your photos
                     </a>
@@ -146,7 +182,7 @@
 
               <!--[if !mso]><!-- -->
               <a href="{{VIEW_URL}}" target="_blank"
-                 class="cta-mobile"
+                 class="cta-mobile dark-force-black-text dark-force-border"
                  style="display:inline-block; background-color:#ffffff; border:1px solid #000000; color:#000000; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size:13px; font-weight:400; letter-spacing:0.2em; line-height:1; padding:16px 40px; text-decoration:none; text-align:center; text-transform:uppercase; mso-hide:all;">
                 View &amp; download your photos
               </a>
@@ -155,134 +191,145 @@
             </td>
           </tr>
 
-          <!-- {{EXTRAS_BLOCK}} — rendered only when extras exist -->
+          <!-- {{EXTRAS_BLOCK}} -->
           <tr>
-            <td align="center" style="padding:0 40px;" class="px-mobile">
+            <td align="center" bgcolor="#ffffff" class="px-mobile" style="padding:0 40px; background-color:#ffffff;">
               {{EXTRAS_BLOCK}}
             </td>
           </tr>
 
           <tr>
-            <td class="section-spacer" style="line-height:0; font-size:0; height:56px;">&nbsp;</td>
+            <td class="section-spacer" bgcolor="#ffffff" style="line-height:0; font-size:0; height:56px; background-color:#ffffff;">&nbsp;</td>
           </tr>
 
           <!-- Two paragraphs about the collection -->
           <tr>
-            <td class="px-mobile" align="center" style="padding:0 48px; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color:#000000;">
-              <p class="body-mobile" style="margin:0; font-size:15px; line-height:1.6; font-weight:400;">
+            <td class="px-mobile dark-force-white" align="center" bgcolor="#ffffff" style="padding:0 48px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+              <p class="body-mobile dark-force-black-text" style="margin:0; font-size:15px; line-height:1.6; font-weight:400; color:#000000;">
                 Every elixir pairs a signature orchid accord with vanilla at its heart, capturing this fruit's journey in fragrance form.
               </p>
             </td>
           </tr>
 
           <tr>
-            <td style="line-height:0; font-size:0; height:18px;">&nbsp;</td>
+            <td bgcolor="#ffffff" style="line-height:0; font-size:0; height:18px; background-color:#ffffff;">&nbsp;</td>
           </tr>
 
           <tr>
-            <td class="px-mobile" align="center" style="padding:0 48px; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color:#000000;">
-              <p class="body-mobile" style="margin:0; font-size:15px; line-height:1.6; font-weight:700;">
+            <td class="px-mobile dark-force-white" align="center" bgcolor="#ffffff" style="padding:0 48px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+              <p class="body-mobile dark-force-black-text" style="margin:0; font-size:15px; line-height:1.6; font-weight:700; color:#000000;">
                 For the first time, a collection follows vanilla's full lifecycle: solar in its freshness, magnetic at its ripest, bold in its toasted depth.
               </p>
             </td>
           </tr>
 
           <tr>
-            <td class="section-spacer" style="line-height:0; font-size:0; height:56px;">&nbsp;</td>
+            <td class="section-spacer" bgcolor="#ffffff" style="line-height:0; font-size:0; height:56px; background-color:#ffffff;">&nbsp;</td>
           </tr>
 
           <!-- ========================================= -->
           <!-- BOLD ELIXIR: image LEFT, text RIGHT -->
           <!-- ========================================= -->
           <tr>
-            <td style="padding:0;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+            <td bgcolor="#ffffff" class="product-section" style="padding:0; background-color:#ffffff;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff" style="width:100%; background-color:#ffffff;">
                 <tr>
-                  <td class="product-col product-img-col" width="300" valign="top" style="width:300px; padding:0; line-height:0; font-size:0;">
+                  <td class="product-stack product-img-cell" width="300" valign="top" bgcolor="#ffffff" style="width:300px; padding:0; line-height:0; font-size:0; background-color:#ffffff;">
                     <a href="https://www.calvinklein.us/en/women/fragrance/fragrance?sz=32&start=0" target="_blank" style="text-decoration:none; border:0; outline:none;">
                       <img src="https://event-photo-six.vercel.app/email-assets/Bottle_1.png"
                            alt="Bold Elixir"
                            width="300"
+                           class="fluid-img"
                            style="display:block; width:300px; max-width:100%; height:auto; border:0;" />
                     </a>
                   </td>
-                  <td class="product-col" width="300" valign="middle" style="width:300px; padding:24px 32px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color:#000000;">
-                    <p style="margin:0 0 12px 0; font-size:20px; line-height:1.3; font-weight:700;">bold elixir</p>
-                    <p style="margin:0 0 20px 0; font-size:13px; line-height:1.5; font-weight:400; color:#333333;">
+                  <td class="product-stack product-text-cell dark-force-white" width="300" valign="middle" bgcolor="#ffffff" style="width:300px; padding:24px 32px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+                    <p class="product-heading dark-force-black-text" style="margin:0 0 12px 0; font-size:20px; line-height:1.3; font-weight:700; color:#000000;">bold elixir</p>
+                    <p class="product-copy dark-force-mid-text" style="margin:0 0 20px 0; font-size:13px; line-height:1.5; font-weight:400; color:#333333;">
                       Toasted vanilla, smoky orchid, rich oakwood and jasmine absolute come together for a daring scent.
                     </p>
-                    <a href="https://www.calvinklein.us/en/women/fragrance/fragrance?sz=32&start=0" target="_blank"
-                       style="display:inline-block; background-color:#ffffff; border:1px solid #000000; color:#000000; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size:11px; font-weight:400; letter-spacing:0.2em; line-height:1; padding:12px 28px; text-decoration:none; text-align:center; text-transform:uppercase;">
-                      Shop now
-                    </a>
+                    <div class="product-cta-wrap">
+                      <a href="https://www.calvinklein.us/en/women/fragrance/fragrance?sz=32&start=0" target="_blank"
+                         class="dark-force-black-text dark-force-border"
+                         style="display:inline-block; background-color:#ffffff; border:1px solid #000000; color:#000000; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size:11px; font-weight:400; letter-spacing:0.2em; line-height:1; padding:12px 28px; text-decoration:none; text-align:center; text-transform:uppercase;">
+                        Shop now
+                      </a>
+                    </div>
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
 
+          <!-- ========================================= -->
+          <!-- MAGNETIC ELIXIR: text LEFT, image RIGHT on desktop -->
+          <!-- On mobile (stacked), image must come FIRST for visual consistency -->
+          <!-- ========================================= -->
           <tr>
-            <td style="line-height:0; font-size:0; height:8px;">&nbsp;</td>
-          </tr>
+            <td bgcolor="#ffffff" class="product-section" style="padding:0; background-color:#ffffff;">
+              <!--[if !mso]><!-- -->
+              <div style="display:none; max-height:0; overflow:hidden;" class="mobile-only-img-first"></div>
+              <!--<![endif]-->
 
-          <!-- ========================================= -->
-          <!-- MAGNETIC ELIXIR: text LEFT, image RIGHT -->
-          <!-- ========================================= -->
-          <tr>
-            <td style="padding:0;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff" style="width:100%; background-color:#ffffff;">
                 <tr>
-                  <td class="product-col" width="300" valign="middle" style="width:300px; padding:24px 32px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color:#000000;">
-                    <p style="margin:0 0 12px 0; font-size:20px; line-height:1.3; font-weight:700;">magnetic elixir</p>
-                    <p style="margin:0 0 20px 0; font-size:13px; line-height:1.5; font-weight:400; color:#333333;">
+                  <!-- Desktop: TEXT here (left) -->
+                  <td class="product-stack product-text-cell dark-force-white desktop-text-first" width="300" valign="middle" bgcolor="#ffffff" style="width:300px; padding:24px 32px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+                    <p class="product-heading dark-force-black-text" style="margin:0 0 12px 0; font-size:20px; line-height:1.3; font-weight:700; color:#000000;">magnetic elixir</p>
+                    <p class="product-copy dark-force-mid-text" style="margin:0 0 20px 0; font-size:13px; line-height:1.5; font-weight:400; color:#333333;">
                       Freshly picked vanilla blends with Dancing Orchid, sensual musk and ambrette absolute for a captivating scent.
                     </p>
-                    <a href="https://www.calvinklein.us/en/women/fragrance/fragrance?sz=32&start=0" target="_blank"
-                       style="display:inline-block; background-color:#ffffff; border:1px solid #000000; color:#000000; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size:11px; font-weight:400; letter-spacing:0.2em; line-height:1; padding:12px 28px; text-decoration:none; text-align:center; text-transform:uppercase;">
-                      Shop now
-                    </a>
+                    <div class="product-cta-wrap">
+                      <a href="https://www.calvinklein.us/en/women/fragrance/fragrance?sz=32&start=0" target="_blank"
+                         class="dark-force-black-text dark-force-border"
+                         style="display:inline-block; background-color:#ffffff; border:1px solid #000000; color:#000000; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size:11px; font-weight:400; letter-spacing:0.2em; line-height:1; padding:12px 28px; text-decoration:none; text-align:center; text-transform:uppercase;">
+                        Shop now
+                      </a>
+                    </div>
                   </td>
-                  <td class="product-col product-img-col" width="300" valign="top" style="width:300px; padding:0; line-height:0; font-size:0;">
+                  <!-- Desktop: IMAGE here (right) -->
+                  <td class="product-stack product-img-cell" width="300" valign="top" bgcolor="#ffffff" style="width:300px; padding:0; line-height:0; font-size:0; background-color:#ffffff;">
                     <a href="https://www.calvinklein.us/en/women/fragrance/fragrance?sz=32&start=0" target="_blank" style="text-decoration:none; border:0; outline:none;">
                       <img src="https://event-photo-six.vercel.app/email-assets/Bottle_2.png"
                            alt="Magnetic Elixir"
                            width="300"
+                           class="fluid-img"
                            style="display:block; width:300px; max-width:100%; height:auto; border:0;" />
                     </a>
                   </td>
                 </tr>
               </table>
             </td>
-          </tr>
-
-          <tr>
-            <td style="line-height:0; font-size:0; height:8px;">&nbsp;</td>
           </tr>
 
           <!-- ========================================= -->
           <!-- SOLAR ELIXIR: image LEFT, text RIGHT -->
           <!-- ========================================= -->
           <tr>
-            <td style="padding:0;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+            <td bgcolor="#ffffff" class="product-section" style="padding:0; background-color:#ffffff;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff" style="width:100%; background-color:#ffffff;">
                 <tr>
-                  <td class="product-col product-img-col" width="300" valign="top" style="width:300px; padding:0; line-height:0; font-size:0;">
+                  <td class="product-stack product-img-cell" width="300" valign="top" bgcolor="#ffffff" style="width:300px; padding:0; line-height:0; font-size:0; background-color:#ffffff;">
                     <a href="https://www.calvinklein.us/en/women/fragrance/fragrance?sz=32&start=0" target="_blank" style="text-decoration:none; border:0; outline:none;">
                       <img src="https://event-photo-six.vercel.app/email-assets/Bottle_3.png"
                            alt="Solar Elixir"
                            width="300"
+                           class="fluid-img"
                            style="display:block; width:300px; max-width:100%; height:auto; border:0;" />
                     </a>
                   </td>
-                  <td class="product-col" width="300" valign="middle" style="width:300px; padding:24px 32px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color:#000000;">
-                    <p style="margin:0 0 12px 0; font-size:20px; line-height:1.3; font-weight:700;">solar elixir</p>
-                    <p style="margin:0 0 20px 0; font-size:13px; line-height:1.5; font-weight:400; color:#333333;">
+                  <td class="product-stack product-text-cell dark-force-white" width="300" valign="middle" bgcolor="#ffffff" style="width:300px; padding:24px 32px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+                    <p class="product-heading dark-force-black-text" style="margin:0 0 12px 0; font-size:20px; line-height:1.3; font-weight:700; color:#000000;">solar elixir</p>
+                    <p class="product-copy dark-force-mid-text" style="margin:0 0 20px 0; font-size:13px; line-height:1.5; font-weight:400; color:#333333;">
                       Vanilla, fresh and still green, blends with golden orchid, juicy mango and cedarwood essence.
                     </p>
-                    <a href="https://www.calvinklein.us/en/women/fragrance/fragrance?sz=32&start=0" target="_blank"
-                       style="display:inline-block; background-color:#ffffff; border:1px solid #000000; color:#000000; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size:11px; font-weight:400; letter-spacing:0.2em; line-height:1; padding:12px 28px; text-decoration:none; text-align:center; text-transform:uppercase;">
-                      Shop now
-                    </a>
+                    <div class="product-cta-wrap">
+                      <a href="https://www.calvinklein.us/en/women/fragrance/fragrance?sz=32&start=0" target="_blank"
+                         class="dark-force-black-text dark-force-border"
+                         style="display:inline-block; background-color:#ffffff; border:1px solid #000000; color:#000000; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size:11px; font-weight:400; letter-spacing:0.2em; line-height:1; padding:12px 28px; text-decoration:none; text-align:center; text-transform:uppercase;">
+                        Shop now
+                      </a>
+                    </div>
                   </td>
                 </tr>
               </table>
@@ -290,13 +337,13 @@
           </tr>
 
           <tr>
-            <td class="section-spacer" style="line-height:0; font-size:0; height:56px;">&nbsp;</td>
+            <td class="section-spacer" bgcolor="#ffffff" style="line-height:0; font-size:0; height:56px; background-color:#ffffff;">&nbsp;</td>
           </tr>
 
           <!-- Footer -->
           <tr>
-            <td align="center" class="px-mobile" style="padding:0 40px 40px 40px; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color:#999999;">
-              <p style="margin:0; font-size:11px; line-height:1.5; letter-spacing:0.05em;">
+            <td align="center" class="px-mobile dark-force-white" bgcolor="#ffffff" style="padding:0 40px 40px 40px; background-color:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+              <p class="dark-force-footer-text" style="margin:0; font-size:11px; line-height:1.5; letter-spacing:0.05em; color:#999999;">
                 Calvin Klein &times; {{EVENT_NAME}}
               </p>
             </td>
