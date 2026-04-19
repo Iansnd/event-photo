@@ -137,9 +137,6 @@ export default function CheckinClient({ eventName }: CheckinClientProps) {
             start over
           </button>
         </div>
-        <p className="absolute bottom-6 text-white/30 text-xs lowercase tracking-[0.15em]">
-          {eventName.toLowerCase()}
-        </p>
       </main>
     );
   }
