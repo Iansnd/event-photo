@@ -12,6 +12,8 @@ type DetectedFile = {
   qrCode: string | null;
   qrChecked: boolean;
   sizeBytes: number;
+  fileType: 'jpeg' | 'png' | 'heic' | 'unknown';
+  skipReason?: string;
 };
 
 export default function WatcherTestClient() {
@@ -38,8 +40,18 @@ export default function WatcherTestClient() {
       qrCode: null,
       qrChecked: false,
       sizeBytes: nf.file.size,
+      fileType: nf.fileType,
+      skipReason: nf.skipReason,
     };
     setFiles((prev) => [entry, ...prev]);
+
+    // If the file is skipped, mark QR as checked (N/A) and stop
+    if (nf.skipReason) {
+      setFiles((prev) =>
+        prev.map((f) => (f.id === nf.id ? { ...f, qrChecked: true } : f)),
+      );
+      return;
+    }
 
     // Generate thumbnail
     try {
@@ -105,6 +117,8 @@ export default function WatcherTestClient() {
     }
   };
 
+  const skippedCount = files.filter((f) => f.skipReason).length;
+
   if (supported === null) return null;
 
   if (!supported) {
@@ -137,6 +151,9 @@ export default function WatcherTestClient() {
                 <span className="text-green-400">watching: {folderName}</span>
                 <span>polls: {pollCount}</span>
                 <span>files: {files.length}</span>
+                {skippedCount > 0 && (
+                  <span className="text-yellow-400">skipped: {skippedCount}</span>
+                )}
               </>
             ) : (
               <span>no folder selected</span>
@@ -166,42 +183,82 @@ export default function WatcherTestClient() {
 
         {files.length === 0 && handle && (
           <p className="text-zinc-500 text-sm">
-            waiting for new JPEGs in {folderName}...
+            waiting for new images in {folderName}...
           </p>
         )}
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {files.map((f) => (
-            <div key={f.id} className="bg-zinc-900 border border-zinc-800 p-2 space-y-2">
-              {f.thumbnailDataUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={f.thumbnailDataUrl}
-                  alt={f.name}
-                  className="w-full aspect-[3/4] object-cover bg-zinc-800"
-                />
-              ) : (
-                <div className="w-full aspect-[3/4] bg-zinc-800 animate-pulse" />
-              )}
-              <p className="text-xs text-zinc-400 truncate" title={f.name}>
-                {f.name}
-              </p>
-              <p className="text-xs">
-                {!f.qrChecked ? (
-                  <span className="text-zinc-500">scanning QR...</span>
-                ) : f.qrCode ? (
-                  <span className="text-green-400 font-mono font-semibold">
-                    QR: {f.qrCode}
-                  </span>
+          {files.map((f) => {
+            // --- 0-byte / iCloud stub ---
+            if (f.sizeBytes === 0) {
+              return (
+                <div key={f.id} className="bg-zinc-900 border border-zinc-700 p-2 space-y-2">
+                  <div className="w-full aspect-[3/4] bg-zinc-800 flex items-center justify-center">
+                    <span className="text-zinc-600 text-2xl">☁</span>
+                  </div>
+                  <p className="text-xs text-zinc-400 truncate" title={f.name}>
+                    {f.name}
+                  </p>
+                  <p className="text-xs text-zinc-500 leading-snug">
+                    0 bytes — iCloud file not yet downloaded locally.
+                    Right-click in Finder → Download Now, then it&apos;ll be
+                    picked up on next scan.
+                  </p>
+                </div>
+              );
+            }
+
+            // --- HEIC / HEIF ---
+            if (f.fileType === 'heic') {
+              return (
+                <div key={f.id} className="bg-zinc-900 border border-yellow-700/60 p-2 space-y-2">
+                  <div className="w-full aspect-[3/4] bg-yellow-950/30 flex items-center justify-center">
+                    <span className="text-yellow-500 text-2xl">⚠</span>
+                  </div>
+                  <p className="text-xs text-yellow-400 leading-snug">
+                    HEIC not supported in browser — please configure EOS
+                    Utility to save JPEG format instead. See camera settings.
+                  </p>
+                  <p className="text-[10px] text-zinc-500">
+                    {f.name} ({(f.sizeBytes / 1024 / 1024).toFixed(1)} MB)
+                  </p>
+                </div>
+              );
+            }
+
+            // --- Normal: JPEG / PNG / unknown (process normally) ---
+            return (
+              <div key={f.id} className="bg-zinc-900 border border-zinc-800 p-2 space-y-2">
+                {f.thumbnailDataUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={f.thumbnailDataUrl}
+                    alt={f.name}
+                    className="w-full aspect-[3/4] object-cover bg-zinc-800"
+                  />
                 ) : (
-                  <span className="text-zinc-500">no QR</span>
+                  <div className="w-full aspect-[3/4] bg-zinc-800 animate-pulse" />
                 )}
-              </p>
-              <p className="text-[10px] text-zinc-600">
-                {(f.sizeBytes / 1024 / 1024).toFixed(1)} MB
-              </p>
-            </div>
-          ))}
+                <p className="text-xs text-zinc-400 truncate" title={f.name}>
+                  {f.name}
+                </p>
+                <p className="text-xs">
+                  {!f.qrChecked ? (
+                    <span className="text-zinc-500">scanning QR...</span>
+                  ) : f.qrCode ? (
+                    <span className="text-green-400 font-mono font-semibold">
+                      QR: {f.qrCode}
+                    </span>
+                  ) : (
+                    <span className="text-zinc-500">no QR</span>
+                  )}
+                </p>
+                <p className="text-[10px] text-zinc-600">
+                  {(f.sizeBytes / 1024 / 1024).toFixed(1)} MB
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </main>

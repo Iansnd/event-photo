@@ -1,14 +1,27 @@
-const JPEG_RE = /\.(jpe?g)$/i;
+const IMAGE_RE = /\.(jpe?g|png|heic|heif)$/i;
 
 // Minimum age in ms before we pick up a file (avoids half-written Canon tether files)
 const MIN_AGE_MS = 500;
+
+export type FileType = 'jpeg' | 'png' | 'heic' | 'unknown';
 
 export type NewFile = {
   id: string;
   name: string;
   file: File;
   handle: FileSystemFileHandle;
+  fileType: FileType;
+  /** If set, this file was detected but cannot be processed. */
+  skipReason?: string;
 };
+
+function detectFileType(name: string): FileType {
+  const ext = name.split('.').pop()?.toLowerCase() ?? '';
+  if (ext === 'jpg' || ext === 'jpeg') return 'jpeg';
+  if (ext === 'png') return 'png';
+  if (ext === 'heic' || ext === 'heif') return 'heic';
+  return 'unknown';
+}
 
 /**
  * Prompt the user to pick a directory. Returns the handle or null if cancelled.
@@ -27,8 +40,9 @@ export async function pickFolder(): Promise<FileSystemDirectoryHandle | null> {
 }
 
 /**
- * Scan a directory handle for new JPEG files not in `seen`.
- * Skips files that are empty or modified within the last 500ms (half-written).
+ * Scan a directory handle for new image files not in `seen`.
+ * Returns files with a fileType and optional skipReason for files that
+ * were detected but can't be processed (0-byte, still writing, HEIC, etc.).
  * Returns null if the directory is no longer accessible.
  */
 export async function scanFolder(
@@ -41,7 +55,7 @@ export async function scanFolder(
   try {
     for await (const entry of handle.values()) {
       if (entry.kind !== 'file') continue;
-      if (!JPEG_RE.test(entry.name)) continue;
+      if (!IMAGE_RE.test(entry.name)) continue;
 
       let file: File;
       try {
@@ -51,16 +65,24 @@ export async function scanFolder(
         continue;
       }
 
-      // Skip empty files
-      if (file.size === 0) continue;
-
-      // Skip files modified within the last 500ms (still being written)
-      if (now - file.lastModified < MIN_AGE_MS) continue;
-
+      const fileType = detectFileType(entry.name);
       const id = `${file.name}:${file.lastModified}:${file.size}`;
       if (seen.has(id)) continue;
 
-      newFiles.push({ id, name: file.name, file, handle: entry });
+      // Determine skip reason (if any)
+      let skipReason: string | undefined;
+
+      if (file.size === 0) {
+        skipReason =
+          'iCloud stub — right-click in Finder → Download Now';
+      } else if (now - file.lastModified < MIN_AGE_MS) {
+        skipReason = 'file still being written';
+      } else if (fileType === 'heic') {
+        skipReason =
+          'HEIC not supported in browser — please configure EOS Utility to save JPEG format instead. See camera settings.';
+      }
+
+      newFiles.push({ id, name: file.name, file, handle: entry, fileType, skipReason });
     }
   } catch (err) {
     console.error('[watcher] scanFolder failed (permission revoked?):', err);
