@@ -53,9 +53,6 @@ export default async function PhotoPage({
     // guest_extras table may not exist — that's fine
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? '';
-  const viewUrl = `${baseUrl}/p/${code}`;
-
   // Build photo array
   const photos: Photo[] = [];
 
@@ -99,5 +96,5 @@ export default async function PhotoPage({
     );
   }
 
-  return <Carousel photos={photos} code={code} viewUrl={viewUrl} />;
+  return <Carousel photos={photos} code={code} />;
 }

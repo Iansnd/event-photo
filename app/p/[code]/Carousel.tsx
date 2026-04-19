@@ -12,12 +12,10 @@ export type Photo = {
 type Props = {
   photos: Photo[];
   code: string;
-  viewUrl: string;
 };
 
-export default function Carousel({ photos, code, viewUrl }: Props) {
+export default function Carousel({ photos, code }: Props) {
   const [idx, setIdx] = useState(0);
-  const [copied, setCopied] = useState(false);
   const [fade, setFade] = useState(false);
   const touchRef = useRef<{ x: number; y: number } | null>(null);
   const total = photos.length;
@@ -72,23 +70,63 @@ export default function Carousel({ photos, code, viewUrl }: Props) {
     }
   };
 
-  const onCopy = async () => {
+  const savePhoto = async (photo: Photo) => {
     try {
-      await navigator.clipboard.writeText(viewUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      window.prompt('copy this link', viewUrl);
+      const res = await fetch(photo.url);
+      const blob = await res.blob();
+      const file = new File([blob], photo.filename, { type: 'image/jpeg' });
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], title: 'Your Euphoria moment' });
+        return;
+      }
+
+      // Fallback: direct download
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = photo.filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      if (err instanceof DOMException && err.name === 'AbortError') return;
+      console.error('save failed', err);
+    }
+  };
+
+  const shareToInstagram = async (photo: Photo) => {
+    try {
+      const res = await fetch(photo.url);
+      const blob = await res.blob();
+      const file = new File([blob], photo.filename, { type: 'image/jpeg' });
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: 'My Euphoria moment',
+          text: 'calvin klein × euphoria',
+        });
+        return;
+      }
+
+      // Fallback: download + open Instagram
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = photo.filename;
+      a.click();
+      URL.revokeObjectURL(url);
+      window.location.href = 'instagram://camera';
+    } catch (err) {
+      if (err instanceof DOMException && err.name === 'AbortError') return;
+      console.error('share failed', err);
     }
   };
 
   const current = photos[idx];
-  const downloadUrl = `${current.url}?download=${encodeURIComponent(current.filename)}`;
-  const waText = `my euphoria moment ${viewUrl}`;
-  const waHref = `https://wa.me/?text=${encodeURIComponent(waText)}`;
-  const linkClass =
-    'text-white hover:text-white/70 transition-colors underline-offset-4 hover:underline';
-  const dot = <span className="text-white/30 mx-2 sm:mx-3">·</span>;
+
+  const btnClass =
+    'border border-white text-white uppercase bg-transparent px-8 py-3.5 text-sm transition-colors hover:bg-white hover:text-black rounded-none';
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center">
@@ -195,21 +233,29 @@ export default function Carousel({ photos, code, viewUrl }: Props) {
       )}
 
       {/* Controls */}
-      <div className="py-4 text-white text-sm sm:text-base lowercase flex items-center flex-wrap justify-center gap-y-2">
-        <a href={downloadUrl} download={current.filename} className={linkClass}>
-          download this photo
-        </a>
-        {dot}
-        <a href={`/api/download-zip?code=${code}`} className={linkClass}>
+      <div
+        className="py-4 flex flex-col sm:flex-row items-center gap-3 w-full px-6 sm:w-auto sm:px-0"
+        style={{ letterSpacing: '0.2em' }}
+      >
+        <button
+          type="button"
+          onClick={() => savePhoto(current)}
+          className={`${btnClass} w-full sm:w-auto`}
+        >
+          save photo
+        </button>
+        <a
+          href={`/api/download-zip?code=${code}`}
+          className={`${btnClass} w-full sm:w-auto text-center block`}
+        >
           download all
         </a>
-        {dot}
-        <a href={waHref} target="_blank" rel="noopener noreferrer" className={linkClass}>
-          share to whatsapp
-        </a>
-        {dot}
-        <button type="button" onClick={onCopy} className={linkClass}>
-          {copied ? 'copied' : 'copy link'}
+        <button
+          type="button"
+          onClick={() => shareToInstagram(current)}
+          className={`${btnClass} w-full sm:w-auto`}
+        >
+          share to instagram
         </button>
       </div>
 
