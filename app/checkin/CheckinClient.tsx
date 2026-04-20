@@ -195,6 +195,13 @@ export default function CheckinClient({ eventName }: CheckinClientProps) {
               {submitting ? 'checking in…' : 'continue'}
             </button>
           </form>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand/CK_LOGO.png"
+            alt="Calvin Klein"
+            style={{ width: 70, height: 'auto', opacity: 0.7 }}
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
+          />
         </main>
       </div>
     </div>
