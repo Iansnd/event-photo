@@ -242,20 +242,20 @@ export default function Carousel({ photos, code }: Props) {
           onClick={() => savePhoto(current)}
           className={`${btnClass} w-full sm:w-auto`}
         >
-          Save photo
+          save photo
         </button>
         <a
           href={`/api/download-zip?code=${code}`}
           className={`${btnClass} w-full sm:w-auto text-center block`}
         >
-          Download all
+          download all
         </a>
         <button
           type="button"
           onClick={() => shareToInstagram(current)}
           className={`${btnClass} w-full sm:w-auto`}
         >
-          Share to Instagram
+          share to instagram
         </button>
       </div>
 
