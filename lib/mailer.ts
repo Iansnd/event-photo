@@ -2,6 +2,13 @@ import nodemailer from 'nodemailer';
 import path from 'path';
 import { renderEmail } from './email-template';
 
+function firstName(full: string): string {
+  const trimmed = (full ?? '').trim();
+  if (!trimmed) return '';
+  const first = trimmed.split(/\s+/)[0];
+  return first.charAt(0).toUpperCase() + first.slice(1);
+}
+
 if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
   // Log at import time on the server so misconfiguration is loud.
   console.warn('[mailer] GMAIL_USER / GMAIL_APP_PASSWORD not set — sends will fail');
@@ -50,7 +57,7 @@ export async function sendPhotoEmail(opts: {
   return transporter.sendMail({
     from: `"${fromName}" <${process.env.GMAIL_USER}>`,
     to: opts.to,
-    subject: 'your photo from euphoria',
+    subject: `Your Euphoria photo — ${firstName(opts.name)}`,
     html: renderEmail({
       name: opts.name,
       photoUrl: opts.photoUrl,
