@@ -230,12 +230,6 @@ export default function Carousel({ photos, code }: Props) {
         >
           save photo
         </button>
-        <a
-          href={`/api/download-zip?code=${code}`}
-          className={`${btnClass} w-full sm:w-auto text-center block`}
-        >
-          download all
-        </a>
         <button
           type="button"
           onClick={shareToInstagram}
