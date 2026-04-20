@@ -116,6 +116,7 @@ export async function POST(req: NextRequest) {
       name: guest.name,
       photoUrl,
       previewUrl,
+      previewBuffer: finalBuffer,
     });
     log('mail sent', { to: guest.email });
   } catch (err) {

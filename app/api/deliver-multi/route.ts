@@ -186,6 +186,7 @@ export async function POST(req: NextRequest) {
       name: guest.name,
       photoUrl,
       previewUrl,
+      previewBuffer: finalBuffer,
       extrasCount: extrasBase64.length,
     });
     log('mail sent', { to: guest.email });
