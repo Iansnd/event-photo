@@ -320,17 +320,25 @@ export default function BoothLiveClient() {
     const selected = photos.slice(0, 5);
 
     autoSendRef.current = true;
+    console.log('[auto-send] starting for code', sessionCode, 'with', selected.length, 'photos');
     (async () => {
       try {
         const blobs: string[] = [];
         for (const photo of selected) {
+          console.log('[auto-send] preparing', photo.name, 'size:', photo.sizeBytes, 'id:', photo.id);
           const handle = fileHandleMap.current.get(photo.id);
-          if (!handle) throw new Error(`No handle for ${photo.id}`);
+          if (!handle) {
+            console.error('[auto-send] NO HANDLE for', photo.id, '— available handles:', Array.from(fileHandleMap.current.keys()).join(', '));
+            throw new Error(`No handle for ${photo.id}`);
+          }
           const file = await handle.getFile();
+          console.log('[auto-send] read file', photo.name, 'actual size:', file.size);
           const b64 = await fileToBase64(file);
+          console.log('[auto-send] encoded', photo.name, 'b64 length:', b64.length);
           blobs.push(b64);
         }
 
+        console.log('[auto-send] POSTing to /api/deliver-multi, code:', sessionCode, 'hero b64 len:', blobs[0]?.length, 'extras:', blobs.length - 1);
         const res = await fetch('/api/deliver-multi', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -341,13 +349,16 @@ export default function BoothLiveClient() {
           }),
         });
 
+        console.log('[auto-send] response status:', res.status);
         const data = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(data?.error || 'send failed');
+        console.log('[auto-send] response body:', JSON.stringify(data));
+        if (!res.ok) throw new Error(`API returned ${res.status}: ${JSON.stringify(data)}`);
 
         send({ type: 'SESSION_SENT', code: sessionCode });
         toast(`Auto-sent to ${data.email || sessionCode}`, 'green');
       } catch (err) {
         const msg = err instanceof Error ? err.message : 'auto-send failed';
+        console.error('[auto-send] FAILED:', err);
         send({ type: 'SESSION_FAILED', code: sessionCode, error: msg });
         toast(`Auto-send failed: ${msg}`, 'red');
       } finally {
@@ -362,16 +373,23 @@ export default function BoothLiveClient() {
     const selected = session.photos.slice(0, 5);
     if (selected.length === 0) return;
 
+    console.log('[send-now] starting for code', session.code, 'with', selected.length, 'photos');
     try {
       const blobs: string[] = [];
       for (const photo of selected) {
+        console.log('[send-now] preparing', photo.name, 'size:', photo.sizeBytes, 'id:', photo.id);
         const handle = fileHandleMap.current.get(photo.id);
-        if (!handle) throw new Error(`No handle for ${photo.id}`);
+        if (!handle) {
+          console.error('[send-now] NO HANDLE for', photo.id, '— available handles:', Array.from(fileHandleMap.current.keys()).join(', '));
+          throw new Error(`No handle for ${photo.id}`);
+        }
         const file = await handle.getFile();
+        console.log('[send-now] read file', photo.name, 'actual size:', file.size);
         const b64 = await fileToBase64(file);
         blobs.push(b64);
       }
 
+      console.log('[send-now] POSTing to /api/deliver-multi, code:', session.code);
       const res = await fetch('/api/deliver-multi', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -382,13 +400,16 @@ export default function BoothLiveClient() {
         }),
       });
 
+      console.log('[send-now] response status:', res.status);
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data?.error || 'send failed');
+      console.log('[send-now] response body:', JSON.stringify(data));
+      if (!res.ok) throw new Error(`API returned ${res.status}: ${JSON.stringify(data)}`);
 
       send({ type: 'SESSION_SENT', code: session.code });
       toast(`Sent to ${data.email || session.code}`, 'green');
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'send failed';
+      console.error('[send-now] FAILED:', err);
       send({ type: 'SESSION_FAILED', code: session.code, error: msg });
       toast(`Send failed: ${msg}`, 'red');
     }
