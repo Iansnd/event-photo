@@ -94,32 +94,18 @@ export default function Carousel({ photos, code }: Props) {
     }
   };
 
-  const shareToInstagram = async (photo: Photo) => {
-    try {
-      const res = await fetch(photo.url);
-      const blob = await res.blob();
-      const file = new File([blob], photo.filename, { type: 'image/jpeg' });
-
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          title: 'My Euphoria moment',
-          text: 'calvin klein × euphoria',
-        });
-        return;
-      }
-
-      // Fallback: download + open Instagram
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = photo.filename;
-      a.click();
-      URL.revokeObjectURL(url);
-      window.location.href = 'instagram://camera';
-    } catch (err) {
-      if (err instanceof DOMException && err.name === 'AbortError') return;
-      console.error('share failed', err);
+  const shareToInstagram = () => {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent || '');
+    if (isMobile) {
+      const start = Date.now();
+      window.location.href = 'instagram://app';
+      setTimeout(() => {
+        if (Date.now() - start < 1600 && document.visibilityState === 'visible') {
+          window.location.href = 'https://www.instagram.com/';
+        }
+      }, 1500);
+    } else {
+      window.open('https://www.instagram.com/', '_blank', 'noopener,noreferrer');
     }
   };
 
@@ -252,7 +238,7 @@ export default function Carousel({ photos, code }: Props) {
         </a>
         <button
           type="button"
-          onClick={() => shareToInstagram(current)}
+          onClick={shareToInstagram}
           className={`${btnClass} w-full sm:w-auto`}
         >
           share to instagram
