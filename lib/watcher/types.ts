@@ -32,6 +32,8 @@ export type WatcherState = {
   lastPollAt: number;
   lastPhotoSeenAt: number | null;
   cameraDisconnectedAt: number | null;
+  autoModeEnabled: boolean;
+  pendingAutoSend: { sessionCode: string; photos: WatchedFile[] } | null;
 };
 
 export type SessionEvent =
@@ -43,7 +45,9 @@ export type SessionEvent =
   | { type: 'SESSION_FAILED'; code: string; error: string }
   | { type: 'MANUAL_CLOSE_SESSION' }
   | { type: 'MANUAL_ASSIGN_UNCLAIMED'; fileIds: string[]; code: string }
-  | { type: 'TICK'; now: number };
+  | { type: 'TICK'; now: number }
+  | { type: 'TOGGLE_AUTO_MODE' }
+  | { type: 'CLEAR_PENDING_AUTO_SEND' };
 
 export function emptyState(): WatcherState {
   return {
@@ -56,5 +60,7 @@ export function emptyState(): WatcherState {
     lastPollAt: 0,
     lastPhotoSeenAt: null,
     cameraDisconnectedAt: null,
+    autoModeEnabled: true,
+    pendingAutoSend: null,
   };
 }

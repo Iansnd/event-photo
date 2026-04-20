@@ -244,6 +244,82 @@ describe('session reducer', () => {
     expect(s2.unclaimed[0].thumbnailDataUrl).toBe('data:image/jpeg;base64,abc');
   });
 
+  // ── TOGGLE_AUTO_MODE ────────────────────────────────────────
+  it('TOGGLE_AUTO_MODE flips autoModeEnabled', () => {
+    const state = emptyState();
+    expect(state.autoModeEnabled).toBe(true);
+    const s1 = reduce(state, { type: 'TOGGLE_AUTO_MODE' });
+    expect(s1.autoModeEnabled).toBe(false);
+    const s2 = reduce(s1, { type: 'TOGGLE_AUTO_MODE' });
+    expect(s2.autoModeEnabled).toBe(true);
+  });
+
+  // ── Auto-send on QR switch ─────────────────────────────────
+  it('auto ON + different QR + session has photos → sending + pendingAutoSend', () => {
+    const now = 5000;
+    let state = stateWithSession('ABC123', now);
+    // Add a portrait photo
+    state = reduce(state, {
+      type: 'FILES_DETECTED',
+      files: [{ id: 'portrait:1:100', file: fakeFile('portrait.jpg', 5_000_000, now) }],
+      now: now + 1000,
+    });
+    expect(state.autoModeEnabled).toBe(true);
+    expect(state.currentSession!.photos).toHaveLength(1);
+
+    // New QR arrives
+    state = reduce(state, {
+      type: 'FILES_DETECTED',
+      files: [{ id: 'newqr:2:200', file: fakeFile('newqr.jpg', 5_000_000, now + 2000) }],
+      now: now + 2000,
+    });
+    state = reduce(state, { type: 'QR_DECODED', fileId: 'newqr:2:200', code: 'XYZ789' });
+
+    expect(state.currentSession!.code).toBe('XYZ789');
+    expect(state.recentSessions[0].code).toBe('ABC123');
+    expect(state.recentSessions[0].status).toBe('sending');
+    expect(state.pendingAutoSend).not.toBeNull();
+    expect(state.pendingAutoSend!.sessionCode).toBe('ABC123');
+    expect(state.pendingAutoSend!.photos).toHaveLength(1);
+  });
+
+  it('auto OFF + different QR + session has photos → timed_out, no pendingAutoSend', () => {
+    const now = 5000;
+    let state = stateWithSession('ABC123', now);
+    state = reduce(state, { type: 'TOGGLE_AUTO_MODE' }); // turn off
+    state = reduce(state, {
+      type: 'FILES_DETECTED',
+      files: [{ id: 'portrait:1:100', file: fakeFile('portrait.jpg', 5_000_000, now) }],
+      now: now + 1000,
+    });
+
+    state = reduce(state, {
+      type: 'FILES_DETECTED',
+      files: [{ id: 'newqr:2:200', file: fakeFile('newqr.jpg', 5_000_000, now + 2000) }],
+      now: now + 2000,
+    });
+    state = reduce(state, { type: 'QR_DECODED', fileId: 'newqr:2:200', code: 'XYZ789' });
+
+    expect(state.recentSessions[0].status).toBe('timed_out');
+    expect(state.pendingAutoSend).toBeNull();
+  });
+
+  it('auto ON + different QR + session has NO photos → timed_out', () => {
+    const now = 5000;
+    let state = stateWithSession('ABC123', now);
+    // No portrait photos added — session only has binding
+
+    state = reduce(state, {
+      type: 'FILES_DETECTED',
+      files: [{ id: 'newqr:2:200', file: fakeFile('newqr.jpg', 5_000_000, now + 1000) }],
+      now: now + 1000,
+    });
+    state = reduce(state, { type: 'QR_DECODED', fileId: 'newqr:2:200', code: 'XYZ789' });
+
+    expect(state.recentSessions[0].status).toBe('timed_out');
+    expect(state.pendingAutoSend).toBeNull();
+  });
+
   // ── Edge: recentSessions capped at 20 ─────────────────────
   it('recentSessions is capped at 20', () => {
     let state = emptyState();

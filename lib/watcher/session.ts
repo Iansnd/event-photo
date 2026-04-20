@@ -153,13 +153,18 @@ export function reduce(state: WatcherState, event: SessionEvent): WatcherState {
         };
       }
 
-      // Case C: Different code → close old, start new
+      // Case C: Different code → close old (auto-send if enabled + has photos), start new
+      const hasPhotos = currentSession.photos.length > 0;
+      const shouldAutoSend = state.autoModeEnabled && hasPhotos;
+
       const closedSession: LiveSession = {
         ...currentSession,
         status:
           currentSession.status === 'sent' || currentSession.status === 'failed'
             ? currentSession.status
-            : 'timed_out',
+            : shouldAutoSend
+              ? 'sending'
+              : 'timed_out',
       };
       const now = file.createdAt || Date.now();
       return {
@@ -167,6 +172,9 @@ export function reduce(state: WatcherState, event: SessionEvent): WatcherState {
         unclaimed: newUnclaimed,
         recentSessions: pushRecent(state.recentSessions, closedSession),
         currentSession: makeSession(code, file, now),
+        pendingAutoSend: shouldAutoSend
+          ? { sessionCode: currentSession.code, photos: currentSession.photos }
+          : state.pendingAutoSend,
       };
     }
 
@@ -203,29 +211,67 @@ export function reduce(state: WatcherState, event: SessionEvent): WatcherState {
 
     // ─── Rule 5 ──────────────────────────────────────────────
     case 'SESSION_SENT': {
-      if (!state.currentSession || state.currentSession.code !== event.code) return state;
-      const sent: LiveSession = {
-        ...state.currentSession,
-        status: 'sent',
-        sentAt: Date.now(),
-      };
+      // Check current session first
+      if (state.currentSession && state.currentSession.code === event.code) {
+        const sent: LiveSession = {
+          ...state.currentSession,
+          status: 'sent',
+          sentAt: Date.now(),
+        };
+        return {
+          ...state,
+          currentSession: null,
+          recentSessions: pushRecent(state.recentSessions, sent),
+          pendingAutoSend:
+            state.pendingAutoSend?.sessionCode === event.code
+              ? null
+              : state.pendingAutoSend,
+        };
+      }
+      // Also check recentSessions (auto-send / orphan recovery)
+      const updated = state.recentSessions.map((s) =>
+        s.code === event.code ? { ...s, status: 'sent' as const, sentAt: Date.now() } : s,
+      );
       return {
         ...state,
-        currentSession: null,
-        recentSessions: pushRecent(state.recentSessions, sent),
+        recentSessions: updated,
+        pendingAutoSend:
+          state.pendingAutoSend?.sessionCode === event.code
+            ? null
+            : state.pendingAutoSend,
       };
     }
 
     // ─── Rule 6 ──────────────────────────────────────────────
     case 'SESSION_FAILED': {
-      if (!state.currentSession || state.currentSession.code !== event.code) return state;
+      // Check current session first
+      if (state.currentSession && state.currentSession.code === event.code) {
+        return {
+          ...state,
+          currentSession: {
+            ...state.currentSession,
+            status: 'failed',
+            errorMessage: event.error,
+          },
+          pendingAutoSend:
+            state.pendingAutoSend?.sessionCode === event.code
+              ? null
+              : state.pendingAutoSend,
+        };
+      }
+      // Also check recentSessions (auto-send failure)
+      const updated = state.recentSessions.map((s) =>
+        s.code === event.code
+          ? { ...s, status: 'failed' as const, errorMessage: event.error }
+          : s,
+      );
       return {
         ...state,
-        currentSession: {
-          ...state.currentSession,
-          status: 'failed',
-          errorMessage: event.error,
-        },
+        recentSessions: updated,
+        pendingAutoSend:
+          state.pendingAutoSend?.sessionCode === event.code
+            ? null
+            : state.pendingAutoSend,
       };
     }
 
@@ -293,6 +339,16 @@ export function reduce(state: WatcherState, event: SessionEvent): WatcherState {
         lastPollAt: event.now,
         cameraDisconnectedAt,
       };
+    }
+
+    // ─── Toggle auto mode ──────────────────────────────────────
+    case 'TOGGLE_AUTO_MODE': {
+      return { ...state, autoModeEnabled: !state.autoModeEnabled };
+    }
+
+    // ─── Clear pending auto-send (after UI dispatches the send) ─
+    case 'CLEAR_PENDING_AUTO_SEND': {
+      return { ...state, pendingAutoSend: null };
     }
 
     default:

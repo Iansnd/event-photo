@@ -311,6 +311,89 @@ export default function BoothLiveClient() {
     }
   };
 
+  // ── Auto-send (fires when reducer sets pendingAutoSend) ─────
+
+  const autoSendRef = useRef(false);
+  useEffect(() => {
+    if (!state.pendingAutoSend || autoSendRef.current) return;
+    const { sessionCode, photos } = state.pendingAutoSend;
+    const selected = photos.slice(0, 5);
+
+    autoSendRef.current = true;
+    (async () => {
+      try {
+        const blobs: string[] = [];
+        for (const photo of selected) {
+          const handle = fileHandleMap.current.get(photo.id);
+          if (!handle) throw new Error(`No handle for ${photo.id}`);
+          const file = await handle.getFile();
+          const b64 = await fileToBase64(file);
+          blobs.push(b64);
+        }
+
+        const res = await fetch('/api/deliver-multi', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            code: sessionCode,
+            heroBase64: blobs[0],
+            extrasBase64: blobs.slice(1, 5),
+          }),
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data?.error || 'send failed');
+
+        send({ type: 'SESSION_SENT', code: sessionCode });
+        toast(`Auto-sent to ${data.email || sessionCode}`, 'green');
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : 'auto-send failed';
+        send({ type: 'SESSION_FAILED', code: sessionCode, error: msg });
+        toast(`Auto-send failed: ${msg}`, 'red');
+      } finally {
+        autoSendRef.current = false;
+      }
+    })();
+  }, [state.pendingAutoSend, send, toast]);
+
+  // ── Send now (orphan recovery for timed_out sessions) ──────
+
+  const onSendNow = async (session: { code: string; photos: import('@/lib/watcher/types').WatchedFile[] }) => {
+    const selected = session.photos.slice(0, 5);
+    if (selected.length === 0) return;
+
+    try {
+      const blobs: string[] = [];
+      for (const photo of selected) {
+        const handle = fileHandleMap.current.get(photo.id);
+        if (!handle) throw new Error(`No handle for ${photo.id}`);
+        const file = await handle.getFile();
+        const b64 = await fileToBase64(file);
+        blobs.push(b64);
+      }
+
+      const res = await fetch('/api/deliver-multi', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          code: session.code,
+          heroBase64: blobs[0],
+          extrasBase64: blobs.slice(1, 5),
+        }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data?.error || 'send failed');
+
+      send({ type: 'SESSION_SENT', code: session.code });
+      toast(`Sent to ${data.email || session.code}`, 'green');
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'send failed';
+      send({ type: 'SESSION_FAILED', code: session.code, error: msg });
+      toast(`Send failed: ${msg}`, 'red');
+    }
+  };
+
   // ── Resend failed ──────────────────────────────────────────
 
   const onResend = async (code: string) => {
@@ -397,6 +480,17 @@ export default function BoothLiveClient() {
               <span className="text-green-400">watching: {folderName}</span>
               <span>polls: {pollCount}</span>
               <span>files: {state.seenFileIds.size}</span>
+              <button
+                type="button"
+                onClick={() => send({ type: 'TOGGLE_AUTO_MODE' })}
+                className={`px-2.5 py-1 text-[11px] font-semibold rounded-full transition-colors ${
+                  state.autoModeEnabled
+                    ? 'bg-green-700 text-green-100'
+                    : 'bg-zinc-700 text-zinc-400'
+                }`}
+              >
+                auto: {state.autoModeEnabled ? 'on' : 'off'}
+              </button>
               {state.cameraDisconnectedAt && (
                 <span className="text-yellow-400 font-medium">
                   ⚠ no new photos for {ago(state.lastPhotoSeenAt!)}
@@ -451,6 +545,9 @@ export default function BoothLiveClient() {
             </span>
             {session.status === 'failed' && session.errorMessage && (
               <span className="text-red-300 ml-3">error: {session.errorMessage}</span>
+            )}
+            {state.autoModeEnabled && session.status === 'active' && (
+              <span className="text-green-300 ml-3">auto-send when next QR arrives</span>
             )}
           </div>
           <button
@@ -683,7 +780,9 @@ export default function BoothLiveClient() {
                               ? 'bg-green-900 text-green-300'
                               : s.status === 'failed'
                                 ? 'bg-red-900 text-red-300'
-                                : 'bg-zinc-700 text-zinc-400'
+                                : s.status === 'sending'
+                                  ? 'bg-yellow-900 text-yellow-300'
+                                  : 'bg-zinc-700 text-zinc-400'
                           }`}
                         >
                           {s.status}
@@ -701,6 +800,18 @@ export default function BoothLiveClient() {
                             className="text-violet-400 hover:text-violet-300 underline underline-offset-2"
                           >
                             resend
+                          </button>
+                        )}
+                        {s.status === 'timed_out' && s.photos.length > 0 && (
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onSendNow(s);
+                            }}
+                            className="text-violet-400 hover:text-violet-300 underline underline-offset-2"
+                          >
+                            send now
                           </button>
                         )}
                       </span>
