@@ -11,14 +11,15 @@ export type WatchedFile = {
 
 export type LiveSession = {
   code: string;
-  guestName: string;
-  guestEmail: string;
+  guestName: string | null;
+  guestEmail: string | null;
   startedAt: number;
   lastPhotoAt: number;
-  bindingPhoto: WatchedFile;
-  photos: WatchedFile[]; // non-QR photos in this session
-  status: 'active' | 'sent' | 'failed' | 'timed_out';
+  bindingPhotoId: string;
+  photos: WatchedFile[]; // non-QR portrait photos in this session
+  status: 'active' | 'sending' | 'sent' | 'failed' | 'timed_out';
   sentAt?: number;
+  errorMessage?: string;
 };
 
 export type WatcherState = {
@@ -26,12 +27,23 @@ export type WatcherState = {
   folderName: string;
   seenFileIds: Set<string>;
   currentSession: LiveSession | null;
-  recentSessions: LiveSession[]; // last 10
+  recentSessions: LiveSession[]; // last 20
   unclaimed: WatchedFile[];
   lastPollAt: number;
   lastPhotoSeenAt: number | null;
   cameraDisconnectedAt: number | null;
 };
+
+export type SessionEvent =
+  | { type: 'FILES_DETECTED'; files: { id: string; file: File }[]; now: number }
+  | { type: 'QR_DECODED'; fileId: string; code: string | null }
+  | { type: 'THUMBNAIL_READY'; fileId: string; dataUrl: string }
+  | { type: 'GUEST_LOOKUP_RESULT'; code: string; name: string | null; email: string | null }
+  | { type: 'SESSION_SENT'; code: string }
+  | { type: 'SESSION_FAILED'; code: string; error: string }
+  | { type: 'MANUAL_CLOSE_SESSION' }
+  | { type: 'MANUAL_ASSIGN_UNCLAIMED'; fileIds: string[]; code: string }
+  | { type: 'TICK'; now: number };
 
 export function emptyState(): WatcherState {
   return {

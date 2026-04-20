@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "test:composite": "tsx scripts/test-composite.ts",
-    "test:email": "tsx scripts/test-email-render.ts"
+    "test:email": "tsx scripts/test-email-render.ts",
+    "test": "vitest run",
+    "test:deliver-multi": "tsx scripts/test-deliver-multi.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.103.3",
@@ -34,6 +36,7 @@
     "dotenv": "^17.4.2",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.4"
   }
 }
