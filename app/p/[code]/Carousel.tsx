@@ -126,7 +126,7 @@ export default function Carousel({ photos, code }: Props) {
   const current = photos[idx];
 
   const btnClass =
-    'border border-white text-white uppercase bg-transparent px-8 py-3.5 text-sm transition-colors hover:bg-white hover:text-black rounded-none';
+    'border border-white text-white bg-transparent px-8 py-3.5 text-sm transition-colors hover:bg-white hover:text-black rounded-none';
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center">
@@ -242,26 +242,26 @@ export default function Carousel({ photos, code }: Props) {
           onClick={() => savePhoto(current)}
           className={`${btnClass} w-full sm:w-auto`}
         >
-          save photo
+          Save photo
         </button>
         <a
           href={`/api/download-zip?code=${code}`}
           className={`${btnClass} w-full sm:w-auto text-center block`}
         >
-          download all
+          Download all
         </a>
         <button
           type="button"
           onClick={() => shareToInstagram(current)}
           className={`${btnClass} w-full sm:w-auto`}
         >
-          share to instagram
+          Share to Instagram
         </button>
       </div>
 
       {/* Footer */}
       <p className="pb-6 text-white/40 text-[11px] lowercase tracking-[0.15em]">
-        calvin klein × euphoria launch
+        calvin klein euphoria elixirs
       </p>
     </div>
   );
