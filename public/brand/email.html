@@ -97,9 +97,18 @@
 
     /* Mobile */
     @media screen and (max-width: 620px) {
+      body, html {
+        overflow-x: hidden !important;
+      }
+      .body-wrap, .body-bg {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+      }
       .email-container {
-        width: 100% !important;
-        max-width: 100% !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        min-width: 100vw !important;
       }
       .fluid-img {
         width: 100% !important;
@@ -113,29 +122,44 @@
       .cta-mobile { font-size: 12px !important; padding: 14px 24px !important; letter-spacing: 0.15em !important; }
       .section-spacer { height: 32px !important; }
 
-      /* Stack elixir sections cleanly on mobile */
-      .product-stack {
-        display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
-      }
-      .product-img-cell {
-        display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
+      /* Hero image + guest photo — full bleed on mobile */
+      .full-bleed-cell {
         padding: 0 !important;
       }
-      .product-img-cell img {
-        width: 100% !important;
-        max-width: 100% !important;
+      .full-bleed-cell img {
+        width: 100vw !important;
+        max-width: 100vw !important;
         height: auto !important;
         display: block !important;
       }
-      .product-text-cell {
+
+      /* Stack elixir sections cleanly on mobile */
+      td.product-stack,
+      td[width="300"] {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        min-width: 100vw !important;
         display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
+      }
+      .product-img-cell {
+        display: block !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        padding: 0 !important;
+      }
+      td.product-img-cell img {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: auto !important;
+        display: block !important;
+        margin: 0 !important;
+      }
+      td.product-text-cell {
+        display: block !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
         padding: 32px 24px !important;
+        box-sizing: border-box !important;
         text-align: center !important;
       }
       .product-heading { text-align: center !important; }
@@ -166,7 +190,7 @@
 
             <!-- HERO IMAGE -->
             <tr>
-              <td align="center" bgcolor="#fefefe" class="force-light" style="padding:0; line-height:0; font-size:0; background-color:#fefefe;">
+              <td align="center" bgcolor="#fefefe" class="full-bleed-cell force-light" style="padding:0; line-height:0; font-size:0; background-color:#fefefe;">
                 <a href="https://www.calvinklein.us/en/women/fragrance/fragrance?sz=32&start=0" target="_blank" style="text-decoration:none; border:0; outline:none;">
                   <img src="https://event-photo-six.vercel.app/email-assets/Hero_Image.png"
                        alt="Euphoria by Calvin Klein"
@@ -204,7 +228,7 @@
 
             <!-- GUEST PHOTO -->
             <tr>
-              <td align="center" bgcolor="#fefefe" class="px-mobile force-light" style="padding:0 40px; background-color:#fefefe;">
+              <td align="center" bgcolor="#fefefe" class="full-bleed-cell px-mobile force-light" style="padding:0 40px; background-color:#fefefe;">
                 <a href="{{VIEW_URL}}" target="_blank" style="text-decoration:none; border:0; outline:none; display:block;">
                   <img src="{{PREVIEW_URL}}"
                        alt="Your photo"
