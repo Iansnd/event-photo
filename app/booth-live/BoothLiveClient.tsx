@@ -36,6 +36,45 @@ async function fileToBase64(file: File): Promise<string> {
   });
 }
 
+async function downscaleToJpeg(
+  file: File,
+  maxDimension: number,
+  quality: number,
+): Promise<Blob> {
+  const bitmap = await createImageBitmap(file);
+  const scale = Math.min(1, maxDimension / Math.max(bitmap.width, bitmap.height));
+  const w = Math.round(bitmap.width * scale);
+  const h = Math.round(bitmap.height * scale);
+
+  const canvas = document.createElement('canvas');
+  canvas.width = w;
+  canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) throw new Error('canvas 2d context unavailable');
+  ctx.drawImage(bitmap, 0, 0, w, h);
+  bitmap.close?.();
+
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(
+      (blob) => (blob ? resolve(blob) : reject(new Error('toBlob returned null'))),
+      'image/jpeg',
+      quality,
+    );
+  });
+}
+
+async function blobToBase64(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      resolve(result.split(',')[1] ?? '');
+    };
+    reader.onerror = () => reject(reader.error ?? new Error('FileReader failed'));
+    reader.readAsDataURL(blob);
+  });
+}
+
 // ── Component ────────────────────────────────────────────────
 
 type Tab = 'current' | 'unclaimed' | 'recent';
@@ -236,13 +275,18 @@ export default function BoothLiveClient() {
         return;
       }
 
-      // Re-read files from handles for full-res data
+      // Re-read files from handles and downscale before upload
       const blobs: string[] = [];
-      for (const photo of ordered) {
+      for (let i = 0; i < ordered.length; i++) {
+        const photo = ordered[i];
         const handle = fileHandleMap.current.get(photo.id);
         if (!handle) throw new Error(`No handle for ${photo.id}`);
         const file = await handle.getFile();
-        const b64 = await fileToBase64(file);
+        const isHero = i === 0;
+        const maxDim = isHero ? 2400 : 2000;
+        const quality = isHero ? 0.88 : 0.85;
+        const downscaledBlob = await downscaleToJpeg(file, maxDim, quality);
+        const b64 = await blobToBase64(downscaledBlob);
         blobs.push(b64);
       }
 
@@ -324,7 +368,8 @@ export default function BoothLiveClient() {
     (async () => {
       try {
         const blobs: string[] = [];
-        for (const photo of selected) {
+        for (let i = 0; i < selected.length; i++) {
+          const photo = selected[i];
           console.log('[auto-send] preparing', photo.name, 'size:', photo.sizeBytes, 'id:', photo.id);
           const handle = fileHandleMap.current.get(photo.id);
           if (!handle) {
@@ -332,12 +377,19 @@ export default function BoothLiveClient() {
             throw new Error(`No handle for ${photo.id}`);
           }
           const file = await handle.getFile();
-          console.log('[auto-send] read file', photo.name, 'actual size:', file.size);
-          const b64 = await fileToBase64(file);
-          console.log('[auto-send] encoded', photo.name, 'b64 length:', b64.length);
+          const isHero = i === 0;
+          const maxDim = isHero ? 2400 : 2000;
+          const quality = isHero ? 0.88 : 0.85;
+          const downscaledBlob = await downscaleToJpeg(file, maxDim, quality);
+          console.log('[auto-send]', isHero ? 'hero' : `extra ${i}`, 'downscaled:',
+            file.size, '→', downscaledBlob.size,
+            '(', ((downscaledBlob.size / file.size) * 100).toFixed(1), '% of original)');
+          const b64 = await blobToBase64(downscaledBlob);
           blobs.push(b64);
         }
 
+        const totalB64 = blobs.reduce((sum, b) => sum + b.length, 0);
+        console.log('[auto-send] total b64 payload:', totalB64, 'bytes (', (totalB64 / 1024 / 1024).toFixed(2), 'MB)');
         console.log('[auto-send] POSTing to /api/deliver-multi, code:', sessionCode, 'hero b64 len:', blobs[0]?.length, 'extras:', blobs.length - 1);
         const res = await fetch('/api/deliver-multi', {
           method: 'POST',
@@ -376,7 +428,8 @@ export default function BoothLiveClient() {
     console.log('[send-now] starting for code', session.code, 'with', selected.length, 'photos');
     try {
       const blobs: string[] = [];
-      for (const photo of selected) {
+      for (let i = 0; i < selected.length; i++) {
+        const photo = selected[i];
         console.log('[send-now] preparing', photo.name, 'size:', photo.sizeBytes, 'id:', photo.id);
         const handle = fileHandleMap.current.get(photo.id);
         if (!handle) {
@@ -384,11 +437,19 @@ export default function BoothLiveClient() {
           throw new Error(`No handle for ${photo.id}`);
         }
         const file = await handle.getFile();
-        console.log('[send-now] read file', photo.name, 'actual size:', file.size);
-        const b64 = await fileToBase64(file);
+        const isHero = i === 0;
+        const maxDim = isHero ? 2400 : 2000;
+        const quality = isHero ? 0.88 : 0.85;
+        const downscaledBlob = await downscaleToJpeg(file, maxDim, quality);
+        console.log('[send-now]', isHero ? 'hero' : `extra ${i}`, 'downscaled:',
+          file.size, '→', downscaledBlob.size,
+          '(', ((downscaledBlob.size / file.size) * 100).toFixed(1), '% of original)');
+        const b64 = await blobToBase64(downscaledBlob);
         blobs.push(b64);
       }
 
+      const totalB64 = blobs.reduce((sum, b) => sum + b.length, 0);
+      console.log('[send-now] total b64 payload:', totalB64, 'bytes (', (totalB64 / 1024 / 1024).toFixed(2), 'MB)');
       console.log('[send-now] POSTing to /api/deliver-multi, code:', session.code);
       const res = await fetch('/api/deliver-multi', {
         method: 'POST',
