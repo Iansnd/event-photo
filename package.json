@@ -17,6 +17,7 @@
     "@types/heic-convert": "^2.1.0",
     "archiver": "^7.0.1",
     "heic-convert": "^2.1.0",
+    "idb-keyval": "^6.2.2",
     "jsqr": "^1.4.0",
     "nanoid": "^5.1.9",
     "next": "16.2.4",
