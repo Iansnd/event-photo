@@ -260,8 +260,8 @@ export default function Carousel({ photos, code }: Props) {
       </div>
 
       {/* Footer */}
-      <p className="pb-6 text-white/40 text-[11px] lowercase tracking-[0.15em]">
-        calvin klein euphoria elixirs
+      <p className="pb-6 text-white/40 text-[11px] tracking-[0.15em]">
+        Calvin Klein euphoria elixirs
       </p>
     </div>
   );
