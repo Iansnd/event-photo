@@ -98,7 +98,7 @@ export default function Carousel({ photos, code }: Props) {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent || '');
     if (isMobile) {
       const start = Date.now();
-      window.location.href = 'instagram://app';
+      window.location.href = 'instagram-stories://share';
       setTimeout(() => {
         if (Date.now() - start < 1600 && document.visibilityState === 'visible') {
           window.location.href = 'https://www.instagram.com/';
