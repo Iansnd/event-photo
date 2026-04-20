@@ -23,6 +23,7 @@ export default function WatcherTestClient() {
   const [files, setFiles] = useState<DetectedFile[]>([]);
   const [pollCount, setPollCount] = useState(0);
   const seenRef = useRef(new Set<string>());
+  const pendingRef = useRef(new Map<string, { size: number; mtime: number; firstSeenAt: number; handle: FileSystemFileHandle }>());
   const pollingRef = useRef(false);
 
   useEffect(() => {
@@ -82,7 +83,7 @@ export default function WatcherTestClient() {
     if (!handle || pollingRef.current) return;
     pollingRef.current = true;
     try {
-      const newFiles = await scanFolder(handle, seenRef.current);
+      const newFiles = await scanFolder(handle, seenRef.current, pendingRef.current);
       if (newFiles === null) {
         // Permission lost
         setHandle(null);

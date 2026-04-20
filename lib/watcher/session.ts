@@ -1,8 +1,7 @@
 import type { WatcherState, WatchedFile, LiveSession, SessionEvent } from './types';
 
 const MAX_RECENT = 20;
-const SESSION_TIMEOUT_MS = 120_000; // 2 min no photos → auto-close
-const CAMERA_SILENCE_MS = 60_000;   // 1 min no files → camera disconnected
+const CAMERA_SILENCE_MS = 60_000; // 1 min no files → camera disconnected
 
 /** Valid guest code: exactly 6 alphanumeric characters */
 function isValidCode(code: string): boolean {
@@ -57,7 +56,14 @@ export function reduce(state: WatcherState, event: SessionEvent): WatcherState {
 
       for (const { id, file } of event.files) {
         newSeen.add(id);
-        newFiles.push(fileToWatched(id, file));
+        const wf = fileToWatched(id, file);
+        newFiles.push(wf);
+        console.log(
+          '[session] file', id, '→',
+          currentSession && currentSession.status === 'active'
+            ? 'session ' + currentSession.code
+            : 'unclaimed',
+        );
       }
 
       if (currentSession && currentSession.status === 'active') {
@@ -271,20 +277,11 @@ export function reduce(state: WatcherState, event: SessionEvent): WatcherState {
 
     // ─── Rule 9 ──────────────────────────────────────────────
     case 'TICK': {
-      let { currentSession, recentSessions, cameraDisconnectedAt } = state;
-
-      // Auto-close session after 2 min of no photos
-      if (
-        currentSession &&
-        currentSession.status === 'active' &&
-        event.now - currentSession.lastPhotoAt > SESSION_TIMEOUT_MS
-      ) {
-        const closed: LiveSession = { ...currentSession, status: 'timed_out' };
-        recentSessions = pushRecent(recentSessions, closed);
-        currentSession = null;
-      }
+      // Sessions never auto-close — only explicit events close them
+      // (QR_DECODED with different code, SESSION_SENT, MANUAL_CLOSE_SESSION)
 
       // Camera disconnection detection
+      let { cameraDisconnectedAt } = state;
       if (state.lastPhotoSeenAt !== null && event.now - state.lastPhotoSeenAt > CAMERA_SILENCE_MS) {
         cameraDisconnectedAt = cameraDisconnectedAt ?? event.now;
       } else {
@@ -294,8 +291,6 @@ export function reduce(state: WatcherState, event: SessionEvent): WatcherState {
       return {
         ...state,
         lastPollAt: event.now,
-        currentSession,
-        recentSessions,
         cameraDisconnectedAt,
       };
     }

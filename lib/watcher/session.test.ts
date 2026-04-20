@@ -128,15 +128,15 @@ describe('session reducer', () => {
   });
 
   // ── TICK ───────────────────────────────────────────────────
-  it('TICK with no activity for 2 min → session auto-times-out', () => {
+  it('TICK with no activity for 10 min → session STAYS active', () => {
     const now = 5000;
     const state = stateWithSession('ABC123', now);
 
-    const next = reduce(state, { type: 'TICK', now: now + 130_000 });
-    expect(next.currentSession).toBeNull();
-    expect(next.recentSessions).toHaveLength(1);
-    expect(next.recentSessions[0].code).toBe('ABC123');
-    expect(next.recentSessions[0].status).toBe('timed_out');
+    const next = reduce(state, { type: 'TICK', now: now + 600_000 });
+    expect(next.currentSession).not.toBeNull();
+    expect(next.currentSession!.code).toBe('ABC123');
+    expect(next.currentSession!.status).toBe('active');
+    expect(next.recentSessions).toHaveLength(0);
   });
 
   it('TICK with camera silence > 60s → cameraDisconnectedAt set', () => {

@@ -55,6 +55,7 @@ export default function BoothLiveClient() {
   const [assignError, setAssignError] = useState<string | null>(null);
   const [expandedRecent, setExpandedRecent] = useState<string | null>(null);
   const pollingRef = useRef(false);
+  const pendingRef = useRef(new Map<string, { size: number; mtime: number; firstSeenAt: number; handle: FileSystemFileHandle }>());
   const fileHandleMap = useRef(new Map<string, FileSystemFileHandle>());
 
   // Wrap dispatch to also get typed events
@@ -164,7 +165,7 @@ export default function BoothLiveClient() {
     if (!folderHandle || pollingRef.current) return;
     pollingRef.current = true;
     try {
-      const newFiles = await scanFolder(folderHandle, state.seenFileIds);
+      const newFiles = await scanFolder(folderHandle, state.seenFileIds, pendingRef.current);
       if (newFiles === null) {
         // Permission lost
         setFolderHandle(null);
