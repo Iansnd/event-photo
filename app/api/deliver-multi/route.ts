@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import sharp from 'sharp';
 import { supabaseAdmin, STORAGE_BUCKET } from '@/lib/supabase';
 import { composite } from '@/lib/composite';
 import { sendPhotoEmail } from '@/lib/mailer';
@@ -123,7 +122,7 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // 6) Process and upload extras
+  // 6) Process and upload extras (composite into CK template, same as hero)
   for (let i = 0; i < extrasBase64.length; i++) {
     const label = `extra[${i}]`;
     try {
@@ -133,14 +132,8 @@ export async function POST(req: NextRequest) {
         continue;
       }
       buf = await normalizeToJpeg(buf, label);
-
-      // Resize to max 2000px wide, preserve aspect, JPEG q88
-      buf = await sharp(buf)
-        .rotate()
-        .resize({ width: 2000, withoutEnlargement: true })
-        .jpeg({ quality: 88 })
-        .toBuffer();
-      log(`${label} processed`, { bytes: buf.length });
+      buf = await composite(buf);
+      log(`${label} composited`, { bytes: buf.length });
 
       const extraPath = `${code}/extras/${i}.jpg`;
       const { error: upErr } = await supabaseAdmin.storage
