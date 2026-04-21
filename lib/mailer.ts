@@ -57,7 +57,7 @@ export async function sendPhotoEmail(opts: {
   return transporter.sendMail({
     from: `"${fromName}" <${process.env.GMAIL_USER}>`,
     to: opts.to,
-    subject: `Your Euphoria photo — ${firstName(opts.name)}`,
+    subject: `Your euphoria photo — ${firstName(opts.name)}`,
     html: renderEmail({
       name: opts.name,
       photoUrl: opts.photoUrl,
