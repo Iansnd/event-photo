@@ -112,7 +112,7 @@ export default function Carousel({ photos, code }: Props) {
   const current = photos[idx];
 
   const btnClass =
-    'border border-white text-white bg-transparent px-8 py-3.5 text-sm transition-colors hover:bg-white hover:text-black rounded-none';
+    'border border-white text-white uppercase bg-transparent px-8 py-3.5 text-sm transition-colors hover:bg-white hover:text-black rounded-none';
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center">
