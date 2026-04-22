@@ -4,7 +4,7 @@ import { sendPhotoEmail } from '@/lib/mailer';
 import { isValidCode, normalizeCode } from '@/lib/code';
 
 export const runtime = 'nodejs';
-export const maxDuration = 30;
+export const maxDuration = 120;
 
 function log(step: string, extra: Record<string, unknown> = {}) {
   console.log(`[resend] ${new Date().toISOString()} ${step}`, extra);

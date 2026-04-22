@@ -6,7 +6,7 @@ import { isValidCode, normalizeCode } from '@/lib/code';
 import convert from 'heic-convert';
 
 export const runtime = 'nodejs';
-export const maxDuration = 60;
+export const maxDuration = 120;
 
 function log(step: string, extra: Record<string, unknown> = {}) {
   console.log(`[deliver-multi] ${new Date().toISOString()} ${step}`, extra);
