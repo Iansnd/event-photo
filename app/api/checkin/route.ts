@@ -16,6 +16,8 @@ function badRequest(message: string) {
 
 export async function POST(req: NextRequest) {
   const t0 = Date.now();
+  console.log(`[checkin] running in region: ${process.env.VERCEL_REGION || 'unknown'}`);
+  console.log(`[checkin] function url: ${process.env.VERCEL_URL || 'unknown'}`);
 
   let body: CheckinBody;
   try {
