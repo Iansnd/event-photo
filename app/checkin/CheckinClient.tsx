@@ -1,7 +1,6 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import QRCode from 'qrcode';
 
 type Step = 'form' | 'qr';
 
@@ -79,14 +78,11 @@ export default function CheckinClient({ eventName }: CheckinClientProps) {
       if (!res.ok) {
         throw new Error(data?.error || 'something went wrong');
       }
-      const dataUrl = await QRCode.toDataURL(data.code, {
-        errorCorrectionLevel: 'H',
-        margin: 1,
-        width: 512,
-        color: { dark: '#000000', light: '#ffffff' },
-      });
+      if (!data.qrDataUrl) {
+        throw new Error('server did not return a qr code');
+      }
       setResult({ code: data.code, name: data.name });
-      setQrDataUrl(dataUrl);
+      setQrDataUrl(data.qrDataUrl);
       setStep('qr');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'something went wrong');
