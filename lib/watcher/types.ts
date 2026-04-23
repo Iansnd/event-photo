@@ -7,6 +7,7 @@ export type WatchedFile = {
   qrCode: string | null;
   processed: boolean;
   fileHandle: FileSystemFileHandle; // re-read when sending
+  excluded?: boolean;
 };
 
 export type LiveSession = {
@@ -47,7 +48,8 @@ export type SessionEvent =
   | { type: 'MANUAL_ASSIGN_UNCLAIMED'; fileIds: string[]; code: string }
   | { type: 'TICK'; now: number }
   | { type: 'TOGGLE_AUTO_MODE' }
-  | { type: 'CLEAR_PENDING_AUTO_SEND' };
+  | { type: 'CLEAR_PENDING_AUTO_SEND' }
+  | { type: 'EXCLUDE_PHOTO'; fileId: string };
 
 export function emptyState(): WatcherState {
   return {

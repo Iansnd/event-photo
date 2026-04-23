@@ -154,7 +154,8 @@ export function reduce(state: WatcherState, event: SessionEvent): WatcherState {
       }
 
       // Case C: Different code → close old (auto-send if enabled + has photos), start new
-      const hasPhotos = currentSession.photos.length > 0;
+      const nonExcludedPhotos = currentSession.photos.filter((p) => !p.excluded);
+      const hasPhotos = nonExcludedPhotos.length > 0;
       const shouldAutoSend = state.autoModeEnabled && hasPhotos;
 
       const closedSession: LiveSession = {
@@ -173,7 +174,7 @@ export function reduce(state: WatcherState, event: SessionEvent): WatcherState {
         recentSessions: pushRecent(state.recentSessions, closedSession),
         currentSession: makeSession(code, file, now),
         pendingAutoSend: shouldAutoSend
-          ? { sessionCode: currentSession.code, photos: currentSession.photos }
+          ? { sessionCode: currentSession.code, photos: nonExcludedPhotos }
           : state.pendingAutoSend,
       };
     }
@@ -349,6 +350,18 @@ export function reduce(state: WatcherState, event: SessionEvent): WatcherState {
     // ─── Clear pending auto-send (after UI dispatches the send) ─
     case 'CLEAR_PENDING_AUTO_SEND': {
       return { ...state, pendingAutoSend: null };
+    }
+
+    // ─── Exclude a photo from the current session ──────────────
+    case 'EXCLUDE_PHOTO': {
+      if (!state.currentSession) return state;
+      const photos = state.currentSession.photos.map((p) =>
+        p.id === event.fileId ? { ...p, excluded: true } : p,
+      );
+      return {
+        ...state,
+        currentSession: { ...state.currentSession, photos },
+      };
     }
 
     default:

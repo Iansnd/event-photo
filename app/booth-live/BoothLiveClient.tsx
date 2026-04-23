@@ -268,8 +268,8 @@ export default function BoothLiveClient() {
 
     setIsSending(true);
     try {
-      // Collect files in selection order
-      const ordered = session.photos.filter((f) => selectedIds.has(f.id));
+      // Collect files in selection order, skip excluded
+      const ordered = session.photos.filter((f) => selectedIds.has(f.id) && !f.excluded);
       if (ordered.length === 0) {
         toast('No photos selected', 'red');
         return;
@@ -422,7 +422,7 @@ export default function BoothLiveClient() {
   // ── Send now (orphan recovery for timed_out sessions) ──────
 
   const onSendNow = async (session: { code: string; photos: import('@/lib/watcher/types').WatchedFile[] }) => {
-    const selected = session.photos.slice(0, 5);
+    const selected = session.photos.filter((p) => !p.excluded).slice(0, 5);
     if (selected.length === 0) return;
 
     console.log('[send-now] starting for code', session.code, 'with', selected.length, 'photos');
@@ -681,47 +681,79 @@ export default function BoothLiveClient() {
               </p>
             )}
 
-            {session && (
+            {session && (() => {
+              const visiblePhotos = session.photos.filter((p) => !p.excluded);
+              const excludedCount = session.photos.length - visiblePhotos.length;
+              return (
               <>
-                {session.photos.length === 0 ? (
+                {visiblePhotos.length === 0 ? (
                   <p className="text-zinc-500 text-sm">
                     Session started — waiting for portrait photos...
                   </p>
                 ) : (
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                    {session.photos.map((f) => {
+                    {visiblePhotos.map((f) => {
                       const selected = selectedIds.has(f.id);
                       const order = selected ? selectionArray.indexOf(f.id) + 1 : 0;
                       return (
-                        <button
+                        <div
                           key={f.id}
-                          type="button"
-                          onClick={() => toggleSelect(f.id)}
                           className={`relative bg-zinc-900 border-2 p-1 transition-colors ${
                             selected
                               ? 'border-violet-500'
                               : 'border-zinc-800 hover:border-zinc-600'
                           }`}
                         >
-                          {f.thumbnailDataUrl ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img
-                              src={f.thumbnailDataUrl}
-                              alt={f.name}
-                              className="w-full aspect-[3/4] object-cover"
-                            />
-                          ) : (
-                            <div className="w-full aspect-[3/4] bg-zinc-800 animate-pulse" />
-                          )}
-                          {selected && order <= 5 && (
-                            <span className="absolute top-2 right-2 bg-violet-600 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full">
-                              {order}
-                            </span>
-                          )}
-                          <p className="text-[10px] text-zinc-500 truncate mt-1">{f.name}</p>
-                        </button>
+                          <button
+                            type="button"
+                            onClick={() => toggleSelect(f.id)}
+                            className="block w-full text-left"
+                          >
+                            {f.thumbnailDataUrl ? (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img
+                                src={f.thumbnailDataUrl}
+                                alt={f.name}
+                                className="w-full aspect-[3/4] object-cover"
+                              />
+                            ) : (
+                              <div className="w-full aspect-[3/4] bg-zinc-800 animate-pulse" />
+                            )}
+                            {selected && order <= 5 && (
+                              <span className="absolute top-2 right-2 bg-violet-600 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full">
+                                {order}
+                              </span>
+                            )}
+                            <p className="text-[10px] text-zinc-500 truncate mt-1">{f.name}</p>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (confirm('Remove this photo from the session? It will not be sent.')) {
+                                setSelectedIds((prev) => {
+                                  if (!prev.has(f.id)) return prev;
+                                  const next = new Set(prev);
+                                  next.delete(f.id);
+                                  return next;
+                                });
+                                send({ type: 'EXCLUDE_PHOTO', fileId: f.id });
+                              }
+                            }}
+                            className="absolute top-1 left-1 w-7 h-7 bg-red-600 hover:bg-red-700 text-white rounded-full flex items-center justify-center text-sm font-bold z-10 shadow-lg transition-colors"
+                            aria-label="Remove photo from session"
+                            title="Remove from session"
+                          >
+                            ✕
+                          </button>
+                        </div>
                       );
                     })}
+                  </div>
+                )}
+                {excludedCount > 0 && (
+                  <div className="text-white/40 text-xs mt-2">
+                    {excludedCount} photo{excludedCount === 1 ? '' : 's'} excluded from this session
                   </div>
                 )}
 
@@ -748,7 +780,8 @@ export default function BoothLiveClient() {
                   </button>
                 </div>
               </>
-            )}
+              );
+            })()}
           </>
         )}
 

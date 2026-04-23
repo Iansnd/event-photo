@@ -320,6 +320,94 @@ describe('session reducer', () => {
     expect(state.pendingAutoSend).toBeNull();
   });
 
+  // ── EXCLUDE_PHOTO ──────────────────────────────────────────
+  it('EXCLUDE_PHOTO marks photo as excluded but keeps it in photos array', () => {
+    const now = 5000;
+    let state = stateWithSession('ABC123', now);
+    state = reduce(state, {
+      type: 'FILES_DETECTED',
+      files: [
+        { id: 'p1:1:100', file: fakeFile('p1.jpg', 5_000_000, now) },
+        { id: 'p2:2:100', file: fakeFile('p2.jpg', 5_000_000, now) },
+      ],
+      now: now + 500,
+    });
+    expect(state.currentSession!.photos).toHaveLength(2);
+
+    const next = reduce(state, { type: 'EXCLUDE_PHOTO', fileId: 'p1:1:100' });
+    expect(next.currentSession!.photos).toHaveLength(2);
+    expect(next.currentSession!.photos[0].excluded).toBe(true);
+    expect(next.currentSession!.photos[1].excluded).toBeUndefined();
+    expect(next.currentSession!.status).toBe('active');
+  });
+
+  it('EXCLUDE_PHOTO with no current session is a no-op', () => {
+    const state = emptyState();
+    const next = reduce(state, { type: 'EXCLUDE_PHOTO', fileId: 'anything' });
+    expect(next).toEqual(state);
+  });
+
+  it('EXCLUDE_PHOTO with non-existent fileId is a no-op on photos', () => {
+    const now = 5000;
+    let state = stateWithSession('ABC123', now);
+    state = reduce(state, {
+      type: 'FILES_DETECTED',
+      files: [{ id: 'p1:1:100', file: fakeFile('p1.jpg', 5_000_000, now) }],
+      now: now + 500,
+    });
+    const before = state.currentSession!.photos;
+    const next = reduce(state, { type: 'EXCLUDE_PHOTO', fileId: 'ghost:9:9' });
+    expect(next.currentSession!.photos).toHaveLength(before.length);
+    expect(next.currentSession!.photos.every((p) => !p.excluded)).toBe(true);
+  });
+
+  it('auto-send filters excluded photos from pendingAutoSend', () => {
+    const now = 5000;
+    let state = stateWithSession('ABC123', now);
+    state = reduce(state, {
+      type: 'FILES_DETECTED',
+      files: [
+        { id: 'p1:1:100', file: fakeFile('p1.jpg', 5_000_000, now) },
+        { id: 'p2:2:100', file: fakeFile('p2.jpg', 5_000_000, now) },
+        { id: 'p3:3:100', file: fakeFile('p3.jpg', 5_000_000, now) },
+      ],
+      now: now + 500,
+    });
+    state = reduce(state, { type: 'EXCLUDE_PHOTO', fileId: 'p2:2:100' });
+
+    state = reduce(state, {
+      type: 'FILES_DETECTED',
+      files: [{ id: 'newqr:9:100', file: fakeFile('newqr.jpg', 5_000_000, now + 2000) }],
+      now: now + 2000,
+    });
+    state = reduce(state, { type: 'QR_DECODED', fileId: 'newqr:9:100', code: 'XYZ789' });
+
+    expect(state.pendingAutoSend).not.toBeNull();
+    expect(state.pendingAutoSend!.photos).toHaveLength(2);
+    expect(state.pendingAutoSend!.photos.map((p) => p.id)).toEqual(['p1:1:100', 'p3:3:100']);
+  });
+
+  it('auto-send does not fire when all photos are excluded', () => {
+    const now = 5000;
+    let state = stateWithSession('ABC123', now);
+    state = reduce(state, {
+      type: 'FILES_DETECTED',
+      files: [{ id: 'p1:1:100', file: fakeFile('p1.jpg', 5_000_000, now) }],
+      now: now + 500,
+    });
+    state = reduce(state, { type: 'EXCLUDE_PHOTO', fileId: 'p1:1:100' });
+
+    state = reduce(state, {
+      type: 'FILES_DETECTED',
+      files: [{ id: 'newqr:9:100', file: fakeFile('newqr.jpg', 5_000_000, now + 2000) }],
+      now: now + 2000,
+    });
+    state = reduce(state, { type: 'QR_DECODED', fileId: 'newqr:9:100', code: 'XYZ789' });
+
+    expect(state.pendingAutoSend).toBeNull();
+    expect(state.recentSessions[0].status).toBe('timed_out');
+  });
+
   // ── Edge: recentSessions capped at 20 ─────────────────────
   it('recentSessions is capped at 20', () => {
     let state = emptyState();
