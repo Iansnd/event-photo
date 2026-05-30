@@ -87,7 +87,9 @@ export default function BoothLiveClient() {
   const [pollCount, setPollCount] = useState(0);
   const [activeTab, setActiveTab] = useState<Tab>('current');
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
-  const [sendMode, setSendMode] = useState<'hero' | 'extras'>('hero');
+  // Default to multi-photo (hero + extras) so operators don't accidentally
+  // send a single photo. "Hero only" remains selectable in the dropdown.
+  const [sendMode, setSendMode] = useState<'hero' | 'extras'>('extras');
   const [isSending, setIsSending] = useState(false);
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [assignCode, setAssignCode] = useState('');
