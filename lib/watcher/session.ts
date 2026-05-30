@@ -46,6 +46,25 @@ function findAndRemove<T extends { id: string }>(arr: T[], id: string): [T | nul
   return [found, [...arr.slice(0, idx), ...arr.slice(idx + 1)]];
 }
 
+/**
+ * Choose which photos to send and in what order, honouring the operator's hero.
+ *
+ * - Excluded photos are dropped.
+ * - If an operator marked a hero (isHero), it is placed first.
+ * - Otherwise the existing behaviour holds: the first photo is the hero.
+ * - Returns at most 5 photos (1 hero + up to 4 extras), matching delivery limits.
+ *
+ * Index 0 of the returned array is always the hero — every send path
+ * (manual, auto-send, send-now) already treats position 0 as the hero.
+ */
+export function orderPhotosForSend(photos: WatchedFile[]): WatchedFile[] {
+  const available = photos.filter((p) => !p.excluded);
+  const hero = available.find((p) => p.isHero);
+  if (!hero) return available.slice(0, 5);
+  const others = available.filter((p) => p.id !== hero.id);
+  return [hero, ...others].slice(0, 5);
+}
+
 export function reduce(state: WatcherState, event: SessionEvent): WatcherState {
   switch (event.type) {
     // ─── Rule 1 ──────────────────────────────────────────────
@@ -355,9 +374,27 @@ export function reduce(state: WatcherState, event: SessionEvent): WatcherState {
     // ─── Exclude a photo from the current session ──────────────
     case 'EXCLUDE_PHOTO': {
       if (!state.currentSession) return state;
+      // Clear isHero too — an excluded photo must never remain the hero
       const photos = state.currentSession.photos.map((p) =>
-        p.id === event.fileId ? { ...p, excluded: true } : p,
+        p.id === event.fileId ? { ...p, excluded: true, isHero: false } : p,
       );
+      return {
+        ...state,
+        currentSession: { ...state.currentSession, photos },
+      };
+    }
+
+    // ─── Set the operator-chosen hero photo ────────────────────
+    case 'SET_HERO': {
+      if (!state.currentSession) return state;
+      const target = state.currentSession.photos.find((p) => p.id === event.fileId);
+      // Excluded photos cannot become hero; no-op if missing
+      if (!target || target.excluded) return state;
+
+      const photos = state.currentSession.photos.map((p) => ({
+        ...p,
+        isHero: p.id === event.fileId,
+      }));
       return {
         ...state,
         currentSession: { ...state.currentSession, photos },

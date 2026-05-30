@@ -8,6 +8,7 @@ export type WatchedFile = {
   processed: boolean;
   fileHandle: FileSystemFileHandle; // re-read when sending
   excluded?: boolean;
+  isHero?: boolean; // operator-chosen hero; falls back to first photo when unset
 };
 
 export type LiveSession = {
@@ -49,7 +50,8 @@ export type SessionEvent =
   | { type: 'TICK'; now: number }
   | { type: 'TOGGLE_AUTO_MODE' }
   | { type: 'CLEAR_PENDING_AUTO_SEND' }
-  | { type: 'EXCLUDE_PHOTO'; fileId: string };
+  | { type: 'EXCLUDE_PHOTO'; fileId: string }
+  | { type: 'SET_HERO'; fileId: string };
 
 export function emptyState(): WatcherState {
   return {

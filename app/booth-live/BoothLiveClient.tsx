@@ -11,7 +11,7 @@ import { get as idbGet, set as idbSet } from 'idb-keyval';
 import { pickFolder, scanFolder, type NewFile } from '@/lib/watcher/watcher';
 import { detectQrInJpeg } from '@/lib/watcher/qr';
 import { generateThumbnail } from '@/lib/watcher/thumbnail';
-import { reduce } from '@/lib/watcher/session';
+import { reduce, orderPhotosForSend } from '@/lib/watcher/session';
 import { emptyState, type WatcherState, type SessionEvent } from '@/lib/watcher/types';
 
 // ── Helpers ──────────────────────────────────────────────────
@@ -269,11 +269,16 @@ export default function BoothLiveClient() {
     setIsSending(true);
     try {
       // Collect files in selection order, skip excluded
-      const ordered = session.photos.filter((f) => selectedIds.has(f.id) && !f.excluded);
-      if (ordered.length === 0) {
+      const selectedPhotos = session.photos.filter((f) => selectedIds.has(f.id) && !f.excluded);
+      if (selectedPhotos.length === 0) {
         toast('No photos selected', 'red');
         return;
       }
+      // Promote operator's hero to position 0 (hero index); else keep selection order
+      const hero = selectedPhotos.find((p) => p.isHero);
+      const ordered = hero
+        ? [hero, ...selectedPhotos.filter((p) => p.id !== hero.id)]
+        : selectedPhotos;
 
       // Re-read files from handles and downscale before upload
       const blobs: string[] = [];
@@ -361,7 +366,7 @@ export default function BoothLiveClient() {
   useEffect(() => {
     if (!state.pendingAutoSend || autoSendRef.current) return;
     const { sessionCode, photos } = state.pendingAutoSend;
-    const selected = photos.slice(0, 5);
+    const selected = orderPhotosForSend(photos);
 
     autoSendRef.current = true;
     console.log('[auto-send] starting for code', sessionCode, 'with', selected.length, 'photos');
@@ -422,7 +427,7 @@ export default function BoothLiveClient() {
   // ── Send now (orphan recovery for timed_out sessions) ──────
 
   const onSendNow = async (session: { code: string; photos: import('@/lib/watcher/types').WatchedFile[] }) => {
-    const selected = session.photos.filter((p) => !p.excluded).slice(0, 5);
+    const selected = orderPhotosForSend(session.photos);
     if (selected.length === 0) return;
 
     console.log('[send-now] starting for code', session.code, 'with', selected.length, 'photos');
@@ -702,7 +707,7 @@ export default function BoothLiveClient() {
                             selected
                               ? 'border-violet-500'
                               : 'border-zinc-800 hover:border-zinc-600'
-                          }`}
+                          } ${f.isHero ? 'ring-2 ring-inset ring-green-500' : ''}`}
                         >
                           <button
                             type="button"
@@ -746,6 +751,25 @@ export default function BoothLiveClient() {
                           >
                             ✕
                           </button>
+                          {/* Hero selection: indicator when set, button otherwise.
+                              Always visible (touch-friendly for booth tablets). */}
+                          {f.isHero ? (
+                            <div className="mt-1 w-full py-1.5 flex items-center justify-center gap-1 bg-green-600 text-white text-xs font-bold uppercase tracking-wide">
+                              <span aria-hidden>★</span>
+                              <span>Hero</span>
+                            </div>
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                send({ type: 'SET_HERO', fileId: f.id });
+                              }}
+                              className="mt-1 w-full py-1.5 bg-zinc-800 hover:bg-green-600 text-zinc-300 hover:text-white text-xs font-bold uppercase tracking-wide transition-colors"
+                            >
+                              Set as Hero
+                            </button>
+                          )}
                         </div>
                       );
                     })}
