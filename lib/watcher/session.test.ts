@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { reduce } from './session';
+import { reduce, orderPhotosForSend } from './session';
 import { emptyState } from './types';
-import type { WatcherState } from './types';
+import type { WatcherState, WatchedFile } from './types';
 
 /** Helper: create a minimal File stub */
 function fakeFile(name: string, size = 5_000_000, lastModified = 1000): File {
@@ -423,5 +423,86 @@ describe('session reducer', () => {
       state = reduce(state, { type: 'MANUAL_CLOSE_SESSION' });
     }
     expect(state.recentSessions).toHaveLength(20);
+  });
+});
+
+// ── SET_HERO / hero selection ────────────────────────────────
+describe('SET_HERO', () => {
+  /** Seed an active session and add portrait photos with the given ids. */
+  function sessionWithPhotos(ids: string[]): WatcherState {
+    const now = 5000;
+    let state = stateWithSession('ABC123', now);
+    state = reduce(state, {
+      type: 'FILES_DETECTED',
+      files: ids.map((id, i) => ({ id, file: fakeFile(`${id}.jpg`, 5_000_000, now + i) })),
+      now: now + 100,
+    });
+    return state;
+  }
+
+  it('SET_HERO marks photo as hero and clears any previous hero', () => {
+    let state = sessionWithPhotos(['p0', 'p1', 'p2']);
+
+    state = reduce(state, { type: 'SET_HERO', fileId: 'p1' });
+    let photos = state.currentSession!.photos;
+    expect(photos.find((p) => p.id === 'p1')!.isHero).toBe(true);
+    expect(photos.find((p) => p.id === 'p0')!.isHero).toBe(false);
+
+    state = reduce(state, { type: 'SET_HERO', fileId: 'p2' });
+    photos = state.currentSession!.photos;
+    expect(photos.find((p) => p.id === 'p2')!.isHero).toBe(true);
+    expect(photos.find((p) => p.id === 'p1')!.isHero).toBe(false);
+  });
+
+  it('SET_HERO is a no-op for an excluded photo', () => {
+    let state = sessionWithPhotos(['p0', 'p1']);
+    state = reduce(state, { type: 'EXCLUDE_PHOTO', fileId: 'p1' });
+    state = reduce(state, { type: 'SET_HERO', fileId: 'p1' });
+    expect(state.currentSession!.photos.find((p) => p.id === 'p1')!.isHero).toBeFalsy();
+  });
+
+  it('SET_HERO with no current session is a no-op', () => {
+    const state = emptyState();
+    const next = reduce(state, { type: 'SET_HERO', fileId: 'anything' });
+    expect(next).toEqual(state);
+  });
+
+  it('EXCLUDE_PHOTO clears the hero flag if the excluded photo was hero', () => {
+    let state = sessionWithPhotos(['p0', 'p1']);
+    state = reduce(state, { type: 'SET_HERO', fileId: 'p0' });
+    state = reduce(state, { type: 'EXCLUDE_PHOTO', fileId: 'p0' });
+    const p0 = state.currentSession!.photos.find((p) => p.id === 'p0')!;
+    expect(p0.excluded).toBe(true);
+    expect(p0.isHero).toBe(false);
+  });
+});
+
+describe('orderPhotosForSend', () => {
+  const mk = (id: string, extra: Partial<WatchedFile> = {}): WatchedFile => ({
+    id,
+    name: `${id}.jpg`,
+    createdAt: 0,
+    sizeBytes: 1,
+    thumbnailDataUrl: '',
+    qrCode: null,
+    processed: false,
+    fileHandle: undefined as unknown as FileSystemFileHandle,
+    ...extra,
+  });
+
+  it('puts the operator hero first, then the rest, capped at 5', () => {
+    const photos = [mk('a'), mk('b'), mk('c', { isHero: true }), mk('d'), mk('e'), mk('f')];
+    const resultIds = orderPhotosForSend(photos).map((p) => p.id);
+    expect(resultIds).toEqual(['c', 'a', 'b', 'd', 'e']);
+  });
+
+  it('falls back to first-five-in-order when no hero is set', () => {
+    const photos = [mk('a'), mk('b'), mk('c')];
+    expect(orderPhotosForSend(photos).map((p) => p.id)).toEqual(['a', 'b', 'c']);
+  });
+
+  it('drops excluded photos', () => {
+    const photos = [mk('a', { excluded: true }), mk('b', { isHero: true }), mk('c')];
+    expect(orderPhotosForSend(photos).map((p) => p.id)).toEqual(['b', 'c']);
   });
 });
