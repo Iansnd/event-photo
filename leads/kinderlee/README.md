@@ -112,3 +112,24 @@ pages). Result: 259 sites yielded addresses, 102 rows gained their first e-mail,
 carry director / Leitung / manager names scraped from the site (column
 `website_directors_harvested`; these are regex extractions next to a title word, so eyeball them).
 Totals now: **417 of 623 rows have an e-mail**. Raw harvest is in `data/website_harvest_raw.csv`.
+
+## Full OpenStreetMap pull: every mapped kindergarten in Europe (2026-09-30)
+
+`scripts/fetch_osm_kindergartens.py` walked a 1° grid over Europe (2,702 tiles, 0 failures) and
+assigned each facility to a country with Natural Earth polygons. Files in `osm/`:
+
+| File | Rows | What |
+|---|---|---|
+| `osm_kindergartens_europe.csv.gz` | 178,287 | Every kindergarten / childcare / preschool node in 45 countries: name, operator, brand, address, website, e-mail, phone, opening hours, capacity, lat/lon, OSM link |
+| `osm_kindergartens_with_contact.csv` | 85,390 | The subset with a website, e-mail or phone. This is the independent-kindergarten outreach list |
+| `operators_discovered.csv` | 3,712 | Every operator or brand with 3+ sites in one country, ranked by site count. Cross-check against the Leads sheet to find chains we have not profiled yet (e.g. municipal and church Träger, Partou 149 NL sites, LPCR 108 FR, Babilou 98 FR) |
+| `summary_by_country.csv` | 45 | Facilities, contactable and e-mail counts per country |
+
+Coverage: 156,994 named; 67,375 with website; 34,713 with e-mail; 63,878 with phone.
+Biggest countries: DE 50,008 · GB 24,191 · PL 11,487 · IT 9,133 · FR 9,065 · UA 7,143 · ES 6,692 · NL 6,516 · NO 6,298 · SE 5,350.
+OSM is community-mapped, so coverage varies by country (Germany, UK, Poland, Nordics are near-complete;
+Italy, Spain, Greece and the Balkans are partial). For registry-grade completeness in those, use the
+national registers in `free_lead_sources.csv`. To scrape directors/e-mails for these 85k sites, run
+`scripts/enrich_websites.py --in osm/osm_kindergartens_with_contact.csv` (about 3 days at 1 req/s;
+split by country and run in parallel).
+Licence: ODbL, © OpenStreetMap contributors.
