@@ -69,3 +69,12 @@ Different sources gave different names for the same seat. Both are kept in the t
 2. Run `scripts/enrich_websites.py --limit 20000` → director names + e-mails for every site with a website.
 3. Re-run the regional research for the countries above with a fresh search budget to fill decision makers.
 4. Push `decision_makers.csv` through Hunter.io / Apollo free tiers for e-mail patterns and LinkedIn Sales Navigator trial for verification.
+
+## E-mail coverage (added after review)
+
+Only 21 of 623 rows carry a confirmed e-mail (mostly generic info@ addresses) because e-mail
+harvesting needs website visits and lookup tools that this container's network policy blocks.
+`decision_makers.csv` now has a `likely_email_patterns_UNVERIFIED` column (first.last@, f.last@,
+first@ on the company domain) for the 149 named decision makers. Verify each with Hunter.io,
+Apollo or a mail-server check before sending. `scripts/enrich_websites.py` harvests real
+addresses from every site once run on a machine with internet access.
