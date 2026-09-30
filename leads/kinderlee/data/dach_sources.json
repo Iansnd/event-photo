@@ -1,0 +1,177 @@
+[
+ {
+  "country": "DE",
+  "source_name": "kita.de Trägerverzeichnis",
+  "url": "https://www.kita.de/traeger/",
+  "what_it_contains": "Directory of ~20,000 German Kita-Träger with linked Kita lists, addresses, contact persons ('Träger-Ansprechpartner'), site counts.",
+  "how_to_extract": "Browse /traeger/ pages or scrape by Träger ID (e.g. /traeger/21229/kitas); export name, address, number of Kitas, contact."
+ },
+ {
+  "country": "DE",
+  "source_name": "kitanetz.de",
+  "url": "https://www.kitanetz.de",
+  "what_it_contains": "Kita and Träger directory by Land/PLZ with Träger profile pages (t_trid), Leitung names, phone, email, Betreuungsform.",
+  "how_to_extract": "Iterate traeger-ausgabe1.php?t_trid=N and Land/PLZ pages; parse Leitung/contact fields."
+ },
+ {
+  "country": "DE",
+  "source_name": "kitaatlas.de",
+  "url": "https://www.kitaatlas.de",
+  "what_it_contains": "Kita atlas with per-Kita pages incl. Träger, concept, contact.",
+  "how_to_extract": "Crawl city pages; dedupe by Träger."
+ },
+ {
+  "country": "DE",
+  "source_name": "Berlin Kita-Navigator",
+  "url": "https://kita-navigator.berlin.de",
+  "what_it_contains": "Official Berlin registry of all ~2,800 Kitas with Träger, capacity, free places, contact.",
+  "how_to_extract": "Public search; export via filters by district/Träger; JSON endpoints behind the map."
+ },
+ {
+  "country": "DE",
+  "source_name": "Hamburg Kita-Info-System",
+  "url": "https://www.hamburg.de/kita-info",
+  "what_it_contains": "Official Hamburg Kita directory (~1,100 Kitas) with Träger and contact.",
+  "how_to_extract": "Search by district; scrape list pages."
+ },
+ {
+  "country": "DE",
+  "source_name": "München kita finder+",
+  "url": "https://stadt.muenchen.de/service/info/...",
+  "what_it_contains": "City of Munich official list of all Kitas incl. private operators (Infanterix, Wichtel, Elly & Stoffl ...), with Träger and Leitung.",
+  "how_to_extract": "Use stadt.muenchen.de 'Einrichtungen zur Kinderbetreuung' pages; filter by Träger."
+ },
+ {
+  "country": "DE",
+  "source_name": "Kita.NRW Kita-Finder",
+  "url": "https://www.kita.nrw.de",
+  "what_it_contains": "NRW state Kita-Finder covering ~10,000 Kitas with Träger, concept, contact.",
+  "how_to_extract": "Search by Kommune; scrape result JSON."
+ },
+ {
+  "country": "DE",
+  "source_name": "Little Bird / Kitaplatz portals (multiple municipalities)",
+  "url": "https://www.little-bird.de",
+  "what_it_contains": "Municipal placement portals listing all Kitas of a municipality with Träger.",
+  "how_to_extract": "Per-municipality instances; scrape provider lists."
+ },
+ {
+  "country": "DE",
+  "source_name": "pflegemarkt.com - Liste der 100 größten Kita-Träger",
+  "url": "https://www.pflegemarkt.com/produkte/liste-100-groesste-kita-traeger/",
+  "what_it_contains": "Ranked list of largest German Kita operators (public, church, private) with site counts; free article + paid Excel.",
+  "how_to_extract": "Read free ranking articles (2023 edition) for top-50 names; buy list for full data."
+ },
+ {
+  "country": "DE",
+  "source_name": "Deutscher Kitaverband - Mitglieder",
+  "url": "https://www.deutscher-kitaverband.de",
+  "what_it_contains": "Association of free/private Kita operators; member list includes most private chains.",
+  "how_to_extract": "Scrape member logos/list page."
+ },
+ {
+  "country": "DE",
+  "source_name": "Destatis Kinder- und Jugendhilfestatistik / Bertelsmann Ländermonitor",
+  "url": "https://www.laendermonitor.de",
+  "what_it_contains": "Official statistics on Kitas per Land and Träger type; useful for sizing.",
+  "how_to_extract": "Download tables; not lead-level."
+ },
+ {
+  "country": "DE",
+  "source_name": "Northdata / Handelsregister",
+  "url": "https://www.northdata.de",
+  "what_it_contains": "Company register data: Geschäftsführer names, changes, shareholder (e.g. Babilou, AcadeMedia).",
+  "how_to_extract": "Search by company; confirm decision makers."
+ },
+ {
+  "country": "AT",
+  "source_name": "Statistik Austria Kindertagesheimstatistik",
+  "url": "https://www.statistik.at/statistiken/bevoelkerung-und-soziales/bildung/kindertagesheime-kinderbetreuung",
+  "what_it_contains": "Annual statistics of all Austrian Kindertagesheime by Erhalter (operator) type and Land.",
+  "how_to_extract": "Download XLS; use for sizing by Land."
+ },
+ {
+  "country": "AT",
+  "source_name": "Stadt Wien Kindergarten-Suche (Kindergärten in Wien)",
+  "url": "https://www.wien.gv.at/bildung/kindergarten/",
+  "what_it_contains": "Official Vienna directory of municipal and private Kindergärten/Kindergruppen with Träger.",
+  "how_to_extract": "Search by Bezirk; scrape result list."
+ },
+ {
+  "country": "AT",
+  "source_name": "Kinderbetreuungsatlas Oberösterreich",
+  "url": "https://www.kinderbetreuung-ooe.at",
+  "what_it_contains": "Upper Austria childcare atlas listing every institution with Rechtsträger.",
+  "how_to_extract": "Filter by Rechtsträger."
+ },
+ {
+  "country": "AT",
+  "source_name": "NÖ Kinderbetreuungsatlas",
+  "url": "https://www.noe.gv.at/noe/Kinderbetreuung/",
+  "what_it_contains": "Lower Austria directory of Kindergärten, Tagesbetreuung.",
+  "how_to_extract": "Scrape municipality pages."
+ },
+ {
+  "country": "AT",
+  "source_name": "Kinderbetreuung Steiermark - Verzeichnis",
+  "url": "https://www.kinderbetreuung.steiermark.at",
+  "what_it_contains": "Styria directory of Kinderkrippen/Kindergärten/Horte incl. Träger.",
+  "how_to_extract": "Export list."
+ },
+ {
+  "country": "AT",
+  "source_name": "Firmenbuch / WKO Firmen A-Z",
+  "url": "https://firmen.wko.at",
+  "what_it_contains": "Austrian company register data for private operators (Kindercompany, Nanaya).",
+  "how_to_extract": "Search by name; confirm GF."
+ },
+ {
+  "country": "CH",
+  "source_name": "kibesuisse Mitgliederverzeichnis",
+  "url": "https://www.kibesuisse.ch",
+  "what_it_contains": "Swiss childcare association; searchable member directory of Kitas, Tagesfamilien organisations.",
+  "how_to_extract": "Scrape directory by canton."
+ },
+ {
+  "country": "CH",
+  "source_name": "kinderkrippen-online.ch / kitaplatz.ch",
+  "url": "https://www.kinderkrippen-online.ch",
+  "what_it_contains": "Private Swiss Kita directories with operator and contact.",
+  "how_to_extract": "Scrape by canton."
+ },
+ {
+  "country": "CH",
+  "source_name": "Stadt Zürich Kita-Verzeichnis",
+  "url": "https://www.stadt-zuerich.ch/kitas",
+  "what_it_contains": "Official list of all Zurich Kitas with Trägerschaft and subsidy status.",
+  "how_to_extract": "Download list / open data portal."
+ },
+ {
+  "country": "CH",
+  "source_name": "Moneyhouse / Zefix",
+  "url": "https://www.zefix.ch",
+  "what_it_contains": "Swiss commercial register: legal entity, board members for Kita AGs/GmbHs (e.g. Kita Luna GmbH Aesch, globegarden Stiftung).",
+  "how_to_extract": "Search by name; read board."
+ },
+ {
+  "country": "CH",
+  "source_name": "Canton directories (e.g. Kanton Bern Kitas, Basel-Stadt Tagesbetreuung)",
+  "url": "https://www.gef.be.ch",
+  "what_it_contains": "Cantonal lists of licensed Kitas.",
+  "how_to_extract": "Per canton."
+ },
+ {
+  "country": "LI",
+  "source_name": "kita.li - Verein Kindertagesstätten Liechtenstein",
+  "url": "https://www.kita.li",
+  "what_it_contains": "Lists all Kitas of the main Liechtenstein operator.",
+  "how_to_extract": "Manual."
+ },
+ {
+  "country": "LI",
+  "source_name": "Amt für Soziale Dienste Liechtenstein - Kinderbetreuung",
+  "url": "https://www.llv.li",
+  "what_it_contains": "Government list of licensed childcare providers in Liechtenstein.",
+  "how_to_extract": "Manual."
+ }
+]

@@ -1,0 +1,79 @@
+[
+  {
+    "country": "PL",
+    "source_name": "RSPO – Rejestr Szkół i Placówek Oświatowych (open API)",
+    "url": "https://rspo.gov.pl/ (API: https://api-rspo.men.gov.pl/api/placowki?typ_podmiotu_id=...)",
+    "what_it_contains": "Every registered school/educational institution in Poland incl. przedszkola (typ 'Przedszkole', 'Punkt przedszkolny', 'Zespół wychowania przedszkolnego'): name, RSPO id, REGON, address, phone, email, website, organ prowadzący (operator – reveals chains via shared operator), public/non-public status, number of pupils (uczniowie), director name in some records.",
+    "how_to_extract": "Use the REST API (JSON-LD / Hydra): GET https://api-rspo.men.gov.pl/api/placowki?typ_podmiotu_id=<id>&page=N ; filter kategoria_uczniow / status_publicznosc='niepubliczna'. Group by 'organ_prowadzacy' (podmiot_prowadzacy nazwa + REGON) to find multi-site operators. Also bulk CSV export via the rspo.gov.pl UI ('Eksportuj')."
+  },
+  {
+    "country": "PL",
+    "source_name": "Rejestr żłobków i klubów dziecięcych (Ministry of Family – empatia / rejestrzlobkow.mrips.gov.pl)",
+    "url": "https://empatia.mpips.gov.pl/dla-swiadczeniobiorcow/rodzina/d3/rejestr-zlobkow-i-klubow",
+    "what_it_contains": "All nurseries (żłobki), kids' clubs and day carers: operator (podmiot prowadzący), address, capacity (liczba miejsc), fees, contact phone/email, website.",
+    "how_to_extract": "Open the register search, filter by województwo/gmina, export list; or query the public JSON endpoint used by the portal (inspect network calls) and join operators with RSPO organ prowadzący by REGON/NIP to identify combined nursery+preschool chains."
+  },
+  {
+    "country": "PL",
+    "source_name": "KRS / CEIDG (rejestr.io, krs-online, ekrs.ms.gov.pl)",
+    "url": "https://rejestr.io / https://ekrs.ms.gov.pl / https://prod.ceidg.gov.pl",
+    "what_it_contains": "Company officers (zarząd), shareholders, addresses, PKD 85.10.Z (wychowanie przedszkolne) codes.",
+    "how_to_extract": "Search PKD 85.10.Z + name; use rejestr.io API for board members; CEIDG for sole-trader preschool owners."
+  },
+  {
+    "country": "CZ",
+    "source_name": "Rejstřík škol a školských zařízení (MŠMT)",
+    "url": "https://rejstriky.msmt.cz/rejskol/ (open data: https://data.msmt.cz/ , dataset 'Rejstřík škol a školských zařízení')",
+    "what_it_contains": "All mateřské školy (incl. soukromé/private and církevní): RED-IZO, IČO, zřizovatel (founder – reveals chains), address, capacity (kapacita), ředitel name, email, website, legal form.",
+    "how_to_extract": "Download XML/CSV from data.msmt.cz or use the rejskol search with 'Druh: Mateřská škola' and 'Zřizovatel: soukromník/právnická osoba'; group by zřizovatel IČO to find multi-site operators; director is in field 'ředitel'."
+  },
+  {
+    "country": "CZ",
+    "source_name": "Evidence dětských skupin (MPSV)",
+    "url": "https://evidence.mpsv.cz/eEDS/",
+    "what_it_contains": "Registered 'dětské skupiny' (micro-nurseries/childcare groups, often run by private preschool brands): provider name, IČO, address, capacity.",
+    "how_to_extract": "Filter by region, export; join provider IČO with MŠMT register."
+  },
+  {
+    "country": "SK",
+    "source_name": "Register škôl a školských zariadení (CVTI SR) / Sieť škôl (MŠVVaŠ)",
+    "url": "https://www.cvtisr.sk/skolstvo/registre.html (also https://crinfo.iedu.sk/RISPortal/register/)",
+    "what_it_contains": "All materské školy incl. súkromné: EDUID, zriaďovateľ (founder), address, riaditeľ, email, phone, number of children (from štatistické výkazy).",
+    "how_to_extract": "Open CVTI 'Register škôl' export (XLS) or the RIS portal; filter 'druh školy = Materská škola' and 'zriaďovateľ = súkromný'; group by zriaďovateľ IČO."
+  },
+  {
+    "country": "HU",
+    "source_name": "KIR – Köznevelési Információs Rendszer, intézménykereső (Oktatási Hivatal)",
+    "url": "https://kir.hu/kir2int/IntezmenyKereso/ (open data: https://dari.oktatas.hu/kirpub/index)",
+    "what_it_contains": "All óvoda (kindergartens) with OM azonosító, fenntartó (maintainer – reveals private operators: 'egyéb', 'alapítvány', 'gazdasági társaság', 'egyházi'), address, vezető (head) name, email, phone, feladatellátási helyek (sites) and capacity.",
+    "how_to_extract": "Use KIR intézménykereső with intézménytípus='óvoda' and fenntartó típus filters; export XLS from kirpub; group by fenntartó to find chains; 'vezető' field gives the director."
+  },
+  {
+    "country": "RO",
+    "source_name": "SIIIR – Sistemul Informatic Integrat al Învățământului din România / Rețeaua școlară (MEN)",
+    "url": "https://www.siiir.edu.ro/ (public unit list: https://www.edu.ro/retea-scolara ; open data on data.gov.ro 'Rețeaua unităților de învățământ')",
+    "what_it_contains": "All grădinițe (public and 'privat/particular'): unit code, name, locality, forma de proprietate, forma de finanțare, address, phone, email, website; enrolment counts in SIIIR statistics.",
+    "how_to_extract": "Download the rețea școlară CSV from data.gov.ro / ISJ county lists; filter 'Grădiniță' + 'PRIVAT'; join with ARACIP list."
+  },
+  {
+    "country": "RO",
+    "source_name": "ARACIP – lista unităților de învățământ particular acreditate/autorizate",
+    "url": "https://aracip.eu/ (registers: https://aracip.eu/registre)",
+    "what_it_contains": "Accreditation register of private education units incl. grădinițe: operator legal entity (asociație/SRL), authorisation date, levels, address.",
+    "how_to_extract": "Open the public register (PDF/XLS), filter nivel 'preșcolar'; the operating entity name reveals chains; cross-check with ONRC/termene.ro for administrators."
+  },
+  {
+    "country": "BG",
+    "source_name": "МОН – Регистър на институциите в системата на предучилищното и училищното образование",
+    "url": "https://www.mon.bg/bg/100150 (register app: https://registers.mon.bg/ ; open data: https://data.egov.bg/)",
+    "what_it_contains": "All детски градини incl. частни (private): code, name, вид (частна/общинска), address, director (директор), phone, email, capacity/groups.",
+    "how_to_extract": "Use registers.mon.bg search with 'вид институция = детска градина' and 'финансиране = частна'; export; director name appears in record; cross-check owner via Търговски регистър (brra.bg)."
+  },
+  {
+    "country": "ALL",
+    "source_name": "Nord Anglia / Cognita / AcadeMedia / Inspired group school lists",
+    "url": "https://www.nordangliaeducation.com/our-schools ; https://www.academedia.se ; https://www.cognita.com/our-schools",
+    "what_it_contains": "Group-owned international schools with early-years sections in Warsaw, Prague, Bratislava, Budapest; AcadeMedia's KIDS&Co. (Poland).",
+    "how_to_extract": "Scrape 'our schools' pages by country; group procurement contacts via corporate site."
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "country": "NO",
+    "source_name": "Barnehagefakta.no (Utdanningsdirektoratet)",
+    "url": "https://www.barnehagefakta.no",
+    "what_it_contains": "Every Norwegian barnehage: name, org.nr, owner type (privat/kommunal), address, number of children, staffing ratios, parent survey scores, contact, website",
+    "how_to_extract": "Open API used by the site: https://www.barnehagefakta.no/api/ (e.g. /api/Barnehage/{orgnr}, /api/Location/kommune/{kommunenr}); also Udir's open data at https://data.udir.no; iterate kommune numbers and dump JSON to CSV, filter eierform=privat."
+  },
+  {
+    "country": "NO",
+    "source_name": "Nasjonalt barnehageregister (NBR) / Udir data",
+    "url": "https://data-nbr.udir.no/",
+    "what_it_contains": "Registry of all barnehager with org numbers, owner (eier) org number, status, addresses; enables grouping units by owner to identify chains",
+    "how_to_extract": "REST API https://data-nbr.udir.no/v4/enheter (JSON), download all and group by 'ErInaktiv=false' and eier orgnr; join with Brønnøysund (data.brreg.no/enhetsregisteret/api) for owner names and roles (daglig leder)."
+  },
+  {
+    "country": "NO",
+    "source_name": "Brønnøysundregistrene Enhetsregisteret API",
+    "url": "https://data.brreg.no/enhetsregisteret/api/",
+    "what_it_contains": "Company master data incl. naeringskode 88.911 (barnehager), daglig leder / styreleder roles, addresses, email/phone if registered",
+    "how_to_extract": "GET /enheter?naeringskode=88.911&size=1000 (paginate); GET /enheter/{orgnr}/roller for daglig leder names."
+  },
+  {
+    "country": "NO",
+    "source_name": "PBL medlemsbarnehager",
+    "url": "https://www.pbl.no/finn-barnehage/",
+    "what_it_contains": "1,695 member private barnehager with contact details",
+    "how_to_extract": "Site search by kommune; scrape listing pages or request member list via PBL for partnership."
+  },
+  {
+    "country": "NO",
+    "source_name": "Barnehagekartet.no",
+    "url": "https://barnehagekartet.no",
+    "what_it_contains": "Aggregated directory and statistics of Norwegian barnehager by kommune, incl. private chains",
+    "how_to_extract": "Browse per kommune/bydel pages; scrape HTML listings."
+  },
+  {
+    "country": "SE",
+    "source_name": "Skolverket Skolenhetsregistret (API)",
+    "url": "https://www.skolverket.se/skolutveckling/statistik/skolenhetsregistret",
+    "what_it_contains": "All förskolor with huvudman (operator) name and org.nr, address, municipality, status",
+    "how_to_extract": "API: https://api.skolverket.se/skolenhetsregistret/v1/skolenhet (JSON); filter Skolform=Förskola; group by Huvudman org.nr to find chains; join with Bolagsverket/allabolag for VD names."
+  },
+  {
+    "country": "SE",
+    "source_name": "Skolkoll.se / skolkollen.se (huvudman & koncern pages)",
+    "url": "https://skolkoll.se",
+    "what_it_contains": "Per operator (huvudman) and per group (koncern) listings of förskolor, e.g. Atvexa 161 units, Pysslingen 86",
+    "how_to_extract": "Scrape /huvudman/ and /koncern/ pages."
+  },
+  {
+    "country": "SE",
+    "source_name": "Bolagsfakta.se / allabolag.se",
+    "url": "https://www.bolagsfakta.se",
+    "what_it_contains": "VD, board, employees, revenue per AB (used to confirm Dibber Sverige VD, Norlandia Förskolor board)",
+    "how_to_extract": "Search by org.nr obtained from Skolverket huvudman field."
+  },
+  {
+    "country": "DK",
+    "source_name": "Børne- og Undervisningsministeriet - Institutionsregistret",
+    "url": "https://www.stil.dk/administration-og-infrastruktur/institutionsregistret",
+    "what_it_contains": "All Danish daginstitutioner with institutionsnummer, type (kommunal/selvejende/privat), address, leader contact",
+    "how_to_extract": "Download via https://institutionsregister.stil.dk (CSV/XML export, filter institutionstype = dagtilbud, ejerforhold = privat/selvejende)."
+  },
+  {
+    "country": "DK",
+    "source_name": "Danmarks Statistik (BOERN / dagtilbud tables)",
+    "url": "https://www.statistikbanken.dk",
+    "what_it_contains": "Counts of children per institution type and municipality",
+    "how_to_extract": "StatBank API (JSON/CSV) tables BOERN1-4."
+  },
+  {
+    "country": "DK",
+    "source_name": "CVR (Virk Data) API",
+    "url": "https://datacvr.virk.dk",
+    "what_it_contains": "Legal entities with branchekode 88.91.10 (dagplejer/daginstitutioner), directors (direktion), addresses",
+    "how_to_extract": "CVR search by branchekode; Elasticsearch API for bulk via Virk."
+  },
+  {
+    "country": "FI",
+    "source_name": "Varda (Opetushallitus early childhood registry) - open data",
+    "url": "https://virkailija.opintopolku.fi/varda/julkinen",
+    "what_it_contains": "All Finnish päiväkodit (public and private) with organiser (toimija), unit type, municipality, child counts",
+    "how_to_extract": "Public API: https://backend.varda.opintopolku.fi/api/julkinen/v1/ (JSON, paginated); group by 'vakajarjestaja' to find private chains."
+  },
+  {
+    "country": "FI",
+    "source_name": "Opetushallitus Vipunen statistics",
+    "url": "https://vipunen.fi",
+    "what_it_contains": "Early-childhood education statistics by provider type and municipality",
+    "how_to_extract": "Excel/CSV downloads under 'Varhaiskasvatus'."
+  },
+  {
+    "country": "FI",
+    "source_name": "YTJ / PRH company register",
+    "url": "https://www.ytj.fi",
+    "what_it_contains": "Company data incl. toimiala 88911 (lasten päiväkodit) and board/CEO",
+    "how_to_extract": "Open API https://avoindata.prh.fi/ytj.html filter by business line code."
+  },
+  {
+    "country": "IS",
+    "source_name": "Hagstofa Íslands (Statistics Iceland) - leikskólar",
+    "url": "https://hagstofa.is/talnaefni/samfelag/menntun/leikskolastig/",
+    "what_it_contains": "Number of leikskólar, children and staff by municipality and ownership (public/private)",
+    "how_to_extract": "PX-Web API export CSV/JSON."
+  },
+  {
+    "country": "IS",
+    "source_name": "Menntamálastofnun / Miðstöð menntunar og skólaþjónustu school list",
+    "url": "https://mms.is",
+    "what_it_contains": "Directory of leikskólar with contact and operator",
+    "how_to_extract": "Download list; complement with Reykjavík city leikskóli directory https://reykjavik.is/leikskolar."
+  }
+]

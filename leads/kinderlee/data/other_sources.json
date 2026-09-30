@@ -1,0 +1,142 @@
+[
+ {
+  "country": "EE",
+  "source_name": "EHIS - Eesti Hariduse Infosüsteem (public search)",
+  "url": "https://www.ehis.ee",
+  "what_it_contains": "All licensed preschools (koolieelsed lasteasutused) incl. private, owner, address, contacts, group counts",
+  "how_to_extract": "Use public 'Õppeasutuste otsing', filter by type 'koolieelne lasteasutus' and owner type 'era'; export table or scrape per county."
+ },
+ {
+  "country": "EE",
+  "source_name": "Tallinn Haridusamet teatmik",
+  "url": "https://teatmik.haridus.ee/",
+  "what_it_contains": "Directory of Tallinn kindergartens incl. private, with contacts",
+  "how_to_extract": "Browse/scrape list pages; filter private (eralasteaed)."
+ },
+ {
+  "country": "LV",
+  "source_name": "VIIS - Valsts izglītības informācijas sistēma / Izglītības iestāžu reģistrs",
+  "url": "https://viis.lv",
+  "what_it_contains": "Register of all education institutions incl. private preschools with founder, licence and contacts",
+  "how_to_extract": "Public register search 'Izglītības iestāžu reģistrs', filter type 'pirmsskolas izglītības iestāde' and founder 'juridiska persona'; CSV export available in open-data portal data.gov.lv."
+ },
+ {
+  "country": "LV",
+  "source_name": "Rīga IKSD iestāžu katalogs",
+  "url": "https://katalogs-iksd.riga.lv",
+  "what_it_contains": "Riga city catalogue of preschools incl. private with addresses/contacts",
+  "how_to_extract": "Scrape institution list pages."
+ },
+ {
+  "country": "LT",
+  "source_name": "AIKOS (Švietimo valdymo informacinė sistema / ŠVIS)",
+  "url": "https://www.aikos.smm.lt",
+  "what_it_contains": "Register of education providers incl. private kindergartens (ikimokyklinio ugdymo įstaigos) with codes, owner, address, contacts",
+  "how_to_extract": "Use 'Švietimo teikėjai' search; filter by ugdymo tipas 'ikimokyklinis' and steigėjas 'privatus'; open-data at data.gov.lt / svis.emokykla.lt."
+ },
+ {
+  "country": "SI",
+  "source_name": "MVI Evidenca zavodov in programov (Register vrtcev)",
+  "url": "https://paka3.mss.edus.si/registriweb/",
+  "what_it_contains": "Official register of kindergartens incl. zasebni vrtci with units, director, address",
+  "how_to_extract": "Query 'Seznam vrtcev', filter private; export list; cross-check with AJPES for company data."
+ },
+ {
+  "country": "HR",
+  "source_name": "MZO e-Vrtići / Registar dječjih vrtića",
+  "url": "https://mzo.gov.hr/istaknute-teme/odgoj-i-obrazovanje/rani-i-predskolski-odgoj-i-obrazovanje/",
+  "what_it_contains": "Ministry register of kindergartens by founder (private/religious/city) with contacts",
+  "how_to_extract": "Download register spreadsheet; filter osnivač 'privatni'; supplement with Zagreb city list vrtici.zagreb.hr and gugalaga.com map."
+ },
+ {
+  "country": "RS",
+  "source_name": "MPNTR / JISP - Registar predškolskih ustanova",
+  "url": "https://prosveta.gov.rs",
+  "what_it_contains": "Ministry list of verified private preschool institutions (PPU) by city",
+  "how_to_extract": "Request/scrape list of verifikovane privatne predškolske ustanove; supplement with vrticibeograd.rs directory."
+ },
+ {
+  "country": "BA",
+  "source_name": "Entity ministries (FBiH Ministarstvo obrazovanja / RS Ministarstvo prosvjete) kindergarten lists",
+  "url": "https://www.vladars.net",
+  "what_it_contains": "Cantonal/entity registers of predškolske ustanove",
+  "how_to_extract": "Contact cantonal ministries (e.g. Kanton Sarajevo) for registar; scrape municipal lists."
+ },
+ {
+  "country": "ME",
+  "source_name": "Ministarstvo prosvjete Crne Gore - registar ustanova",
+  "url": "https://www.gov.me/mps",
+  "what_it_contains": "List of licensed public and private preschools",
+  "how_to_extract": "Scrape institution list; cross-check CRPS company register."
+ },
+ {
+  "country": "MK",
+  "source_name": "Ministry of Labour and Social Policy (МТСП) - private kindergarten list",
+  "url": "https://www.mtsp.gov.mk",
+  "what_it_contains": "Licensed private детски градинки",
+  "how_to_extract": "Request list; scrape municipal sites."
+ },
+ {
+  "country": "AL",
+  "source_name": "Ministria e Arsimit / QSHA - lista e kopshteve private",
+  "url": "https://arsimi.gov.al",
+  "what_it_contains": "Licensed private kopshte",
+  "how_to_extract": "Request list per bashki; supplement with QKB business register."
+ },
+ {
+  "country": "XK",
+  "source_name": "MASHTI - lista e institucioneve parashkollore private",
+  "url": "https://masht.rks-gov.net",
+  "what_it_contains": "Licensed private preschools",
+  "how_to_extract": "Request from ministry; municipal education directorates publish lists."
+ },
+ {
+  "country": "MD",
+  "source_name": "Ministerul Educației și Cercetării - registrul instituțiilor de educație timpurie",
+  "url": "https://mec.gov.md",
+  "what_it_contains": "Public/private grădinițe register",
+  "how_to_extract": "Scrape SIME/registry; supplement with ANSA licensing lists."
+ },
+ {
+  "country": "UA",
+  "source_name": "ISUO - Інформаційна система управління освітою",
+  "url": "https://isuo.org",
+  "what_it_contains": "All ЗДО (kindergartens) by region incl. private with EDRPOU, address, director",
+  "how_to_extract": "Browse region > type 'ЗДО' > ownership 'приватна'; scrape pages; cross-check youcontrol.com.ua."
+ },
+ {
+  "country": "UA",
+  "source_name": "sadok.ua / dityvmisti.ua catalogues",
+  "url": "https://sadok.ua/kyiv/pryvatni-dytsadky",
+  "what_it_contains": "Directories of private kindergartens in Kyiv with reviews and contacts",
+  "how_to_extract": "Scrape listing pages."
+ },
+ {
+  "country": "TR",
+  "source_name": "MEB Özel Öğretim Kurumları Genel Müdürlüğü - kurum listesi (MEBBİS)",
+  "url": "https://ookgm.meb.gov.tr",
+  "what_it_contains": "List of all private schools incl. özel anaokulu by il/ilçe with founder",
+  "how_to_extract": "Use 'Özel Öğretim Kurumları Bilgi Sistemi' public query or MEB open data; filter kurum türü 'Özel Anaokulu', il İstanbul."
+ },
+ {
+  "country": "TR",
+  "source_name": "UFRAD / Kobi Vadisi franchise directories",
+  "url": "https://www.kobivadisi.com/bayilik-veren-firmalar/egitim/anaokulu",
+  "what_it_contains": "Anaokulu franchise brands with branch counts and HQ contacts",
+  "how_to_extract": "Scrape category pages."
+ },
+ {
+  "country": "MC",
+  "source_name": "Direction de l'Éducation Nationale Monaco",
+  "url": "https://www.gouv.mc",
+  "what_it_contains": "List of écoles maternelles",
+  "how_to_extract": "Manual."
+ },
+ {
+  "country": "AD",
+  "source_name": "Ministeri d'Educació Andorra - centres educatius",
+  "url": "https://www.educacio.ad",
+  "what_it_contains": "Public and private centres incl. infantil",
+  "how_to_extract": "Manual list."
+ }
+]

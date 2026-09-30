@@ -1,0 +1,128 @@
+[
+ {
+  "country": "GB (England)",
+  "source_name": "Ofsted childcare providers and inspections - open data",
+  "url": "https://www.gov.uk/government/statistical-data-sets/childcare-providers-and-inspections-management-information",
+  "what_it_contains": "Monthly management-information CSV/XLSX of every registered childcare provider in England (URN, provider name, address, postcode, registration type, places, inspection outcome, provider organisation/group name where linked).",
+  "how_to_extract": "Download the latest 'Childcare providers and inspections' spreadsheet; filter Provider type = Childcare on non-domestic premises; group by 'Organisation' / 'Provider group' column to identify chains; join to Companies House by organisation name."
+ },
+ {
+  "country": "GB (England)",
+  "source_name": "Ofsted 'Find an inspection report' provider search",
+  "url": "https://reports.ofsted.gov.uk/",
+  "what_it_contains": "Per-provider pages listing all settings owned by the same organisation (e.g. /provider/49/2645864), inspection reports, contact details.",
+  "how_to_extract": "Search organisation name; scrape provider ID page for list of registered settings; reports contain manager and nominated individual names."
+ },
+ {
+  "country": "GB (Scotland)",
+  "source_name": "Care Inspectorate Scotland datastore",
+  "url": "https://www.careinspectorate.com/index.php/publications-statistics/93-public/datastore",
+  "what_it_contains": "CSV of all registered care services in Scotland including Day Care of Children (nurseries), with service provider name, address, capacity, grades and provider type.",
+  "how_to_extract": "Download monthly datastore CSV; filter CareService = 'Day Care of Children'; group by ServiceProvider to find groups (e.g. Thrive, Busy Bees, Bright Horizons)."
+ },
+ {
+  "country": "GB (Wales)",
+  "source_name": "Care Inspectorate Wales (CIW) service directory / open data",
+  "url": "https://www.careinspectorate.wales/find-care-provider",
+  "what_it_contains": "Register of childcare and play services in Wales (full day care), with provider (responsible individual) and setting details.",
+  "how_to_extract": "Use the directory search filtered to 'Full Day Care'; CIW also publishes an annual list of registered services as an Excel file on request / in the Chief Inspector's report data annex."
+ },
+ {
+  "country": "GB (Northern Ireland)",
+  "source_name": "NI Family Support / HSC Trust early years registers",
+  "url": "https://www.familysupportni.gov.uk/",
+  "what_it_contains": "Searchable register of day nurseries registered with the five HSC Trusts in Northern Ireland.",
+  "how_to_extract": "Search by service type 'Day Nursery' per council area; export listing pages."
+ },
+ {
+  "country": "IE",
+  "source_name": "Tusla Register of Early Years Services",
+  "url": "https://www.tusla.ie/services/preschool-services/list-of-early-years-services/",
+  "what_it_contains": "Downloadable Excel/CSV register of every registered early-years service in Ireland: service name, registered provider (company), address, county, service type (full day, sessional), max children, registration date; plus inspection reports.",
+  "how_to_extract": "Download the county-level or national register file; group by 'Registered Provider' to identify chains (Giraffe, Tigers, Links, Cocoon etc.); link to CRO company numbers."
+ },
+ {
+  "country": "IE",
+  "source_name": "Pobal Early Years Sector Profile & Hive service list",
+  "url": "https://www.pobal.ie/programmes/early-years-sector-profile/",
+  "what_it_contains": "Annual sector profile with service counts, capacity and Core Funding participants; Pobal 'Hive' lists services contracted for ECCE/NCS.",
+  "how_to_extract": "Use the annual profile PDF/Excel for market sizing; request service-level data via the NCS/ECCE service finder at https://www.ncs.gov.ie."
+ },
+ {
+  "country": "GB",
+  "source_name": "Companies House - advanced search by SIC 88910 (child day-care activities)",
+  "url": "https://find-and-update.company-information.service.gov.uk/advanced-search",
+  "what_it_contains": "All UK companies with SIC 88910, officers (directors), PSCs (owners), accounts (turnover, employee counts), registered office.",
+  "how_to_extract": "Advanced search with SIC 88910 and status Active, export via the Companies House REST API (https://developer.company-information.service.gov.uk/) or the free bulk 'BasicCompanyData' CSV filtered to SICCode 88910; pull officers endpoint for decision makers."
+ },
+ {
+  "country": "IE",
+  "source_name": "Companies Registration Office (CRO) / Solr open data",
+  "url": "https://core.cro.ie/",
+  "what_it_contains": "Irish company register with directors and filings for creche operators (NACE 88.91).",
+  "how_to_extract": "Use CORE search or the CRO open-data API (https://services.cro.ie/) to find companies matching Tusla provider names; pull directors."
+ },
+ {
+  "country": "GB",
+  "source_name": "daynurseries.co.uk - Top 20 Nursery Groups and group directory",
+  "url": "https://www.daynurseries.co.uk/awards/top-nursery-groups",
+  "what_it_contains": "Group pages listing every setting per group (searchgroup IDs), reviews, fees, manager names; annual Top 20 large/mid-size nursery group awards.",
+  "how_to_extract": "Scrape group search-results pages (day_nursery_search_results.cfm/searchgroup/<id>) for setting lists; use the awards page for a curated group list each year."
+ },
+ {
+  "country": "GB",
+  "source_name": "Nursery World - Nursery Groups Report / Nursery Chains league tables (annual, Feb)",
+  "url": "https://www.nurseryworld.co.uk/content/features/nursery-groups-report-2026-new-order-sizing-up-the-uks-largest-nursery-groups",
+  "what_it_contains": "Top 25 UK groups by settings/places, Ofsted quality ranking, ownership and CEO interviews ('People & places').",
+  "how_to_extract": "Subscription required for full tables; headline figures are in free news summaries. Extract the table annually and append to a master list."
+ },
+ {
+  "country": "GB",
+  "source_name": "LaingBuisson Childcare UK Market Report",
+  "url": "https://www.laingbuisson.com/shop/childcare-uk-market-report/",
+  "what_it_contains": "Paid market report with operator rankings, revenues, M&A, investor backing for the top ~50 groups.",
+  "how_to_extract": "Purchase report; use the operator league table and M&A appendix to enrich ownership fields."
+ },
+ {
+  "country": "GB",
+  "source_name": "Christie & Co / Savills day-nursery market reviews",
+  "url": "https://www.christie.com/news-resources/press-releases/day-nurseries-market-review-2026/",
+  "what_it_contains": "Free annual market reviews with transaction lists (buyer/seller/site counts) and sector KPIs.",
+  "how_to_extract": "Download PDFs; mine the transaction tables for acquisitive groups and newly formed platforms."
+ },
+ {
+  "country": "GB",
+  "source_name": "Get Information About Schools (GIAS)",
+  "url": "https://get-information-schools.service.gov.uk/",
+  "what_it_contains": "DfE register of schools including maintained nursery schools, independent schools with nursery/pre-prep provision, and their head teachers and trusts.",
+  "how_to_extract": "Use 'Download' > establishment CSV; filter PhaseOfEducation = Nursery or TypeOfEstablishment contains 'Independent' with StatutoryLowAge <= 3; join by trust/ proprietor."
+ },
+ {
+  "country": "GB",
+  "source_name": "NDNA (National Day Nurseries Association) member directory & awards",
+  "url": "https://ndna.org.uk/",
+  "what_it_contains": "Membership body (chair: Sarah Steel OBE); annual awards listing top settings and groups; policy contacts.",
+  "how_to_extract": "Awards shortlists and member spotlights give confirmed manager/owner names; use for independent-nursery leads."
+ },
+ {
+  "country": "GB",
+  "source_name": "British Franchise Association (BFA) childcare franchisors",
+  "url": "https://www.thebfa.org/franchisors/",
+  "what_it_contains": "Profiles of childcare franchisors (Banana Moon, Monkey Puzzle, etc.) with contacts and network size.",
+  "how_to_extract": "Filter category Childcare/Education; capture franchisor head-office contacts."
+ },
+ {
+  "country": "GB",
+  "source_name": "NMT (Nursery Management Today) news & Top 25 rankings",
+  "url": "https://nmt-magazine.co.uk/",
+  "what_it_contains": "Trade news on appointments, acquisitions and funding; annual nursery group rankings.",
+  "how_to_extract": "Monitor 'appointments' and 'acquisitions' tags; free to read."
+ },
+ {
+  "country": "IE",
+  "source_name": "Early Childhood Ireland member & 'Childcare Barometer' resources",
+  "url": "https://www.earlychildhoodireland.ie/",
+  "what_it_contains": "National association (c.3,800 member services); policy reports and events for reaching Irish operators.",
+  "how_to_extract": "Use event sponsorship/exhibitor lists and the annual conference for contacts; not a public register."
+ }
+]

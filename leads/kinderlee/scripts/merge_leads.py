@@ -39,6 +39,8 @@ for fp in sorted(glob.glob(os.path.join(src, "*.json"))):
         else:
             if "country" not in d or not d["country"]:
                 d["country"] = d.get("hq_country", "")
+            if not d.get("confirmation_status"):
+                d["confirmation_status"] = d.get("dm_confirmation") or d.get("verification") or ""
             leads.append({c: d.get(c, "") for c in LEAD_COLS})
 
 # dedupe by normalised org name + country
