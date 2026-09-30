@@ -35,7 +35,7 @@ EUROPE = [
 
 QUERY = """
 [out:json][timeout:900][maxsize:1073741824];
-area["ISO3166-1"="{iso}"][admin_level=2]->.a;
+rel["ISO3166-1"="{iso}"][admin_level=2];map_to_area->.a;
 (
   nwr["amenity"="kindergarten"](area.a);
   nwr["amenity"="childcare"](area.a);
