@@ -10,7 +10,7 @@ os.makedirs(out, exist_ok=True)
 
 LEAD_COLS = ["org_name","org_type","country","countries","hq_city","hq_address","website","num_settings","num_children","revenue",
              "ownership","decision_maker_name","decision_maker_title","decision_maker_linkedin","other_contacts",
-             "general_email","phone","background","lead_score","sources","region_file"]
+             "general_email","phone","background","confirmation_status","notes","lead_score","sources","region_file"]
 SRC_COLS = ["country","source_name","url","what_it_contains","how_to_extract","cost","region_file"]
 
 def flat(v):
@@ -84,7 +84,7 @@ def sheet(ws, rows, cols, widths):
         for c in row: c.alignment = Alignment(wrap_text=True, vertical="top")
     ws.freeze_panes = "A2"; ws.auto_filter.ref = ws.dimensions
 ws = wb.active; ws.title = "Leads"
-sheet(ws, merged, LEAD_COLS, {"org_name":30,"background":80,"other_contacts":45,"sources":50,"hq_address":30,"ownership":28,"decision_maker_name":24,"decision_maker_linkedin":40,"website":30})
+sheet(ws, merged, LEAD_COLS, {"org_name":30,"background":80,"notes":40,"other_contacts":45,"sources":50,"hq_address":30,"ownership":28,"decision_maker_name":24,"decision_maker_linkedin":40,"website":30})
 sheet(wb.create_sheet("Decision makers"), [{c: d[c] for c in DM_COLS} for d in dm], DM_COLS, {"decision_maker_name":26,"org_name":30,"decision_maker_linkedin":45,"website":30})
 sheet(wb.create_sheet("Free data sources"), sources, SRC_COLS, {"source_name":32,"url":45,"what_it_contains":60,"how_to_extract":60})
 # per-country summary
