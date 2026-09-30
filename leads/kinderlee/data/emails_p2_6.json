@@ -1,0 +1,767 @@
+[
+ {
+  "org_name": "Dibber AS (international HQ)",
+  "domain": "dibber.com",
+  "general_emails": [
+   "contact@dibberfamily.com"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.dibber.com/contact",
+   "https://www.dibber.com/about-us"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Banana Moon Day Nurseries (franchise)",
+  "domain": "bananamoonfranchise.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.bananamoonfranchise.com/banana-moon-our-culture/meet-the-team/mark-bates/",
+   "https://www.crunchbase.com/organization/banana-moon-day-nursery-limited"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "AcadeMedia AB (Pysslingen Förskolor, Espira, Joki, Stepke, Kita Luna, Noblaschool, Montessori Mondial)",
+  "domain": "academedia.se",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.crunchbase.com/organization/academedia-ab/profiles_and_contacts",
+   "https://academedia.se/nyheter/vd-marcus-stromberg-vara-satsningar-ar-viktigare-an-nagonsin/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "QSI International School of Sarajevo",
+  "domain": "sarajevo.qsi.org",
+  "general_emails": [
+   "sarajevo@qsi.org"
+  ],
+  "personal_emails": [
+   {
+    "email": "leah-jamele@sarajevo.qsi.org",
+    "person": "Leah Jamele",
+    "role": "School Director"
+   }
+  ],
+  "email_pattern": "first-last@sarajevo.qsi.org",
+  "phone": "+387 33 424 450",
+  "source_urls": [
+   "https://www.state.gov/qsi-international-school-of-sarajevo-fact-sheet",
+   "https://www.qsi.org/connect/contact"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Kita kinderzimmer (Hamburg)",
+  "domain": "kita-kinderzimmer.de",
+  "general_emails": [
+   "kitaplatz@kmk-kinderzimmer.de",
+   "info@kita-kinderzimmer.de"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "040 8740 6666",
+  "source_urls": [
+   "https://www.kita-kinderzimmer.de/impressum/",
+   "https://www.kita-kinderzimmer.de/kontakt/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "International School of Tallinn (IST)",
+  "domain": "ist.ee",
+  "general_emails": [
+   "director@ist.ee"
+  ],
+  "personal_emails": [
+   {
+    "email": "director@ist.ee",
+    "person": "Olavi Otepalu",
+    "role": "Director"
+   }
+  ],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://ist.ee/contact/contacts/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Kidsco (corporate nurseries)",
+  "domain": "kidsco.es",
+  "general_emails": [
+   "info@kidsco.es"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+34 917 080 206",
+  "source_urls": [
+   "https://www.kidsco.es/donde-estamos"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "ICP Education (Oakley Capital) - Grandir? no; UK nursery platform",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.oakleycapital.com/news-and-insights/investment-in-icp-education",
+   "https://www.kirkland.com/news/press-release/2021/06/kirkland-advises-oakley-capital-on-investment-in-i"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Bright Horizons Ireland",
+  "domain": "brighthorizons.ie",
+  "general_emails": [
+   "blanchardstown@brighthorizons.com",
+   "leopardstown@brighthorizons.com"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.mummypages.ie/childcare/dublin/blanchardstown/bright-horizons-family-solutions-blanchardstown",
+   "https://www.mummypages.ie/childcare/dublin/leopardstown/bright-horizons-at-leopardstown",
+   "https://www.solocheck.ie/Irish-Company/Bright-Horizons-Family-Solutions-Ireland-Limited-288883"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Istituzione Scuole e Nidi d'Infanzia del Comune di Reggio Emilia",
+  "domain": "scuolenidi.re.it",
+  "general_emails": [
+   "istituzionescuolenidi@comune.re.it",
+   "reclutamento.istituzione@comune.re.it",
+   "ufficiotecnico.istituzione@comune.re.it",
+   "Martiri.SCI@comune.re.it"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.comune.reggioemilia.it/amministrazione/uffici/istituzione-scuole-e-nidi-d-infanzia-ufficio-assunzioni",
+   "https://www.comune.re.it/amministrazione/uffici/istituzione-scuole-e-nidi-dinfanzia-ufficio-tecnico",
+   "https://www.scuolenidi.re.it/Sezione.jsp?titolo=Informazioni&idSezione=34"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Kindergarden Nederland (Bright Horizons)",
+  "domain": "kindergarden.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.kindergarden.nl/over-ons/managementteam",
+   "https://www.kinderopvangtotaal.nl/spreker/nicole-krabbenborg/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "The British School Warsaw (Nord Anglia) – Early Years Centre",
+  "domain": "nordangliaeducation.com",
+  "general_emails": [
+   "british@thebritishschool.pl"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+48 22 646 77 77",
+  "source_urls": [
+   "https://www.nordangliaeducation.com/tbsw-warsaw/contact-us",
+   "https://www.nordangliaeducation.com/tbsw-warsaw/campus/early-years-centre"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Final Okulları",
+  "domain": "finalokullari.com.tr",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.finalokullari.com.tr/bize-ulasin"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Diakonie Bildung (Diakonie Eine Welt)",
+  "domain": "diakonie-bildung.at",
+  "general_emails": [
+   "bildung@diakonie.at"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+43 1 402 67 54",
+  "source_urls": [
+   "https://www.lutherschule.at/impressum",
+   "https://www.evgym.at/impressum",
+   "https://evang.at/adressen/diakonie-bildung/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Babilou Belgium",
+  "domain": "babilou.be",
+  "general_emails": [
+   "kinderopvang@babilou.com",
+   "belgium@babilou.com"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "02 687 87 21",
+  "source_urls": [
+   "https://www.babilou.be/en/contact/",
+   "https://expatsinbrussels.be/en/places/babilou-belgium"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Komma vzw (kinderopvang)",
+  "domain": "vdkomma.be",
+  "general_emails": [
+   "info@vdkomma.be",
+   "pto@vdkomma.be",
+   "directeur@vdkomma.be"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+32 15 71 50 55",
+  "source_urls": [
+   "https://www.vdkomma.be/over-ons",
+   "https://www.zoominfo.com/c/komma-vzw/430038629"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Sinbad Kinderopvang (ex Kinderopvang Lokeren?)",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": true
+ },
+ {
+  "org_name": "Ontario Teachers' Pension Plan (OTPP)",
+  "domain": "otpp.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://otpp.com/en-ca/about-us/news-and-insights/2018/appointment-notice-jean-charles-douin/",
+   "https://www.otpp.com/en-ca/investments/our-global-team/equities-team/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "famliea (formerly Basler Frauenverein am Heuberg)",
+  "domain": "familea.ch",
+  "general_emails": [
+   "info@familea.ch",
+   "frauenberatung@familea.ch",
+   "angebote@familea.ch",
+   "unikrippe@familea.ch"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+41 61 260 82 00",
+  "source_urls": [
+   "https://www.familea.ch/en/contact/",
+   "https://search.ch/tel/basel/freie-strasse-35/familea-geschaeftsstelle"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Meridian International School Prague (kindergarten)",
+  "domain": "meridianedu.cz",
+  "general_emails": [
+   "info@meridianedu.cz"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+420 775 581 801",
+  "source_urls": [
+   "https://meridian.edupage.org/contact/",
+   "https://www.meridianedu.cz/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Diakonie Deutschland / BETA (Protestant Kitas)",
+  "domain": "beta-diakonie.de",
+  "general_emails": [
+   "info@beta-diakonie.de"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "030 280 91 510",
+  "source_urls": [
+   "https://beta-diakonie.de/impressum/",
+   "https://www.beta-diakonie.de/kontakt/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Kindergärten NordOst (Eigenbetrieb von Berlin)",
+  "domain": "kigaeno.de",
+  "general_emails": [
+   "presse@kigaeno.de"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "030 50 50 86-700",
+  "source_urls": [
+   "https://www.kigaeno.de/impressum/",
+   "https://www.kigaeno.de/geschaeftsstelle/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Pestalozzi-Fröbel-Haus (PFH)",
+  "domain": "pfh-berlin.de",
+  "general_emails": [
+   "info@pfh-berlin.de",
+   "kinderschutz@pfh-berlin.de",
+   "bewerbungen@pfh-berlin.de",
+   "schulsekretariat@pfh-berlin.de"
+  ],
+  "personal_emails": [
+   {
+    "email": "oezlem.cinar@pfh-berlin.de",
+    "person": "Özlem Cinar",
+    "role": "Head of Public Relations and Communications"
+   },
+   {
+    "email": "bettina.wilmes@pfh-berlin.de",
+    "person": "Bettina Wilmes",
+    "role": "Editorial / PR"
+   }
+  ],
+  "email_pattern": "first.last@pfh-berlin.de",
+  "phone": null,
+  "source_urls": [
+   "https://www.pfh-berlin.de/de/artikelseite/impressum",
+   "https://www.pfh-berlin.de/de/ansprechpartnerInnen"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Eralasteaed Aarete Saar",
+  "domain": "tela.ee",
+  "general_emails": [
+   "info@tela.ee"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+372 53831821",
+  "source_urls": [
+   "https://www.prosha.ee/et/lastehoid/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "enEquip Serveis Integrals",
+  "domain": "enequip.es",
+  "general_emails": [
+   "rgpd-enequip@enequip.es"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://enequip.es/es/aviso-legal/informacion-adicional-para-clientes/",
+   "https://prospeo.io/c/enequip-revenue"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Ecole Montessori Bilingue de Lyon",
+  "domain": "",
+  "general_emails": [
+   "contact@montessori-littlematernelle.com",
+   "montessorilyonlumiere@gmail.com",
+   "kamanamontessori@yahoo.com"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "09 83 45 98 58 (Junior Academy, directrice Sarah Latrèche)",
+  "source_urls": [
+   "https://www.fabert.com/etablissement-prive/48721/JUNIOR-ACADEMY-ECOLE-MONTESSORI-BILINGUE.html",
+   "https://sites.google.com/site/montessorilittlematernelle/contact",
+   "https://kamana-montessori-lyon.fr/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Zazzen",
+  "domain": "zazzen.fr",
+  "general_emails": [
+   "contact@zazzen.fr",
+   "sap@zazzen.fr",
+   "creche@zazzen.fr"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.zazzen.fr/mentions-legales",
+   "http://famille.zazzen.fr/nous-contacter"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Elmscot Group",
+  "domain": "elmscot.co.uk",
+  "general_emails": [
+   "elmscot@elmscot.co.uk",
+   "chester@elmscot.co.uk",
+   "woodlands@elmscot.co.uk"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "0161 980 0488",
+  "source_urls": [
+   "https://www.elmscot.co.uk/contact-us/",
+   "https://www.elmscot.co.uk/chester/",
+   "https://www.elmscot.co.uk/nurseries/woodlands/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Oakley Capital",
+  "domain": "oakleycapital.com",
+  "general_emails": [
+   "enquiries@oakleycapital.com",
+   "communications@oakleycapital.com",
+   "investorrelations@oakleycapital.com",
+   "oakley@greenbrookadvisory.com"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.oakleycapital.com/contact/",
+   "https://leadiq.com/c/oakley-capital/5a1d7c55240000240055dc3b/email-format"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "YMCA (England & Wales federation) nurseries",
+  "domain": "ymca.org.uk",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "American International School of Budapest (Early Childhood)",
+  "domain": "aisb.hu",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Naíonraí network (Gaeloideachas / Comhar Naíonraí na Gaeltachta)",
+  "domain": "gaeloideachas.ie",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Mini Darželis",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "International School of Luxembourg – Lower School Early Years",
+  "domain": "islux.lu",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Youpi crèches",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "NOVA International Schools",
+  "domain": "nova.edu.mk",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Berend Botje",
+  "domain": "berendbotje.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Impuls Kinderopvang",
+  "domain": "impuls.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Mundo kinderopvang",
+  "domain": "mundokinderopvang.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Stichting Kinderopvang Haarlemmermeer (SKH / Kinderopvang Haarlemmermeer)",
+  "domain": "kinderopvanghaarlemmermeer.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Modelowa Edukacja Montessori (Modelowy Żłobek i Przedszkole Montessori, Białołęka)",
+  "domain": "montessoriwaw.eu",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Redbridge School (Inspired Education)",
+  "domain": "redbridge-school.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Mark Twain International School (kindergarten)",
+  "domain": "marktwainschool.ro",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Vittra (AcadeMedia)",
+  "domain": "vittra.se",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Eyüboğlu Eğitim Kurumları",
+  "domain": "eyuboglu.k12.tr",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Vienna Elementary School (VES) - Kindergarten",
+  "domain": "ves.at",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "International School of Zug and Luzern - Early Years",
+  "domain": "iszl.ch",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Highgate Private School",
+  "domain": "highgateschool.ac.cy",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "International School of Düsseldorf - Kindergarten",
+  "domain": "isdedu.de",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Fonden Mariehønen / private daginstitution chains (placeholder)",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Aarresaari päiväkodit",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Cambridge Early Years / Cambridge Day Nurseries? (placeholder)",
+  "domain": "not confirmed",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Hungry Caterpillars Day Nurseries",
+  "domain": "hungrycaterpillars.co.uk",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Magic Roundabout Nurseries",
+  "domain": "not confirmed",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Souter Investments",
+  "domain": "souterinvestments.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Childhood Services? (placeholder)",
+  "domain": "not confirmed",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Zeltābele",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Happy Kids Romania",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ },
+ {
+  "org_name": "Zvezdica, zasebni zavod",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false
+ }
+]

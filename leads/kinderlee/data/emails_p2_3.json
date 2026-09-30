@@ -1,0 +1,846 @@
+[
+ {
+  "org_name": "La Maison Bleue",
+  "domain": "la-maison-bleue.fr",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.crunchbase.com/person/antonia-ryckbosch",
+   "https://getprospect.com/business-directory/la-maison-bleue-fr"
+  ],
+  "search_done": true,
+  "note": "No addresses surfaced; getprospect directory page exists for la-maison-bleue.fr"
+ },
+ {
+  "org_name": "Groupe Léa & Léo",
+  "domain": "leaetleo.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": true,
+  "note": "No results on domain"
+ },
+ {
+  "org_name": "Kind & Co Ludens",
+  "domain": "kindencoludens.nl",
+  "general_emails": [
+   "info@kindencoludens.nl"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "030 695 84 69",
+  "source_urls": [
+   "https://kindencoludens.nl/nl/contact",
+   "https://kindencoludens.nl/nl/onze-organisatie"
+  ],
+  "search_done": true,
+  "note": "Actual domain kindencoludens.nl; bestuurders Carla van de Venne and Ruud van Overbeek"
+ },
+ {
+  "org_name": "Kindercompany (Wien)",
+  "domain": "kindercompany.at",
+  "general_emails": [
+   "office@kindercompany.at"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+43 1 961 9444",
+  "source_urls": [
+   "https://www.kindercompany.at/zentrale/",
+   "https://www.kindercompany.at/kontakt-platzanfragen/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "FRÖBEL e.V. / FRÖBEL Bildung und Erziehung gGmbH",
+  "domain": "froebel-gruppe.de",
+  "general_emails": [
+   "info@froebel-gruppe.de"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.froebel-gruppe.de/en/legal",
+   "https://www.froebel-gruppe.de/en/about-froebel/froebel-bildung-und-erziehung-ggmbh"
+  ],
+  "search_done": true,
+  "note": "Geschäftsführer Stefan Spieker (also Vorstandsvorsitzender e.V.); board: Jakob Fritz, Oliver Just, Marek Körner, Alexandra Mebus-Haarhoff, Heike Schumann"
+ },
+ {
+  "org_name": "Landsorganisationen Danske Daginstitutioner (LDD)",
+  "domain": "ldd.dk",
+  "general_emails": [
+   "ldd@ldd.dk"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+45 32 95 32 30",
+  "source_urls": [
+   "https://danskedaginstitutioner.dk/kontakt/",
+   "https://www.proff.dk/firma/landsorganisationen-danske-daginstitutioner/aller%C3%B8d/kontor-og-teletjenester/0F1OXQI07SL"
+  ],
+  "search_done": true,
+  "note": "HQ Hejrevang 21 D, 3450 Allerød; website danskedaginstitutioner.dk"
+ },
+ {
+  "org_name": "Grupo Educare",
+  "domain": "grupoeducare.es",
+  "general_emails": [
+   "info@grupoeducare.es",
+   "dpd@grupoeducare.es"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "918595811",
+  "source_urls": [
+   "https://grupoeducare.es/",
+   "https://grupoeducare.es/politica-privacidad/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Antin Infrastructure Partners",
+  "domain": "antin-ip.com",
+  "general_emails": [
+   "media@antin-ip.com",
+   "shareholders@antin-ip.com",
+   "antinip@brunswickgroup.com"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.antin-ip.com/media/press",
+   "https://www.antin-ip.com/who-we-are/team/people/alain-rauscher",
+   "https://live.euronext.com/en/products/equities/company-news/2026-01-20-antin-announces-new-roles-within-its-senior-leadership"
+  ],
+  "search_done": true,
+  "note": "Media: Thomas Kamm (Partner, Head of Communications), Nicolle Graugnard; Shareholder relations: Ludmilla Binet; Alain Rauscher confirmed Co-founder, Chairman & CEO"
+ },
+ {
+  "org_name": "Welcome Nurseries",
+  "domain": "welcomenurseries.com",
+  "general_emails": [
+   "rainbowhouse@welcomenurseries.com",
+   "cowlersleylane@welcomenurseries.com",
+   "alfreton@welcomenurseries.com"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.bwd-localoffer.org.uk/kb5/blackburn/directory/service.page?id=UKiLTHjflCI&localofferchannel=0",
+   "https://find-and-update.company-information.service.gov.uk/company/12027560",
+   "https://reports.ofsted.gov.uk/provider/49/2576357"
+  ],
+  "search_done": true,
+  "note": "Domain is welcomenurseries.com; Welcome Nurseries Ltd dissolved 9 Nov 2024, several settings closed per Ofsted - lead likely dead"
+ },
+ {
+  "org_name": "Aldia Cooperativa Sociale",
+  "domain": "aldia.it",
+  "general_emails": [
+   "info@aldia.it",
+   "aldia@pec.confcooperative.it"
+  ],
+  "personal_emails": [
+   {
+    "email": "mattia.affini@aldia.it",
+    "person": "Mattia Affini",
+    "role": "Legal representative"
+   },
+   {
+    "email": "camilla.costa@aldia.it",
+    "person": "Camilla Costa",
+    "role": "Referente"
+   },
+   {
+    "email": "cristina.mocchetto@aldia.it",
+    "person": "Cristina Mocchetto",
+    "role": "Psychology referent"
+   }
+  ],
+  "email_pattern": "first.last@aldia.it",
+  "phone": "0382529444",
+  "source_urls": [
+   "https://tirocini.opl.it/scheda-ente-pubblica.php?ide=33",
+   "https://www.portaledeigiovani.it/scheda-utente/29018",
+   "https://www.aldia.it/contatti/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Chiswick House School & St Martin's College",
+  "domain": "chs.edu.mt",
+  "general_emails": [
+   "info@chs.edu.mt"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+356 21374396",
+  "source_urls": [
+   "https://chs.edu.mt/contact/",
+   "https://chs.edu.mt/our-staff/"
+  ],
+  "search_done": true,
+  "note": "Principal David Lambon; Director Bernie Mizzi; Registrar Roberta Grima"
+ },
+ {
+  "org_name": "ULNA AS (ULNA Barnehagene)",
+  "domain": "ulna.no",
+  "general_emails": [
+   "post@ulna.no"
+  ],
+  "personal_emails": [
+   {
+    "email": "laila.haugen@ulna.no",
+    "person": "Laila Haugen",
+    "role": "Daglig leder, ULNA AS"
+   },
+   {
+    "email": "linda.herdlever@ulna.no",
+    "person": "Linda Herdlevær",
+    "role": "Daglig leder, Lekeklossen Løvåsen"
+   },
+   {
+    "email": "Linn.kaardal@ulna.no",
+    "person": "Linn-Therese Kårdal Vonen",
+    "role": "Daglig leder, Lekeklossen Storhammeren"
+   },
+   {
+    "email": "niklas.bjerke@ulna.no",
+    "person": "Niklas Bjerke",
+    "role": "Fung. daglig leder, Gjerdrum friluftsbarnehage"
+   }
+  ],
+  "email_pattern": "first.last@ulna.no",
+  "phone": "48003300",
+  "source_urls": [
+   "https://loevaasen.barnehage.no/Informasjon/Kontakt",
+   "https://lekeklossen.barnehage.no/",
+   "https://www.gjerdrum.kommune.no/tjenester/barnehage/barnehagene-i-gjerdrum/",
+   "https://www.proff.no/selskap/ulna-barnehagene/nordkisa/skoler-og-undervisning/IGBY3OX10KR"
+  ],
+  "search_done": true,
+  "note": "HQ Hauerseterkvartalet 21, 2055 Nordkisa"
+ },
+ {
+  "org_name": "Inspira förskolor & skolor AB (Atvexa)",
+  "domain": "inspira-fos.se",
+  "general_emails": [
+   "info@inspira-fos.se"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "08-684 468 00",
+  "source_urls": [
+   "http://www.inspira-fos.se/runborg/kontakt/",
+   "https://insynsverige.se/documentHandler.ashx?did=1721017"
+  ],
+  "search_done": true,
+  "note": "Actual domain inspira-fos.se; VD Carl Georgsson; Sollentuna"
+ },
+ {
+  "org_name": "Albanian College Tirana",
+  "domain": "actirana.edu.al",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.ibo.org/en/school/052334/",
+   "https://www.searchassociates.com/schools/albania/albanian-college-tirana-i/"
+  ],
+  "search_done": true,
+  "note": "Website is actirana.edu.al; no email surfaced"
+ },
+ {
+  "org_name": "Volkshilfe Oberösterreich / Volkshilfe Österreich - Kinderbetreuung",
+  "domain": "volkshilfe-ooe.at",
+  "general_emails": [
+   "office@volkshilfe-ooe.at"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "0732 / 3405 - 0",
+  "source_urls": [
+   "https://www.volkshilfe-ooe.at/",
+   "https://www.volkshilfe-ooe.at/ueber-uns/wo-du-uns-findest/"
+  ],
+  "search_done": true,
+  "note": "Kinderbetreuung contact Anuschka Deutschmann, 0676 / 8734 1214"
+ },
+ {
+  "org_name": "Ferm Kinderopvang (ex Landelijke Kinderopvang)",
+  "domain": "samenferm.be",
+  "general_emails": [
+   "DVO.wommelgem@samenferm.be",
+   "dvo.bilzen@samenferm.be"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "078 480 483",
+  "source_urls": [
+   "https://www.samenferm.be/contact",
+   "https://be.linkedin.com/company/samenferm",
+   "https://www.wommelgem.be/ferm-kinderopvang"
+  ],
+  "search_done": true,
+  "note": "Director Ellen Verpeet; HQ Remylaan 4b, 3018 Wijgmaal"
+ },
+ {
+  "org_name": "Little Green House",
+  "domain": "littlegreenhouse.be",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": true,
+  "note": "BE: no littlegreenhouse.be results; likely not a real entity"
+ },
+ {
+  "org_name": "Anglo-American School of Sofia (Early Childhood)",
+  "domain": "aas-sofia.org",
+  "general_emails": [
+   "admissions@aas-sofia.org"
+  ],
+  "personal_emails": [
+   {
+    "email": "jvillers@aas-sofia.org",
+    "person": "Julie Villers",
+    "role": "Elementary School Principal"
+   }
+  ],
+  "email_pattern": "flast@aas-sofia.org",
+  "phone": null,
+  "source_urls": [
+   "https://www.aas-sofia.org/discover/leadership",
+   "https://www.aas-sofia.org/discover/contact-us",
+   "https://www.aas-sofia.org/connect/directory"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Little Green House",
+  "domain": "littlegreenhouse.ch",
+  "general_emails": [
+   "new@littlegreenhouse.ch",
+   "gland@littlegreenhouse.ch",
+   "versoix@littlegreenhouse.ch",
+   "perly@littlegreenhouse.ch"
+  ],
+  "personal_emails": [
+   {
+    "email": "new@littlegreenhouse.ch",
+    "person": "Barbara Lax",
+    "role": "Founder"
+   }
+  ],
+  "email_pattern": null,
+  "phone": "+41 22 364 45 50",
+  "source_urls": [
+   "https://www.littlegreenhouse.ch/contact/",
+   "https://www.zoominfo.com/c/little-green-house/425064736"
+  ],
+  "search_done": true,
+  "note": "HQ Gland (VD), no Bern location"
+ },
+ {
+  "org_name": "Hello Teddy – anglická školka",
+  "domain": "helloteddy.cz",
+  "general_emails": [
+   "info@helloteddy.cz"
+  ],
+  "personal_emails": [
+   {
+    "email": "kubonova@helloteddy.cz",
+    "person": "Radmila Kuboňová",
+    "role": "Zástupkyně ředitelky pro MŠ"
+   },
+   {
+    "email": "jurankova@helloskola.cz",
+    "person": "Gabriela Juránková",
+    "role": "Ředitelka školy (helloskola.cz)"
+   }
+  ],
+  "email_pattern": "last@helloteddy.cz",
+  "phone": "+420 733 530 656",
+  "source_urls": [
+   "https://www.helloskola.cz/materska-skolka/kontakty/",
+   "https://www.helloteddy.cz/cs/detska-skupina"
+  ],
+  "search_done": true,
+  "note": "Hello Teddy is in Ostrava, not Prague"
+ },
+ {
+  "org_name": "Deutscher Caritasverband / KTK-Bundesverband (Catholic Kitas)",
+  "domain": "ktk-bundesverband.de",
+  "general_emails": [
+   "ktk-bundesverband@caritas.de"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.ktk-bundesverband.de/impressum",
+   "https://www.ktk-bundesverband.de/derktkbundesverband/ihreansprechpartner",
+   "https://www.ktk-bundesverband.de/pressepositionenpublikationen/presse/neue-geschaeftsfuehrung-im-ktk-bundesverband-22679c91-8833-4535-b505-3af1b6af45e7"
+  ],
+  "search_done": true,
+  "note": "Geschäftsführer P. Christoph Urban Wichmann OP (since 1 Feb 2026); Vorsitzende Mirja Wolfs; web editor Jan Becht"
+ },
+ {
+  "org_name": "KiTa gGmbH Trier / Koblenz / Saarland (Bistum Trier)",
+  "domain": "kita-ggmbh-trier.de",
+  "general_emails": [
+   "geschaeftsstelle@kita-ggmbh-trier.de",
+   "geschaeftsfuehrung@kita-ggmbh-trier.de"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "0651 9998750",
+  "source_urls": [
+   "https://www.kita-ggmbh-trier.de/ueber-uns/uebersicht/geschaeftsfuehrung/index.html",
+   "https://www.kita-ggmbh-trier.de/ueber-uns/uebersicht/geschaeftsstelle/index.html"
+  ],
+  "search_done": true,
+  "note": "Geschäftsführer Konrad Berg (kaufm.), Cordula Scheich (theol.)"
+ },
+ {
+  "org_name": "Konzept-e / element-i Bildungsstiftung",
+  "domain": "element-i.de",
+  "general_emails": [
+   "bildungsstiftung@element-i.de",
+   "info@konzept-e.de"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+49 711 656960-7078",
+  "source_urls": [
+   "https://www.element-i.de/impressum/",
+   "https://www.element-i-bildungsstiftung.de/impressum/",
+   "https://www.element-i-bildungsstiftung.de/kontakt/"
+  ],
+  "search_done": true,
+  "note": "Geschäftsführerin Waltraud Weegmann; Geschäftsführer Clemens Matthias Weegmann"
+ },
+ {
+  "org_name": "Rygaards International School - Early Years",
+  "domain": "rygaards.com",
+  "general_emails": [
+   "admin@rygaards.com",
+   "admissions@rygaards.com",
+   "primary@rygaards.com"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+45 39 62 10 53",
+  "source_urls": [
+   "https://rygaards.com/en/contact/",
+   "https://rygaards.com/en/welcome-to-the-international-primary-school/"
+  ],
+  "search_done": true,
+  "note": "Head of International Primary: Shirley Jacobsen (primary@); Head of Admissions Naia Helweg (admissions@)"
+ },
+ {
+  "org_name": "Grupo Sorolla Educación",
+  "domain": "gruposorolla.es",
+  "general_emails": [
+   "gruposorolla@gruposorolla.es"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+34 963732926",
+  "source_urls": [
+   "https://gruposorollaeducacion.es/contacto/",
+   "https://anuarioceg.clubexcelencia.org/portfolio/grupo-sorolla-educacion-en-adelante-gse/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Cours Molière / Ecole Montessori Internationale de Paris",
+  "domain": "emi-paris.com",
+  "general_emails": [
+   "inscription@emi-paris.com"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+33 1 87 66 52 00",
+  "source_urls": [
+   "https://www.ecole-montessori-internationale.fr/equipe-paris-5",
+   "https://www.fabert.com/etablissement-prive/1589/COURS-MOLIERE.html",
+   "https://www.ecolemoliere.org/contact/"
+  ],
+  "search_done": true,
+  "note": "Two unrelated schools. EMI: domain emi-paris.com, directrice Anne-Sophie. Cours Molière: 2 bd Soult 75012, tel 01 43 43 44 96, chef d'établissement Benjamin Jarry, directrice académique Simone Néel; no email seen"
+ },
+ {
+  "org_name": "Les Petits Bilingues (crèches bilingues)",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Bright Little Stars Nurseries",
+  "domain": "brightlittlestars.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Livingbridge",
+  "domain": "livingbridge.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Tiny Toes Nurseries",
+  "domain": "tinytoesnurseries.co.uk",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "St Catherine's British School",
+  "domain": "stcatherines.gr",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Giraffe Childcare (Busy Bees Ireland)",
+  "domain": "giraffe.ie",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Consorzio Zenit",
+  "domain": "consorziozenit.it",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Ecole Maternelle et Primaire Internationale (EMPI) / Ecole française de Luxembourg – Vauban",
+  "domain": "vauban.lu",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Piccolino crèches",
+  "domain": "piccolino.lu",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "QSI International School of Chișinău",
+  "domain": "chisinau.qsi.org",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "American School of The Hague – Early Childhood",
+  "domain": "ash.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Doomijn (Travers)",
+  "domain": "doomijn.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Kinderrijk",
+  "domain": "kinderrijk.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "SKSG Kinderopvang",
+  "domain": "sksg.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Hospitality Invest AS / Adolfsen Group",
+  "domain": "hospitalityinvest.no",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Colégio dos Plátanos",
+  "domain": "colegiodosplatanos.pt",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Genesis College (grădiniță + școală)",
+  "domain": "genesis.ro",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Kids2Home",
+  "domain": "kids2home.se",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Galileo School (súkromná materská škola + ZŠ)",
+  "domain": "galileoschool.sk",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Amadeus International School Vienna - Kindergarten",
+  "domain": "amadeus-vienna.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Onex Corporation",
+  "domain": "onex.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Zurich International School - Early Childhood (Wädenswil)",
+  "domain": "zis.ch",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Berlin Metropolitan School - Kindergarten",
+  "domain": "metropolitanschool.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Waldkindergarten Flensburg e.V.",
+  "domain": "waldkindergarten-flensburg.de",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Cei Monkey (franchise)",
+  "domain": "mundofranquicia.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Broomwood Pre-Prep (Northwood Schools)",
+  "domain": "broomwood.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Fledglings Nursery Group",
+  "domain": "not confirmed",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Little Dreams Nursery Group",
+  "domain": "not confirmed",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Rainbow Day Nurseries? (placeholder)",
+  "domain": "not confirmed",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Pierce - The American College of Greece",
+  "domain": "pierce.gr",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Liechtensteinische Waldorfschule - Kindergarten",
+  "domain": "waldorfschule.li",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Happy Kids Osowa (Gdańsk)",
+  "domain": "happykidsosowa.pl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ },
+ {
+  "org_name": "Temasek Holdings",
+  "domain": "temasek.com.sg",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "note": "Not searched: WebSearch session budget exhausted"
+ }
+]

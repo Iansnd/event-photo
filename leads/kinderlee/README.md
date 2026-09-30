@@ -91,5 +91,16 @@ Jeanine Lemmens handed over Partou responsibilities on 1 Jun; Dibber Sverige VD 
 Stiigh; Kind & Co Ludens board is Carla van de Venne and Ruud van Overbeek; Wij zijn JONG
 bestuurder is Jaco Donselaar; Samenwerkende Kinderopvang CEO is Vlad Enache; Touhula CEO is
 Kaisa Ilola; Pilke CEO is Mari Puoskari; Coopselios president is Giovanni Umberto Calabrese;
-Kindred CEO confirmed as Laura Wardley-Smith. The remaining 474 rows still need the local
-website-harvest script or a second search pass.
+Kindred CEO confirmed as Laura Wardley-Smith. 
+
+## E-mail hunt, pass 2 (2026-09-30)
+
+The remaining rows were searched in lead-score order until the session's search cap was hit.
+Totals after pass 2: **315 of 623 rows have an e-mail** (77 with a personal, named address).
+Of the 308 rows still without one, 37 were searched and nothing surfaced (contact forms only, or
+addresses obfuscated on the site), and 271 were never searched because the cap was reached; those
+are listed in `data/unsearched_orgs.json` and are almost all lead-score 1-2 placeholders. Domain
+corrections and leadership changes surfaced during the hunt are in the `email_sources` /
+`notes` columns of the affected rows. Fastest way to close the gap: run
+`scripts/enrich_websites.py` locally (it reads every site's contact page directly), then verify
+the personal addresses with Hunter.io or a mail-server check before sending.

@@ -1,0 +1,30 @@
+[
+ {
+  "org_name": "globegarden (Stiftung globegarden)",
+  "domain": "globegarden.org",
+  "general_emails": [
+   "info@globegarden.org",
+   "presse@globegarden.org",
+   "firmenservice@globegarden.org",
+   "humanresources@globegarden.org"
+  ],
+  "personal_emails": [
+   {
+    "email": "sabine.ambord@globegarden.org",
+    "person": "Sabine Ambord",
+    "role": "External prevention contact"
+   },
+   {
+    "email": "karin.nagy@globegarden.org",
+    "person": "Karin Nagy",
+    "role": "Payroll administration"
+   }
+  ],
+  "email_pattern": "first.last@globegarden.org",
+  "source_urls": [
+   "https://www.globegarden.ch/footer-copyright/impressum",
+   "https://www.globegarden.ch/fileadmin/user_upload/globegarden-geschaeftsleitung-de.pdf"
+  ],
+  "search_done": true
+ }
+]

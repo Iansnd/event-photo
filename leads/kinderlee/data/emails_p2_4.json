@@ -1,0 +1,791 @@
+[
+ {
+  "org_name": "Partou (Partou Group, incl. KidsFoundation)",
+  "domain": "partou.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://partou.nl/en/executive-board/",
+   "https://rocketreach.co/marcello-iacono-email_70168821"
+  ],
+  "search_done": true,
+  "notes": "RocketReach shows masked m******@partou.nl for Marcello Iacono (Group CFO); no full address seen."
+ },
+ {
+  "org_name": "La Maison Bleue (incl. Kids&Co UK?, Pop e Poppa CH?, Luxembourg)",
+  "domain": "la-maison-bleue.fr",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://theorg.com/org/la-maison-bleue-sas/org-chart/sylvain-forestier",
+   "https://getprospect.com/business-directory/la-maison-bleue-fr"
+  ],
+  "search_done": true,
+  "notes": "No address seen."
+ },
+ {
+  "org_name": "Kindergarden (Bright Horizons)",
+  "domain": "kindergarden.nl",
+  "general_emails": [
+   "contact@kindergarden.nl"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "020 423 54 22",
+  "source_urls": [
+   "https://www.kindergarden.nl/contact",
+   "https://www.kindergarden.nl/over-ons/managementteam"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "WIKI Kinderbetreuungs GmbH (Steiermark)",
+  "domain": "wiki.at",
+  "general_emails": [
+   "office@wiki.at"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "0316 / 426565",
+  "source_urls": [
+   "https://www.familienberatung.gv.at/beratungsstellen/rechtstraeger/traeger/wiki-kinderbetreuungs-gmbh/",
+   "https://www.karriere.at/standort/wiki-kinderbetreuungs-gmbh"
+  ],
+  "search_done": true,
+  "notes": "HQ Ziehrerstraße 83, 8041 Graz."
+ },
+ {
+  "org_name": "Johanniter-Unfall-Hilfe e.V. - Kitas",
+  "domain": "johanniter.de",
+  "general_emails": [
+   "info@johanniter.de",
+   "kita.adlershof@johanniter.de"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+49 30 26997-0 (Bund); 030 / 8169010 (RV Berlin)",
+  "source_urls": [
+   "https://www.johanniter.de/johanniter-unfall-hilfe/impressum/",
+   "https://www.adlershof.de/en/companies-institutes/directory/firma/detail/johanniter-unfall-hilfe-e-v-regionalverband-berlin-kita-adlershof"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Menighedernes Daginstitutioner (MDI)",
+  "domain": "mdi.dk",
+  "general_emails": [
+   "info@fobu.dk"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "3324 8100",
+  "source_urls": [
+   "https://indsamling.folkekirken.dk/organisationer/fobu-tidligere-mdi",
+   "https://fobu.dk/om-fobu/fobus-historie/"
+  ],
+  "search_done": true,
+  "notes": "MDI renamed to Fobu in 2015; domain now fobu.dk. Enghavevej 31, 1674 København V."
+ },
+ {
+  "org_name": "Inspired Education Group - Spain",
+  "domain": "inspirededu.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://rocketreach.co/maximiliano-martin-email_87482788",
+   "https://www.highperformr.ai/company/inspired-ed"
+  ],
+  "search_done": true,
+  "notes": "RocketReach claims format f.last@inspirededu.com but no real address seen; pattern left null."
+ },
+ {
+  "org_name": "Fédération Française des Entreprises de Crèches (FFEC)",
+  "domain": "ff-entreprises-creches.com",
+  "general_emails": [
+   "contact@ff-entreprises-creches.com"
+  ],
+  "personal_emails": [
+   {
+    "email": "elsahervy@ff-entreprises-creches.com",
+    "person": "Elsa Hervy",
+    "role": "Déléguée Générale"
+   }
+  ],
+  "email_pattern": "firstlast@ff-entreprises-creches.com",
+  "phone": "01 41 03 14 80; Elsa Hervy 06 38 54 49 73",
+  "source_urls": [
+   "https://ff-entreprises-creches.com/contact/",
+   "https://ff-entreprises-creches.com/app/uploads/2024/09/2024-09-30-ffec-actions-plfss-2025.pdf",
+   "https://ff-entreprises-creches.com/presse/2023-04-igas/"
+  ],
+  "search_done": true,
+  "notes": "Address 117-123 rue d'Aguesseau, 92100 Boulogne-Billancourt."
+ },
+ {
+  "org_name": "Doukas School",
+  "domain": "doukas.gr",
+  "general_emails": [
+   "info@doukas.gr",
+   "admissions@doukas.gr",
+   "dpo@doukas.gr"
+  ],
+  "personal_emails": [
+   {
+    "email": "t.iosifidis@doukas.gr",
+    "person": "T. Iosifidis",
+    "role": "Examinations Officer"
+   }
+  ],
+  "email_pattern": "f.last@doukas.gr",
+  "phone": "+30 210 6186000",
+  "source_urls": [
+   "https://www.doukas.edu.gr/epikoinonia/",
+   "https://www.doukas.edu.gr/en/admissions/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Consorzio Karabak",
+  "domain": "karabak.it",
+  "general_emails": [
+   "info@societadolce.it",
+   "societadolce@pec.it"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "051 6441211 (Karabak Quattro)",
+  "source_urls": [
+   "https://www.bolognazerodiciotto.it/profiles/profile-karabak",
+   "https://karabakquattro.it/",
+   "https://www.cadiai.it/consorzi"
+  ],
+  "search_done": true,
+  "notes": "No @karabak.it address seen; consortia use member co-op emails (Società Dolce, Cadiai)."
+ },
+ {
+  "org_name": "KION",
+  "domain": "kion.nl",
+  "general_emails": [
+   "klantrelaties@kion.nl",
+   "communicatie@kion.nl",
+   "stage@kion.nl"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://kion.nl/service-contact/contact/",
+   "https://www.kion.nl/organisatie"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Akademia Małych Einsteinów (Kraków)",
+  "domain": "akademiamalycheinsteinow.pl",
+  "general_emails": [
+   "akademia.reduta@gmail.com",
+   "akademiamarcholta@gmail.com",
+   "akademia.kurzei1@gmail.com"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+48 506 943 931",
+  "source_urls": [
+   "https://przedszkole-akademia.pl/kontakt/",
+   "https://www.gowork.pl/akademia-malych-einsteinow-sabina-madej,22979565/dane-kontaktowe-firmy"
+  ],
+  "search_done": true,
+  "notes": "Actual website is przedszkole-akademia.pl; director Sabina Madej reachable via akademia.reduta@gmail.com / phone."
+ },
+ {
+  "org_name": "Bilfen Eğitim Kurumları",
+  "domain": "bilfen.com",
+  "general_emails": [
+   "info@bilfengroup.com"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "444 99 42",
+  "source_urls": [
+   "https://bilfen.com/tr/iletisim",
+   "https://bilfen.com/tr/kurumsal/yonetim-kadrosu",
+   "https://www.bilfengroup.com/tr/iletisim"
+  ],
+  "search_done": true,
+  "notes": "Management page reportedly lists @bilfen.com addresses but none shown in snippets."
+ },
+ {
+  "org_name": "Tirana International School (QSI)",
+  "domain": "tirana.qsi.org",
+  "general_emails": [
+   "tirana@qsi.org",
+   "admissons@tirana.qsi.org"
+  ],
+  "personal_emails": [
+   {
+    "email": "jon-mudd@qsi.org",
+    "person": "Jon Mudd",
+    "role": "Director"
+   },
+   {
+    "email": "meredith-hutson@tirana.qsi.org",
+    "person": "Meredith Beasley-Hutson",
+    "role": "Elementary Director of Instruction"
+   },
+   {
+    "email": "egla-lila@tirana.qsi.org",
+    "person": "Egla Lila",
+    "role": "Admissions Coordinator/Registrar"
+   }
+  ],
+  "email_pattern": "first-last@tirana.qsi.org",
+  "phone": null,
+  "source_urls": [
+   "https://tirana.qsi.org/admissions/admissions-process",
+   "https://www.state.gov/tirana-international-school-special-needs-profile"
+  ],
+  "search_done": true,
+  "notes": "'admissons@' spelling as seen in results; may be a typo of admissions@."
+ },
+ {
+  "org_name": "Antwerp International School – Early Childhood",
+  "domain": "ais-antwerp.be",
+  "general_emails": [
+   "ais@ais-antwerp.be",
+   "admissions@ais-antwerp.be"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+32 3 543 93 26",
+  "source_urls": [
+   "https://www.ais-antwerp.be/contact/",
+   "https://www.ais-antwerp.be/admissions/faq/"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Infano vzw",
+  "domain": "infano.be",
+  "general_emails": [
+   "steralgemeen.zuid@infano.be",
+   "hr@infano.be"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "0484 58 07 27",
+  "source_urls": [
+   "https://www.halle.be/menu/kinderopvang-en-onderwijs/kinderopvang/kinderopvang-3-12-jaar/infano-vzw",
+   "https://www.infano.be/contact/"
+  ],
+  "search_done": true,
+  "notes": "HQ Keizerstraat 34, 1740 Ternat."
+ },
+ {
+  "org_name": "Lycée Français Vauban / Lycée français de Bruxelles Jean Monnet – maternelle",
+  "domain": "lyceefrancais.be",
+  "general_emails": [
+   "accueil@lyceefrancais.be",
+   "accueil.maternelle@lyceefrancais.be"
+  ],
+  "personal_emails": [
+   {
+    "email": "franck.bis@lyceefrancais.be",
+    "person": "Franck Bis",
+    "role": "Directeur maternelle et CP/CE1"
+   }
+  ],
+  "email_pattern": "first.last@lyceefrancais.be",
+  "phone": "+32 2 374 58 78; maternelle 02 379 08 42",
+  "source_urls": [
+   "https://www.lyceefrancais-jmonnet.be/content/vos-contacts"
+  ],
+  "search_done": true,
+  "notes": "Maternelle secretary Véronica Wainberg at accueil.maternelle@."
+ },
+ {
+  "org_name": "British School of Sofia (kindergarten)",
+  "domain": "britishschool.bg",
+  "general_emails": [
+   "office@bssofia.bg"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+359 886 510 510",
+  "source_urls": [
+   "https://www.bssofia.bg/contacts/",
+   "https://www.bssofia.bg/british-kindergarten/"
+  ],
+  "search_done": true,
+  "notes": "Actual domain is bssofia.bg, not britishschool.bg."
+ },
+ {
+  "org_name": "Stadt Zürich - Städtische Kitas (Sozialdepartement)",
+  "domain": "stadt-zuerich.ch",
+  "general_emails": [
+   "kitas@zuerich.ch"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+41 44 412 69 32",
+  "source_urls": [
+   "https://adressverzeichnis.sozialearbeit.zhaw.ch/Detail/Index/Stadt_Zuerich,_Soziale_Einrichtungen_und_Betriebe-Geschaeftsbereich_Kinderbetreuung-Zuerich-1b72de10-bc44-e311-8b4f-005056a606f6"
+  ],
+  "search_done": true,
+  "notes": "Geschäftsbereich Kinderbetreuung, Werdstrasse 75, 8036 Zürich; runs 12 city Kitas."
+ },
+ {
+  "org_name": "International School of Prague (Early Childhood)",
+  "domain": "isp.cz",
+  "general_emails": [
+   "admissions@isp.cz"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://english-schools.org/czech/international-school-prague.htm",
+   "https://rocketreach.co/international-school-of-prague-email-format_b58fd14af762e8c0"
+  ],
+  "search_done": true
+ },
+ {
+  "org_name": "Deutscher Kitaverband members - e.g. Kinderwelt Hamburg gGmbH",
+  "domain": "kinderwelt-hamburg.de",
+  "general_emails": [
+   "info@kinderwelt-hamburg.de"
+  ],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "040 – 20 00 03 – 0",
+  "source_urls": [
+   "https://kinderwelt-hamburg.de/impressum/",
+   "https://www.northdata.de/?id=6461253259100160"
+  ],
+  "search_done": true,
+  "notes": "Geschäftsführung: Ursula Smischliaew, Jörg Brettschneider, Dirk Feldhusen. Flachsland 29, 22083 Hamburg."
+ },
+ {
+  "org_name": "Kids & Co. Krippe (pme Familienservice), Frankfurt Westend",
+  "domain": "familienservice.de",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Lebenswelt gGmbH",
+  "domain": "lebenswelt.de",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Sputnik (Skolerne i Sputnik / Sputnik ApS)",
+  "domain": "sputnik.dk",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Liga Española de la Educación y la Cultura Popular",
+  "domain": "ligaeducacion.org",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Ecole Internationale Bilingue (EIB) – maternelle",
+  "domain": "eib.edu",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Liveli by Sodexo (Crèche Attitude / Crèches de France) - now part of Grandir",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Chestnut Nursery Schools (Kingfisher)",
+  "domain": "chestnutnurseryschools.co.uk",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Mace Montessori Schools",
+  "domain": "macemontessori.co.uk",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Toad Hall Nursery Group",
+  "domain": "toadhallnursery.co.uk",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "American International School of Zagreb",
+  "domain": "aisz.hr",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Grovelands Childcare",
+  "domain": "grovelands.ie",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Verein Kindertagesstätten Liechtenstein (Kita Liechtenstein)",
+  "domain": "kita.li",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Elisabeth (Fondation Elisabeth) – Kannerhaiser",
+  "domain": "elisabeth.lu",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "St George's International School Luxembourg – Early Years",
+  "domain": "st-georges.lu",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Knightsbridge Schools International Montenegro",
+  "domain": "ksi-montenegro.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Amsterdam International Community School (AICS) – Early Years",
+  "domain": "aics.espritscholen.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Hestia Kinderopvang",
+  "domain": "hestiakinderopvang.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Little Ones Kinderopvang",
+  "domain": "littleones.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Skon Kinderopvang",
+  "domain": "skon.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Prestagardskogen FUS barnehage",
+  "domain": "fus.no",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Ensinus - Estudos Superiores e Técnicos / Grupo Ensinus",
+  "domain": "ensinus.pt",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Kids Palace (Grădinița Kids Palace)",
+  "domain": "kidspalace.ro",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Kunskapsförskolan (Kunskapsskolan)",
+  "domain": "kunskapsskolan.se",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "QSI International School of Bratislava (Preschool)",
+  "domain": "bratislava.qsi.org",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "American International School Vienna - Early Childhood",
+  "domain": "ais.at",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Inter-Community School Zurich - Early Years",
+  "domain": "icsz.ch",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "kibesuisse (Verband Kinderbetreuung Schweiz) - member directory",
+  "domain": "kibesuisse.ch",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Dresden International School - Kindergarten",
+  "domain": "dresden-is.de",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Waldorfkindergarten-Seminar / Vereinigung der Waldorfkindergärten (network of c. 600 Waldorf Kitas)",
+  "domain": "waldorfkindergarten.de",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Escuela Infantil Sanipeques - managed by Koala/Clece",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Bumble Bee Nursery",
+  "domain": "not confirmed",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Hilltop Nursery? (placeholder)",
+  "domain": "not confirmed",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Little Explorers (placeholder)",
+  "domain": "not confirmed",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Riverside Nursery Schools (Little Dukes)",
+  "domain": "riversidenurseryschools.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Hungarian private óvoda chains (Lifeschool, Greenhouse, Bright Start, Hüvelyk, Habakuk – per brief)",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "formatio Privatschule / Kindergarten (Triesen)",
+  "domain": "formatio.li",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Tuptusie (przedszkola integracyjne)",
+  "domain": "tuptusie.edu.pl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ },
+ {
+  "org_name": "Bisergora Montessori",
+  "domain": "",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": false,
+  "notes": "Not searched: session WebSearch budget exhausted (200/200)."
+ }
+]
