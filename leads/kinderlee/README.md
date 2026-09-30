@@ -133,3 +133,19 @@ national registers in `free_lead_sources.csv`. To scrape directors/e-mails for t
 `scripts/enrich_websites.py --in osm/osm_kindergartens_with_contact.csv` (about 3 days at 1 req/s;
 split by country and run in parallel).
 Licence: ODbL, © OpenStreetMap contributors.
+
+## Website harvest over the OSM dataset (2026-09-30)
+
+`scripts/harvest_parallel.py` (64 threads, resumable) visited all 67,375 OSM kindergartens that
+list a website: home page plus up to two contact / imprint / team pages each. 52,786 sites were
+reachable. Results, in `osm/`:
+
+| File | Rows | What |
+|---|---|---|
+| `osm_kindergartens_with_email.csv` | **59,020** | Outreach-ready: every kindergarten with at least one e-mail (`best_email` prefers a named-person or Leitung address over info@; `all_emails` has the rest), plus phone, scraped director names, address and geo |
+| `osm_kindergartens_harvested.csv.gz` | 85,390 | The whole contactable set with harvest status and raw findings |
+| `summary_by_country.csv` | 45 | Per-country counts before and after harvest |
+
+E-mail coverage went from 34,713 (OSM tags only) to 59,020. 18,306 rows carry a scraped
+director / Leitung / manager name; these are regex hits next to a title word and are useful
+for personalisation but should be sanity-checked before you address someone by name.
