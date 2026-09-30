@@ -78,3 +78,18 @@ harvesting needs website visits and lookup tools that this container's network p
 first@ on the company domain) for the 149 named decision makers. Verify each with Hunter.io,
 Apollo or a mail-server check before sending. `scripts/enrich_websites.py` harvests real
 addresses from every site once run on a machine with internet access.
+
+## E-mail hunt, pass 1 (search-based, 2026-09-30)
+
+185 priority leads (score 4-5 or named decision maker) were each searched once for addresses.
+Result: 136 of them gained an e-mail, 45 with a personal address for a named person, all copied
+verbatim from search results (none constructed). Overall 149 of 623 rows now carry an address.
+New columns: `personal_emails_found`, `email_pattern_observed` (only where a real address on that
+domain was seen), `email_sources`. Leadership changes surfaced during the hunt, already worth
+knowing: Partou UK is now run by joint MDs Kirsty Jackson and John Everton (from 1 Jun 2026);
+Jeanine Lemmens handed over Partou responsibilities on 1 Jun; Dibber Sverige VD is Erik Johannes
+Stiigh; Kind & Co Ludens board is Carla van de Venne and Ruud van Overbeek; Wij zijn JONG
+bestuurder is Jaco Donselaar; Samenwerkende Kinderopvang CEO is Vlad Enache; Touhula CEO is
+Kaisa Ilola; Pilke CEO is Mari Puoskari; Coopselios president is Giovanni Umberto Calabrese;
+Kindred CEO confirmed as Laura Wardley-Smith. The remaining 474 rows still need the local
+website-harvest script or a second search pass.

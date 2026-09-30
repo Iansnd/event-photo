@@ -1,0 +1,397 @@
+[
+ {
+  "org_name": "Babilou Family Deutschland GmbH (brands: Denk mit! Kita, Little Giants/Kleine Riesen/Petits Géants, Wichtel Akademie, MiniMax Kids)",
+  "domain": "babilou-family.de",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.linkedin.com/in/cfond/",
+   "https://babilou-family.com/leadership-community",
+   "https://babilou-family.com/en/legal-notices"
+  ],
+  "search_done": true,
+  "notes": "Search surfaced only group-level pages (babilou-family.com); no @babilou-family.de addresses in snippets. Christophe Fond shown as Chairman & CEO of Babilou Family group."
+ },
+ {
+  "org_name": "Grandir Group (Les Petits Chaperons Rouges / Grandir UK / Grandir Deutschland / Liveli)",
+  "domain": "grandir.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://fr.linkedin.com/in/rodocanachi",
+   "https://www.grandir.com/",
+   "https://fr.wikipedia.org/wiki/Grandir_(entreprise)"
+  ],
+  "search_done": true,
+  "notes": "No @grandir.com address appeared in results; known_email contact@grandir.com remains unverified."
+ },
+ {
+  "org_name": "Partou (Partou Group, incl. KidsFoundation)",
+  "domain": "partou.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://partou.nl/en/executive-board/",
+   "https://www.linkedin.com/in/marcello-iacono/",
+   "https://partougroup.com/",
+   "https://rocketreach.co/marcello-iacono-email_70168821"
+  ],
+  "search_done": true,
+  "notes": "Marcello Iacono confirmed Group CFO / executive board. RocketReach profile exists but no address shown in snippet. Group site is partougroup.com."
+ },
+ {
+  "org_name": "Læringsverkstedet AS (Dibber Norway)",
+  "domain": "laringsverkstedet.no",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.barnehage.no/laeringsverkstedet/blir-daglig-leder-i-laeringsverkstedet/274218",
+   "https://laringsverkstedet.no/en/contact"
+  ],
+  "search_done": true,
+  "notes": "Adam Därnemyr confirmed as daglig leder from 10 Aug (ex-Coor Norge). No address in snippets; contact page exists at laringsverkstedet.no/en/contact."
+ },
+ {
+  "org_name": "KIWI - Kinder in Wien",
+  "domain": "kinderinwien.at",
+  "general_emails": ["office@kinderinwien.at", "bewerbung@kinderinwien.at"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "01/526 70 07",
+  "source_urls": [
+   "https://kinderinwien.at/impressum/",
+   "https://kinderinwien.at/kontakt/"
+  ],
+  "search_done": true,
+  "notes": "Address Wimbergergasse 30/1, 1070 Wien."
+ },
+ {
+  "org_name": "Impuls Soziales Management GmbH & Co. KG",
+  "domain": "e-impuls.de",
+  "general_emails": [],
+  "personal_emails": [
+   {"email": "scheitz@e-impuls.de", "person": "Alfons Scheitz", "role": "Geschäftsführer & Inhaber"}
+  ],
+  "email_pattern": "last@domain",
+  "phone": null,
+  "source_urls": [
+   "https://www.e-impuls.de/ueber-impuls/team/geschaeftsleitung/",
+   "https://www.dnb.com/business-directory/company-profiles/impuls-soziales-management-gmbh--co-kg.df7f1e0e0ca2261d94335ad9063a5cf4"
+  ],
+  "search_done": true,
+  "notes": "Management listed as Alfons Scheitz and Lisa Egen."
+ },
+ {
+  "org_name": "pme Familienservice Gruppe (Kita brands incl. Kids & Co., Lernwelten)",
+  "domain": "familienservice.de",
+  "general_emails": [],
+  "personal_emails": [
+   {"email": "daniel.erler@familienservice.de", "person": "Dr. Daniel Erler", "role": "CEO pme Familienservice Gruppe since 1 May 2026 (previously Leitung Unternehmenskommunikation)"}
+  ],
+  "email_pattern": "first.last@domain",
+  "phone": null,
+  "source_urls": [
+   "https://www.familienservice.de/-/daniel_erler_ku-1",
+   "https://www.familienservice.de/impressum",
+   "https://www.familienservice.de/pressemitteilungen"
+  ],
+  "search_done": true,
+  "notes": ""
+ },
+ {
+  "org_name": "Pilke päiväkodit Oy",
+  "domain": "pilkepaivakodit.fi",
+  "general_emails": ["pilke@norian.eu"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+358 44 901 9898",
+  "source_urls": [
+   "https://pilkepaivakodit.fi/kysymykset/kuka-on-pilkkeen-toimitusjohtaja/",
+   "https://pilkepaivakodit.fi/yhteystiedot/laskutustiedot/",
+   "https://www.finder.fi/Yksityinen+p%C3%A4iv%C3%A4koti/Pilke+p%C3%A4iv%C3%A4kodit+Oy/Vantaa/yhteystiedot/481676"
+  ],
+  "search_done": true,
+  "notes": "CEO (toimitusjohtaja) is Mari Puoskari. Search summary suggested format etunimi.sukunimi@pilkepaivakodit.fi but no actual personal address was seen, so pattern left null. pilke@norian.eu is the supplier-invoice mailbox only. Address Sturenkatu 21, 00510 Helsinki."
+ },
+ {
+  "org_name": "Rigolo Comme La Vie (IDKIDS group)",
+  "domain": "rigolocommelavie.org",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.rigolocommelavie.org/wp-content/uploads/2025/09/Communique-de-presse-nomination-Audric-Anselmi.pdf",
+   "https://www.rigolocommelavie.org/2025/09/16/rigolo-comme-la-vie-renforce-son-equipe-de-direction-et-confirme-ses-ambitions-de-croissance-avec-larrivee-daudric-anselmi-en-tant-que-nouveau-directeur-general/",
+   "https://www.rigolocommelavie.org/espace-presse/"
+  ],
+  "search_done": true,
+  "notes": "Appointment press release (PDF) found; press contact address likely inside PDF but not exposed in snippet."
+ },
+ {
+  "org_name": "Grandir UK (Kiddi Caru, First Place Nurseries and others)",
+  "domain": "grandiruk.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.grandiruk.com/contact-us/",
+   "https://find-and-update.company-information.service.gov.uk/company/10519700/officers",
+   "https://rocketreach.co/matthew-moore-email_5633065"
+  ],
+  "search_done": true,
+  "notes": "Current directors per Companies House: Lydia Joy Hopper, Gregoire Le Sourd, Matthew Jon Moore (CFO, ex-MD 2019-2022), Jean-Emmanuel Rodocanachi. RocketReach indicates Moore has an @grandiruk.com address but it was not shown."
+ },
+ {
+  "org_name": "Partou UK (formerly Just Childcare + All About Children)",
+  "domain": "partou.co.uk",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://nmt-magazine.co.uk/partou-samantha-rhodes-retires/",
+   "https://partou.co.uk/news-and-blogs/creating-a-shared-vision-within-partou/"
+  ],
+  "search_done": true,
+  "notes": "IMPORTANT: Samantha Rhodes retired; from 1 June 2026 Kirsty Jackson and John Everton are joint Managing Directors of Partou UK. No addresses seen."
+ },
+ {
+  "org_name": "Coopselios",
+  "domain": "coopselios.com",
+  "general_emails": ["info@coopselios.com", "coopselios-re-reception@postecert.it"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+39 0522 378610",
+  "source_urls": [
+   "https://www.coopselios.com/contatti/",
+   "https://www.coopselios.com/governance/"
+  ],
+  "search_done": true,
+  "notes": "President of the Board: Giovanni Umberto Calabrese. HQ via A. Gramsci 54/s, 42124 Reggio Emilia."
+ },
+ {
+  "org_name": "Kibeo",
+  "domain": "kibeo.nl",
+  "general_emails": ["info@kibeo.nl"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+31 (0)113 760 250",
+  "source_urls": [
+   "https://www.kibeo.nl/en/contact/",
+   "https://www.kibeo.nl/en/about-kibeo/"
+  ],
+  "search_done": true,
+  "notes": "Elly Brand confirmed as Director. Address Stationspark 5, 4462 DZ Goes."
+ },
+ {
+  "org_name": "PBL - Private Barnehagers Landsforbund",
+  "domain": "pbl.no",
+  "general_emails": [],
+  "personal_emails": [
+   {"email": "jorn@pbl.no", "person": "Jørn-Tommy Schjelderup", "role": "Administrerende direktør, PBL"}
+  ],
+  "email_pattern": "first@domain",
+  "phone": null,
+  "source_urls": [
+   "https://www.pbl.no/kontakt-oss/pbl/jorn-tommy-schjelderup/"
+  ],
+  "search_done": true,
+  "notes": ""
+ },
+ {
+  "org_name": "AcadeMedia AB (Pysslingen Förskolor, Espira, Joki, Stepke, Kita Luna, Noblaschool, Montessori Mondial)",
+  "domain": "academedia.se",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://academedia.se/nyheter/vd-marcus-stromberg-vara-satsningar-ar-viktigare-an-nagonsin/",
+   "https://www.crunchbase.com/organization/academedia-ab/profiles_and_contacts"
+  ],
+  "search_done": true,
+  "notes": "Marcus Strömberg confirmed CEO since 2005; no addresses in snippets."
+ },
+ {
+  "org_name": "Doğa Koleji (anaokulu)",
+  "domain": "dogakoleji.k12.tr",
+  "general_emails": ["info@dogakoleji.k12.tr"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "444 36 42",
+  "source_urls": [
+   "https://www.dogakoleji.k12.tr/iletisim",
+   "https://www.zoominfo.com/p/Burcu-Alp/5794983189"
+  ],
+  "search_done": true,
+  "notes": "HQ Barbaros Mah. Halk Cad. Kardelen Sok. No: 4M/1 Ataşehir, İstanbul. ZoomInfo shows masked personal addresses on the domain (e.g. Burcu Alp) but not readable."
+ },
+ {
+  "org_name": "pme Familienservice Gruppe",
+  "domain": "familienservice.de",
+  "general_emails": [],
+  "personal_emails": [
+   {"email": "daniel.erler@familienservice.de", "person": "Dr. Daniel Erler", "role": "Geschäftsführer / CEO since 1 May 2026"}
+  ],
+  "email_pattern": "first.last@domain",
+  "phone": null,
+  "source_urls": [
+   "https://www.familienservice.de/-/daniel_erler_ku-1",
+   "https://www.familienservice.de/impressum"
+  ],
+  "search_done": false,
+  "notes": "Duplicate of earlier familienservice.de target; data reused from that single search, no extra search spent."
+ },
+ {
+  "org_name": "Bright Horizons Family Solutions UK",
+  "domain": "brighthorizons.co.uk",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.brighthorizons.co.uk/about/uk-leadership-team/phil-smith",
+   "https://www.nurseryworld.co.uk/content/features/nursery-groups-report-2026-people-places"
+  ],
+  "search_done": true,
+  "notes": "Phil Smith confirmed UK Managing Director since Sept 2024 (ex-Sodexo). No addresses seen; known_email info@brighthorizons.co.uk still unconfirmed."
+ },
+ {
+  "org_name": "Thrive Childcare and Education (formerly Bertram Nursery Group)",
+  "domain": "thrivechildcare.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://uk.linkedin.com/company/thrivechildcareuk",
+   "https://www.zoominfo.com/pic/thrive-childcare-and-education/558206281"
+  ],
+  "search_done": true,
+  "notes": "Snippets still name Cary Rankin as CEO; successor not surfaced. No addresses seen."
+ },
+ {
+  "org_name": "KION",
+  "domain": "kion.nl",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [],
+  "search_done": true,
+  "notes": "Search returned only unrelated 'ten Brink' results; nothing on kion.nl."
+ },
+ {
+  "org_name": "Baby City – międzynarodowe przedszkole i żłobek",
+  "domain": "baby-city.pl",
+  "general_emails": ["info@babycity.com.pl"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "609 627 077",
+  "source_urls": [
+   "https://www.ourkids.net/pl/przedszkole-baby-city/593",
+   "https://baby-city.pl/o-nas/",
+   "https://krs-pobierz.pl/baby-city-i96042"
+  ],
+  "search_done": true,
+  "notes": "Note the general address is on babycity.com.pl, not baby-city.pl. Katarzyna Kosakowska confirmed founder/manager. Address ul. Zielona 42, Warszawa."
+ },
+ {
+  "org_name": "Kids & Co. Krippe (pme Familienservice), Frankfurt Westend",
+  "domain": "familienservice.de",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": "first.last@domain",
+  "phone": null,
+  "source_urls": [
+   "https://www.familienservice.de/-/daniel_erler_ku-1"
+  ],
+  "search_done": false,
+  "notes": "Same domain as pme Familienservice; pattern inferred from daniel.erler@familienservice.de seen in that search. No address for Lea Sievers seen; no separate search spent."
+ },
+ {
+  "org_name": "Kido (Kido Education / Kido International)",
+  "domain": "kido.school",
+  "general_emails": ["info@kido.school", "whitefield@kido.school", "careers@kidoschools.com"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": [
+   "https://www.zoominfo.com/c/kido/1323922312",
+   "https://www.facebook.com/kidobangalore/",
+   "https://kidoschools.com/us/us-contact/"
+  ],
+  "search_done": true,
+  "notes": "whitefield@kido.school is the Bangalore centre; kidoschools.com is the main web domain."
+ },
+ {
+  "org_name": "Akasia Sædalen barnehage",
+  "domain": "proff.no",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "40813054 / 97422084",
+  "source_urls": [
+   "https://www.proff.no/selskap/akasia-s%C3%A6dalen-barnehage/bergen/pleie-og-omsorgstjenester/IGBAFW610K7/",
+   "https://akasiabarnehage.no/",
+   "https://www.bergen.kommune.no/api/rest/filer/V70665766"
+  ],
+  "search_done": true,
+  "notes": "Edle Damm confirmed daglig leder (Akasia Barnehage AS). Real web domain is akasiabarnehage.no. Address Sædalssvingene 6, 5099 Bergen. No email seen."
+ },
+ {
+  "org_name": "Trollskogen barnehage Oslo (Bjørndal)",
+  "domain": "trollskogenoslo.barnehage.no",
+  "general_emails": [],
+  "personal_emails": [
+   {"email": "dl@trollskogen.no", "person": "Ann-Kristin Sandvik", "role": "Daglig leder"}
+  ],
+  "email_pattern": null,
+  "phone": "414 53 496",
+  "source_urls": [
+   "https://trollskogenoslo.barnehage.no/informasjon/kontakt"
+  ],
+  "search_done": true,
+  "notes": "dl@ is a role mailbox for the daglig leder on trollskogen.no. Address Trollstien 30, 1274 Oslo."
+ },
+ {
+  "org_name": "Montessori - zavod zasebni vrtec Cinca Binca",
+  "domain": "montessorivrtec.si",
+  "general_emails": ["info@montessorivrtec.si"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "030 318 000 / +386 40 545 480",
+  "source_urls": [
+   "https://www.bizi.si/MONTESSORI-VRTEC-HISA-OTROK-CINCA-BINCA/",
+   "https://www.mojaobcina.si/ljubljana/imenik/montessori---zavod-zasebni-vrtec-cinca-binca-za-vzgojo-in-izobrazevanje.html"
+  ],
+  "search_done": true,
+  "notes": "Domain discovered: montessorivrtec.si. Director Danijel Janjevak confirmed. Address Spodnji Rudnik II 47, 1000 Ljubljana."
+ },
+ {
+  "org_name": "Idun FUS barnehage (Sagene, Oslo)",
+  "domain": "fus.no",
+  "general_emails": [],
+  "personal_emails": [
+   {"email": "dl.idun@bhg.no", "person": "Cathrine Lauvrak Andersen", "role": "Daglig leder"}
+  ],
+  "email_pattern": null,
+  "phone": "24 07 60 05",
+  "source_urls": [
+   "https://fus.no/idun",
+   "https://fus.no/idun/ansatte-i-barnehagen"
+  ],
+  "search_done": true,
+  "notes": "Full name of daglig leder now known: Cathrine Lauvrak Andersen. dl.idun@bhg.no is the leader's role mailbox."
+ }
+]

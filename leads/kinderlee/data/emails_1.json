@@ -1,0 +1,304 @@
+[
+ {
+  "org_name": "AcadeMedia Deutschland (brands: Joki Kinderbetreuung, Espira Kinderbetreuung, Kita Luna/KTS Verwaltungs GmbH, Stepke-KiTas)",
+  "domain": "academedia.se",
+  "general_emails": ["info@academedia.education", "hello@academedia.se"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+49 (0) 30 219 158 200 (AcadeMedia Education GmbH Berlin); +46 8-794 42 00 (AcadeMedia Sweden HQ); Anja Melchior (Regional Manager Stepke Berlin/Brandenburg) 0160 980 171 44; Moritz Kirchherr (Administration Stepke) 0151 728 508 01",
+  "source_urls": ["https://academedia.education/kontakt/", "https://academedia.education/impressum/", "https://academedia.se/en/about-academedia/contact/", "https://www.stepke-kitas.de/ueber-uns/kontakt-verwaltung/", "https://www.stepke-kitas.de/impressum/"],
+  "search_done": true
+ },
+ {
+  "org_name": "Babilou Family (Babilou, Evancia, educcare, Kleine Riesen/Little Giants, Babilou Family Deutschland)",
+  "domain": "babilou-family.com",
+  "general_emails": ["info@babilou-family.com", "presse@babilou-family.com"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": ["https://babilou-family.com/en/contact-us", "https://babilou-family.com/en/legal-notices", "https://babilou-family.com/leadership-community", "https://babilou-family.com/press-release-monday-8th-of-july-2024"],
+  "search_done": true
+ },
+ {
+  "org_name": "Humankind (ex Kinderopvang Humanitas)",
+  "domain": "humankind.nl",
+  "general_emails": ["info@humankind.nl"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": ["https://www.humankind.nl/contact", "https://www.humankind.nl/organisatie", "https://www.humankind.nl/actueel/humankind-verwelkomt-nieuwe-bestuurder", "https://www.linkedin.com/in/robinalma/"],
+  "search_done": true
+ },
+ {
+  "org_name": "FUS barnehagene / Trygge Barnehager AS",
+  "domain": "fus.no",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": ["https://fus.no/om-oss", "https://www.dnb.com/business-directory/company-profiles/fus-as.cd323a333605bd34d459cef92cd6f4b0", "https://www.utdanningsnytt.no/barnehagemilliardene-barnehagepolitikk-fus/barnehagefamilie-har-tatt-utbytter-pa-naer-400-millioner/426826"],
+  "search_done": true
+ },
+ {
+  "org_name": "Caritas Oberösterreich - Pfarrcaritas-Kindergärten",
+  "domain": "caritas-ooe.at",
+  "general_emails": ["KG410260@pfarrcaritas-kita.at", "kg417253@pfarrcaritas-kita.at", "KG410246@pfarrcaritas-kita.at", "caritas-kindergarten@bad-leonfelden.ooe.gv.at", "kindergarten.atzbach@gmx.at"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "Kindergarten St. Martin Traun +43 676 824 445 22; Vöcklamarkt +43 7682 6787; Kematen 0664 92 77 589; Bad Leonfelden +43 676 87765944",
+  "source_urls": ["http://www.traun.ooe.gv.at/Pfarrcaritas_-_Kindergarten_St_Martin", "https://www.voecklamarkt.ooe.gv.at/Kindergarten_der_Pfarrcaritas_14", "https://www.kematen-krems.ooe.gv.at/Kindergarten_Pfarrcaritas", "https://www.bad-leonfelden.ooe.gv.at/Pfarr-Caritas_Kindergarten", "https://www.atzbach.ooe.gv.at/Pfarrcaritas_Kindergarten"],
+  "search_done": true,
+  "note": "Individual kindergartens use the @pfarrcaritas-kita.at domain (KG<number>@), not @caritas-ooe.at; no central Pfarrcaritas-Kindergärten address surfaced."
+ },
+ {
+  "org_name": "Elbkinder - Vereinigung Hamburger Kitas gGmbH",
+  "domain": "elbkinder-kitas.de",
+  "general_emails": ["info@elbkinder-kitas.de"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "040 / 42 109-0 (Zentrale); 040 / 42 109-101 (Geschäftsführung)",
+  "source_urls": ["https://www.elbkinder-kitas.de/de/ueber_uns/kontakt/index.html", "https://www.elbkinder-kitas.de/de/ueber_uns/unser_unternehmen/geschaeftsfuehrung/index.html", "https://www.elbkinder-kitas.de/de/ueber_uns/impressum/index.html"],
+  "search_done": true,
+  "note": "Geschäftsführung: Christine Schaerffer (Pädagogik & Personal) and Dr. Katja Nienaber (Finanzen, Services, Nachhaltigkeit). Address: Oberstraße 14b, 20144 Hamburg."
+ },
+ {
+  "org_name": "kitea (Villa Luna Kindertagesstätten + Kinderzentren Kunterbunt, Klett Group)",
+  "domain": "kinderzentren.de",
+  "general_emails": ["info@kinderzentren.de"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": ["https://kinderzentren.de/", "https://kitea-kids.de/impressum/", "https://www.klett-gruppe.de/newsroom/detailansicht/kitea-startet-2-kita-traeger-aus-der-klett-gruppe-buendeln-ihre-kraefte-in-der-fruehkindlichen-bildung", "https://www.mynewsdesk.com/de/ernst-klett-ag/pressreleases/kitea-startet-2-kita-traeger-aus-der-klett-gruppe-buendeln-ihre-kraefte-in-der-fruehkindlichen-bildung-3419312"],
+  "search_done": true,
+  "note": "Merged entity since Jan 2026 operates as kitea (kitea-kids.de); Annette Holtmann confirmed as one of the Geschäftsführerinnen. 113 Kitas."
+ },
+ {
+  "org_name": "Suara Cooperativa",
+  "domain": "suara.coop",
+  "general_emails": ["suara@suara.coop"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "93 254 76 90",
+  "source_urls": ["https://suara.coop/en/contact-us", "https://suara.coop/ca/suara-cooperativa", "https://suara.coop/en/who-we-are"],
+  "search_done": true,
+  "note": "General co-managers (direcció general): Laura Peracaula Basagaña and Tomàs Llompart i Coll. Address: Sancho de Ávila 52-58, 1r, 08018 Barcelona."
+ },
+ {
+  "org_name": "Liveli by Sodexo (ex Crèche Attitude / Crèches de France)",
+  "domain": "liveli.fr",
+  "general_emails": ["recrutement@liveli.fr", "privacy.hq.cat@sodexo.com"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "01 46 94 91 95",
+  "source_urls": ["https://liveli.candidats.talents-in.com/personal-data", "https://www.lesprosdelapetiteenfance.fr/creche-attitude-devient-liveli-by-sodexo/", "https://www.issworld.com/fr-fr/a-propos/espace-m%C3%A9dias/news/2022/04/nomination-marc-jouannic-et-sylvain-mallet/nomination-marc-jouannic-sylvain-mallet"],
+  "search_done": true,
+  "note": "Marc Jouannic listed as Directeur de la Publication for Crèche Attitude S.A.S., 19-21 rue du Dôme, 92100 Boulogne-Billancourt. Caution: an ISS France 2022 press release also names a Marc Jouannic on the ISS Comex; verify current role."
+ },
+ {
+  "org_name": "Grandir UK (Kiddi Caru, Dicky Birds, Co-op Childcare heritage, Hungry Caterpillars etc.)",
+  "domain": "grandiruk.com",
+  "general_emails": ["parentengagement@grandiruk.com"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": ["https://www.facebook.com/grandiruk/"],
+  "search_done": true,
+  "note": "info@grandiruk.com (from input) not confirmed by search."
+ },
+ {
+  "org_name": "Partou UK",
+  "domain": "partou.co.uk",
+  "general_emails": ["customerservice@partou.co.uk"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": ["https://nmt-magazine.co.uk/partou-samantha-rhodes-retires/", "https://partou.co.uk/news-and-blogs/creating-a-shared-vision-within-partou/", "https://www.trustpilot.com/review/partou.co.uk"],
+  "search_done": true,
+  "note": "Decision maker changed: Samantha Rhodes retired; Kirsty Jackson and John Everton became joint Managing Directors of Partou UK on 1 June 2026."
+ },
+ {
+  "org_name": "Codess Sociale",
+  "domain": "codess.org",
+  "general_emails": ["presidenza@codess.org", "direzione@codess.org", "info@codess.org"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+39 049 807 34 62",
+  "source_urls": ["https://www.codess.org/contatti/", "https://www.codess.org/codess/societa-trasparente/"],
+  "search_done": true,
+  "note": "President: Alberto Ruggeri (reach via presidenza@codess.org). HQ Via Boccaccio 96, 35128 Padova."
+ },
+ {
+  "org_name": "CompaNanny",
+  "domain": "compananny.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "020 - 417 01 17",
+  "source_urls": ["https://www.compananny.com/en/contact/", "https://leadiq.com/c/compananny-nederland-bv/5a1d98632300005a0087124b", "https://privateequityinfo.com/directory/private-equity-portfolio-company/1/compananny"],
+  "search_done": true,
+  "note": "Head office Koningin Wilhelminaplein 30, 1062 KR Amsterdam. CEO also Group CEO of Inspiring Generations Holding (name not shown in results)."
+ },
+ {
+  "org_name": "Norlandia Preschools / Norlandia Health & Care Group (Kidsa Barnehager, Norlandia Förskolor, Norlandia Päiväkodit, Norlandia Przedszkola, Norlandia Kinderopvang)",
+  "domain": "norlandia.com",
+  "general_emails": ["NHC.Innboks@norlandia.com"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": ["https://nhcgroup.no/en/contact", "https://www.marketscreener.com/insider/YNGVAR-TOV-HERBJORNSSONN-A2ELXP/", "https://www.healthcarebusinessinternational.com/interview-yngvar-tov-herbjornssonn-ceo-of-norlandia/"],
+  "search_done": true
+ },
+ {
+  "org_name": "Happy Kids (Privatna predškolska ustanova Happy Kids)",
+  "domain": "happykidsvrtic.rs",
+  "general_emails": [],
+  "personal_emails": [
+   {"email": "tanja.rackov@yahoo.com", "person": "Tatjana Rackov Sinadinović", "role": "Founder and Director"}
+  ],
+  "email_pattern": null,
+  "phone": "+381 64 110 1524 (Tatjana Rackov Sinadinović direct); 061 151 4130 (presentation booking)",
+  "source_urls": ["https://www.linkedin.com/in/tatjana-rackov-sinadinovi%C4%87-6669bb84/", "https://happykidsvrtic.rs/zakazite-prezentaciju-sa-nasom-direktorkom-tatjanom-rackov-sinadinovic/"],
+  "search_done": true
+ },
+ {
+  "org_name": "Bahçeşehir Koleji (Bahçeşehir Uğur Eğitim Kurumları)",
+  "domain": "bahcesehir.k12.tr",
+  "general_emails": ["kurumsal@bahcesehir.k12.tr"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "444 51 22; fax +90 212 465 87 15",
+  "source_urls": ["https://bahcesehir.k12.tr/iletisim", "https://bahcesehir.k12.tr/genel-mudur"],
+  "search_done": true,
+  "note": "Genel Müdür: Dr. Özlem Koç (since 2016). ZoomInfo shows staff addresses on @bahcesehir.k12.tr but masked (s***@), so pattern not confirmed. Genel Müdürlük: Abbasağa Mah. Ihlamur Yıldız Cad. No:10 B Blok Kat:9, Beşiktaş/İstanbul."
+ },
+ {
+  "org_name": "Wichtel Akademie München GmbH (Babilou brand)",
+  "domain": "wichtel-muenchen.com",
+  "general_emails": ["info@wichtel-muenchen.com", "service@wichtel-muenchen.com", "anmeldung@wichtel-muenchen.com", "bewerbung@wichtel-muenchen.com"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+49 89 143 44-300 (Eltern-Hotline); fax +49 89 14344-111",
+  "source_urls": ["https://www.wichtel-muenchen.com/de/impressum-0", "https://www.wichtel-muenchen.com/en/about-us/contact-us"],
+  "search_done": true,
+  "note": "Geschäftsführer: Patrick Gottesleben, Christophe Fond. Address Herzog-Wilhelm-Straße 26, 80331 München."
+ },
+ {
+  "org_name": "People&Baby",
+  "domain": "people-and-baby.com",
+  "general_emails": ["accueil@people-and-baby.com"],
+  "personal_emails": [
+   {"email": "Bruno.DEGAICHI@people-and-baby.com", "person": "Bruno Degaichi", "role": "Regional contact (Centre-Ouest, PACA, Est, Ile-de-France)"},
+   {"email": "Dimitri.MEDE@people-and-baby.com", "person": "Dimitri Mede", "role": "Regional contact (Auvergne-Rhône-Alpes, Sud-Ouest, Normandie)"}
+  ],
+  "email_pattern": "First.Last@people-and-baby.com",
+  "phone": "+33 1 58 05 18 70 (HQ); Bruno Degaichi +33 6 62 66 03 85; Dimitri Mede +33 6 01 64 36 65",
+  "source_urls": ["https://www.people-and-baby.com/contacts", "https://www.people-and-baby.com/en/contact", "https://www.people-and-baby.com/Communique/philippe-tapie-nouveau-president-people-baby"],
+  "search_done": true,
+  "note": "Philippe Tapié confirmed as Président; HQ 9 avenue Hoche, 75008 Paris."
+ },
+ {
+  "org_name": "Storal (Storal Learning Ltd)",
+  "domain": "storal.com",
+  "general_emails": [],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": ["https://x.com/sarah1mackenzie"],
+  "search_done": true,
+  "note": "Sarah Mackenzie confirmed CEO of Storal; no addresses surfaced."
+ },
+ {
+  "org_name": "Bink kinderopvang",
+  "domain": "binkkinderopvang.nl",
+  "general_emails": [],
+  "personal_emails": [
+   {"email": "g.korkmaz@binkkinderopvang.nl", "person": "Gülizar Korkmaz", "role": "Programme contact (Opstapje/Instapje)"}
+  ],
+  "email_pattern": "f.last@binkkinderopvang.nl",
+  "phone": null,
+  "source_urls": ["https://binkkinderopvang.nl/opstapje", "https://binkkinderopvang.nl/en/contact", "https://binkkinderopvang.nl/en/about-bink", "https://www.linkedin.com/in/monique-wittebol-3034913a/"],
+  "search_done": true,
+  "note": "Monique Wittebol confirmed as chair of the board (with Annemarie van Dieren)."
+ },
+ {
+  "org_name": "Baby Booom – Żłobki i Przedszkola",
+  "domain": "baby-booom.pl",
+  "general_emails": ["kontakt@baby-booom.pl"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "664 157 803",
+  "source_urls": ["https://baby-booom.pl/", "https://www.gowork.pl/zlobki-i-przedszkola-baby-booom-sp.-z-o.o.,25898901/dane-kontaktowe-firmy", "https://rejestr.io/krs/1010082/zlobki-i-przedszkola-baby-booom"],
+  "search_done": true,
+  "note": "Mateusz Samborek confirmed as Prezes Zarządu. Address ul. Wielicka 107, Kraków."
+ },
+ {
+  "org_name": "Raoul Wallenbergskolorna AB",
+  "domain": "raoulwallenbergskolan.se",
+  "general_emails": [],
+  "personal_emails": [
+   {"email": "peregon.johansson@rws.se", "person": "Per Egon Johansson", "role": "VD / founder, Raoul Wallenbergskolorna AB"}
+  ],
+  "email_pattern": null,
+  "phone": null,
+  "source_urls": ["https://raoulwallenbergskolan.se/foretag/om-foretaget/styrelse/", "https://raoulwallenbergskolan.se/kontakta-oss/"],
+  "search_done": true,
+  "note": "Personal address is on the shorter rws.se domain (firstmiddle.last@rws.se), not raoulwallenbergskolan.se."
+ },
+ {
+  "org_name": "Trastes Centros de Educación Infantil (Trastes Desarrollo de Franquicias S.L.)",
+  "domain": "escuelainfantiltrastes.es",
+  "general_emails": ["info@escuelainfantiltrastes.es"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "881 981 905; 660 333 609 (Expansion Dept)",
+  "source_urls": ["https://escuelainfantiltrastes.es/aviso-legal/", "https://escuelainfantiltrastes.es/info-franquicia/", "https://escuelainfantiltrastes.es/wp-content/uploads/FORMACION/PROYECTOTRASTES1/1.2.manual-de-bienvenida.pdf"],
+  "search_done": true,
+  "note": "Óscar Fraga Garabato confirmed as Director General. Address Paseo do Carboeiro 9, Sigüeiro, 15888 Oroso."
+ },
+ {
+  "org_name": "Rotaļdārzs",
+  "domain": "rotaldarzs.lv",
+  "general_emails": ["info@rotaldarzs.lv"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "+371 28 377 579",
+  "source_urls": ["https://www.rotaldarzs.lv/kontakti", "https://www.rotaldarzs.lv/par-mums", "https://katalogs-iksd.riga.lv/lv/Iestade/ROTALDARZS"],
+  "search_done": true,
+  "note": "Solveiga Tiliba confirmed as director. Address Raunas iela 27, Rīga LV-1039."
+ },
+ {
+  "org_name": "Trollskogen barnehage Måløy",
+  "domain": "trollskogenmaaloy.barnehage.no",
+  "general_emails": [],
+  "personal_emails": [
+   {"email": "lene@trollskogenbhg.no", "person": "Lene Reed", "role": "Daglig leder"}
+  ],
+  "email_pattern": null,
+  "phone": "419 33 331 (Lene Reed); 905 67 589 (main)",
+  "source_urls": ["https://trollskogenmaaloy.barnehage.no/informasjon/kontakt", "https://trollskogenmaaloy.barnehage.no/informasjon/ansattliste"],
+  "search_done": true,
+  "note": "E-mail domain is trollskogenbhg.no, not the barnehage.no site domain. Postboks 213, 6701 Måløy."
+ },
+ {
+  "org_name": "Dibber Helianthus Förskola AB",
+  "domain": "dibber.se",
+  "general_emails": ["info@dibber.se"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "08-33 39 00 (Helianthus); 08-684 468 00 (Dibber Sverige AB)",
+  "source_urls": ["https://dibber.se/om-dibber/kontakt-dibber-sverige/", "https://www.allabolag.se/foretag/dibber-helianthus-f%C3%B6rskola-ab/-/skolor-och-utbildning/2K20A46I63IKI", "https://www.bolagsfakta.se/5566260534-Dibber_Helianthus_Forskola_AB"],
+  "search_done": true,
+  "note": "VD per company registry: Erik Johannes Stiigh (resolves the conflicting-sources question). c/o Dibber AB, Box 2044, 191 02 Sollentuna."
+ },
+ {
+  "org_name": "Cowgate Under 5's Centre",
+  "domain": "cowgateunder5scentre.co.uk",
+  "general_emails": ["admin@cowgate-nur.edin.sch.uk"],
+  "personal_emails": [],
+  "email_pattern": null,
+  "phone": "0131 225 7251",
+  "source_urls": ["https://www.edinburgh.gov.uk/directory-record/1581147/cowgate-centre", "https://www.cowgateunder5scentre.co.uk/index.php/health-safety-and-wellbeing/"],
+  "search_done": true,
+  "note": "City of Edinburgh Council-run centre; 172 High Street, 7 Old Assembly Close, Edinburgh EH1 1QX."
+ }
+]
