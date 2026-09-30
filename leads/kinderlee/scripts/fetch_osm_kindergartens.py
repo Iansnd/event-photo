@@ -19,6 +19,7 @@ import argparse, csv, json, sys, time
 import requests
 
 OVERPASS_ENDPOINTS = [
+    "https://overpass.osm.ch/api/interpreter",
     "https://overpass-api.de/api/interpreter",
     "https://overpass.kumi.systems/api/interpreter",
     "https://overpass.private.coffee/api/interpreter",
