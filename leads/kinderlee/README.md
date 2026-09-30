@@ -104,3 +104,11 @@ corrections and leadership changes surfaced during the hunt are in the `email_so
 `notes` columns of the affected rows. Fastest way to close the gap: run
 `scripts/enrich_websites.py` locally (it reads every site's contact page directly), then verify
 the personal addresses with Hunter.io or a mail-server check before sending.
+
+## Website harvest (after network access was opened, 2026-09-30)
+
+`scripts/enrich_websites.py` visited all 574 reachable lead websites (home + contact/imprint/team
+pages). Result: 259 sites yielded addresses, 102 rows gained their first e-mail, and 121 rows now
+carry director / Leitung / manager names scraped from the site (column
+`website_directors_harvested`; these are regex extractions next to a title word, so eyeball them).
+Totals now: **417 of 623 rows have an e-mail**. Raw harvest is in `data/website_harvest_raw.csv`.
