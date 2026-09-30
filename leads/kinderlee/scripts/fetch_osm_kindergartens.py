@@ -1,132 +1,152 @@
 #!/usr/bin/env python3
 """
-Pull EVERY kindergarten / childcare / preschool mapped in OpenStreetMap for all
-European countries via the free Overpass API, tiled per country so each request
-stays small enough for public mirrors (which time out on whole-country queries).
+Pull EVERY kindergarten / childcare / preschool mapped in OpenStreetMap across Europe.
 
-    pip install requests
-    python3 fetch_osm_kindergartens.py --outdir osm_out            # all of Europe, resumable
-    python3 fetch_osm_kindergartens.py --countries DE AT --outdir osm_out
-    python3 fetch_osm_kindergartens.py --merge osm_out --out osm_kindergartens_europe.csv
+Strategy (works on public Overpass mirrors that lack an area index or time out on
+whole-country queries): walk a 1-degree grid over Europe, fetch each tile with a
+plain bounding-box query (a few seconds each), cache every tile as JSON so the run
+is resumable, then assign each facility to a country locally with Natural Earth
+polygons (point-in-polygon via shapely) and write one CSV.
 
-Per-country CSVs land in <outdir>/<ISO>.csv; a country already present is skipped
-(delete its file to redo it). Data licence: ODbL (OpenStreetMap contributors).
+    pip install requests shapely
+    python3 fetch_osm_kindergartens.py fetch  --tiledir tiles            # resumable, re-run after interruption
+    python3 fetch_osm_kindergartens.py build  --tiledir tiles --ne ne_10m_admin_0_countries.geojson --out osm_kindergartens_europe.csv
+
+Natural Earth: https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_countries.geojson
+Data licence: ODbL (OpenStreetMap contributors); Natural Earth is public domain.
 """
-import argparse, csv, glob, json, os, sys, time, math
+import argparse, csv, glob, json, os, sys, time, threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import requests
 
-ENDPOINTS = [
-    "https://maps.mail.ru/osm/tools/overpass/api/interpreter",  # has areas, ~45 s gateway limit
-    "https://overpass-api.de/api/interpreter",
-    "https://overpass.kumi.systems/api/interpreter",
-]
-EUROPE = ["AD","AL","AT","BA","BE","BG","BY","CH","CY","CZ","DE","DK","EE","ES","FI",
-          "FR","GB","GR","HR","HU","IE","IS","IT","LI","LT","LU","LV","MC","MD","ME",
-          "MK","MT","NL","NO","PL","PT","RO","RS","SE","SI","SK","SM","UA","VA","XK","TR"]
-DENSE = {"DE":0.5,"FR":0.5,"GB":0.5,"IT":0.5,"ES":0.5,"PL":0.5,"NL":0.5,"BE":0.5,"CH":0.5,"AT":0.5,"CZ":0.5,"TR":0.5,"UA":0.5,"NO":1.0,"SE":1.0,"FI":1.0}
-FIELDS = ["osm_id","osm_type","country","name","operator","brand","kind","addr_street","addr_housenumber",
-          "addr_postcode","addr_city","website","email","phone","opening_hours","capacity","lat","lon","source_url"]
-FILTER = """
-  nwr["amenity"="kindergarten"](area.a)({bb});
-  nwr["amenity"="childcare"](area.a)({bb});
-  nwr["amenity"="preschool"](area.a)({bb});
-  nwr["amenity"="school"]["isced:level"~"^0"](area.a)({bb});
-  nwr["social_facility"="day_care"]["social_facility:for"~"child"](area.a)({bb});
-"""
-def q_tile(iso, bb):
-    return f'[out:json][timeout:40];rel["ISO3166-1"="{iso}"][admin_level=2];map_to_area->.a;({FILTER.format(bb=bb)});out center tags;'
-def q_bbox(iso):
-    return f'[out:json][timeout:40];rel["ISO3166-1"="{iso}"][admin_level=2];out bb;'
+ENDPOINTS = ["https://overpass.openstreetmap.fr/api/interpreter",
+             "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+             "https://overpass-api.de/api/interpreter"]
+# Europe incl. Iceland, Turkey, Ukraine, Caucasus edge; Canaries/Madeira/Azores handled via extra boxes
+GRID = {"minlat": 34.0, "maxlat": 71.5, "minlon": -25.0, "maxlon": 45.0}
+EXTRA = [(27.5, -18.5, 29.5, -13.0), (32.5, -17.5, 33.5, -16.0), (36.5, -31.5, 40.0, -24.5)]  # Canaries, Madeira, Azores
+EUROPE = {"AD","AL","AT","BA","BE","BG","BY","CH","CY","CZ","DE","DK","EE","ES","FI","FR","GB","GR","HR","HU","IE","IS","IT",
+          "LI","LT","LU","LV","MC","MD","ME","MK","MT","NL","NO","PL","PT","RO","RS","SE","SI","SK","SM","UA","VA","XK","TR"}
+FIELDS = ["osm_id","osm_type","country","name","operator","brand","kind","addr_street","addr_housenumber","addr_postcode",
+          "addr_city","website","email","phone","opening_hours","capacity","lat","lon","source_url"]
 
-def call(session, q, tries=4):
-    for attempt in range(tries):
-        for ep in ENDPOINTS:
-            try:
-                r = session.post(ep, data={"data": q}, timeout=120)
-                if r.status_code == 200:
-                    d = r.json()
-                    if "remark" in d and "error" in d["remark"].lower():
-                        continue  # runtime error (timeout) -> next endpoint / retry
-                    return d.get("elements", [])
-                if r.status_code in (429, 504, 502, 503):
-                    time.sleep(5 * (attempt + 1)); continue
-            except Exception:
-                time.sleep(3)
+def query(bb):
+    return f'''[out:json][timeout:90];(
+  nwr["amenity"="kindergarten"]({bb});
+  nwr["amenity"="childcare"]({bb});
+  nwr["amenity"="preschool"]({bb});
+  nwr["amenity"="school"]["isced:level"~"^0"]({bb});
+  nwr["social_facility"="day_care"]["social_facility:for"~"child"]({bb});
+);out center tags;'''
+
+_ep_lock = threading.Lock(); _ep_i = [0]
+def call(session, q):
+    for attempt in range(6):
+        with _ep_lock:
+            ep = ENDPOINTS[_ep_i[0] % len(ENDPOINTS)]
+        try:
+            r = session.post(ep, data={"data": q}, timeout=150)
+            if r.status_code == 200:
+                d = r.json()
+                if "remark" in d and "error" in d["remark"].lower():
+                    raise RuntimeError(d["remark"])
+                return d.get("elements", [])
+            if r.status_code == 429: time.sleep(20)
+        except Exception:
+            pass
+        with _ep_lock: _ep_i[0] += 1        # rotate endpoint on failure
+        time.sleep(3 * (attempt + 1))
     return None
 
-def row(el, iso):
-    t = el.get("tags", {})
-    return {"osm_id": el["id"], "osm_type": el["type"], "country": iso,
-            "name": t.get("name") or t.get("name:en") or "", "operator": t.get("operator",""), "brand": t.get("brand",""),
-            "kind": t.get("amenity") or t.get("social_facility") or "",
-            "addr_street": t.get("addr:street",""), "addr_housenumber": t.get("addr:housenumber",""),
-            "addr_postcode": t.get("addr:postcode",""), "addr_city": t.get("addr:city",""),
-            "website": t.get("website") or t.get("contact:website") or "", "email": t.get("email") or t.get("contact:email") or "",
-            "phone": t.get("phone") or t.get("contact:phone") or "", "opening_hours": t.get("opening_hours",""),
-            "capacity": t.get("capacity",""), "lat": el.get("lat") or el.get("center",{}).get("lat"),
-            "lon": el.get("lon") or el.get("center",{}).get("lon"),
-            "source_url": f"https://www.openstreetmap.org/{el['type']}/{el['id']}"}
+def all_tiles(step):
+    boxes = [(GRID["minlat"], GRID["minlon"], GRID["maxlat"], GRID["maxlon"])] + EXTRA
+    for s, w, n, e in boxes:
+        lat = s
+        while lat < n:
+            lon = w
+            while lon < e:
+                yield (round(lat, 2), round(lon, 2), round(min(lat + step, n), 2), round(min(lon + step, e), 2))
+                lon += step
+            lat += step
 
-def tiles(bounds, step):
-    s, w, n, e = bounds["minlat"], bounds["minlon"], bounds["maxlat"], bounds["maxlon"]
-    lat = math.floor(s / step) * step
-    while lat < n:
-        lon = math.floor(w / step) * step
-        while lon < e:
-            yield f"{max(lat,s):.4f},{max(lon,w):.4f},{min(lat+step,n):.4f},{min(lon+step,e):.4f}"
-            lon += step
-        lat += step
-
-def pull_country(iso, outdir, workers, step_override=None):
-    path = os.path.join(outdir, f"{iso}.csv")
-    if os.path.exists(path):
-        print(f"[{iso}] exists, skip", flush=True); return
-    s = requests.Session(); s.headers["User-Agent"] = "kinderlee-leadgen/2.0"
-    rels = call(s, q_bbox(iso))
-    if not rels:
-        print(f"[{iso}] no boundary relation found", file=sys.stderr, flush=True); return
-    bounds = rels[0]["bounds"]
-    # overseas territories blow up FR/NL/GB/ES/PT/DK/NO bboxes: clip to mainland Europe + Atlantic islands
-    bounds = {"minlat": max(bounds["minlat"], 27.0), "maxlat": min(bounds["maxlat"], 72.0),
-              "minlon": max(bounds["minlon"], -32.0), "maxlon": min(bounds["maxlon"], 45.0)}
-    step = step_override or DENSE.get(iso, 1.0)
-    tl = list(tiles(bounds, step)); seen = {}; failed = []
-    def work(bb):
-        els = call(s, q_tile(iso, bb))
-        return bb, els
+def fetch(tiledir, workers, step):
+    os.makedirs(tiledir, exist_ok=True)
+    todo = [t for t in all_tiles(step) if not os.path.exists(os.path.join(tiledir, f"{t[0]}_{t[1]}.json"))]
+    print(f"{len(todo)} tiles to fetch", flush=True)
+    s = requests.Session(); s.headers["User-Agent"] = "kinderlee-leadgen/3.0"
+    done = 0; total = 0; failed = 0
+    def work(t):
+        bb = f"{t[0]},{t[1]},{t[2]},{t[3]}"
+        els = call(s, query(bb))
+        if els is None: return t, None
+        # tiles with >5000 hits are split once to be safe against truncation
+        if len(els) >= 5000 and step > 0.25:
+            sub = []
+            h = step / 2
+            for a in (t[0], t[0] + h):
+                for b in (t[1], t[1] + h):
+                    e2 = call(s, query(f"{a},{b},{a+h},{b+h}")) or []
+                    sub += e2
+            els = sub
+        with open(os.path.join(tiledir, f"{t[0]}_{t[1]}.json"), "w") as f: json.dump(els, f)
+        return t, len(els)
     with ThreadPoolExecutor(max_workers=workers) as ex:
-        futs = [ex.submit(work, bb) for bb in tl]
-        for i, f in enumerate(as_completed(futs), 1):
-            bb, els = f.result()
-            if els is None: failed.append(bb); continue
-            for el in els: seen[(el["type"], el["id"])] = el
-            if i % 25 == 0: print(f"[{iso}] {i}/{len(tl)} tiles, {len(seen)} facilities", flush=True)
-    # retry failed tiles at quarter size once
-    for bb in failed:
-        s_, w_, n_, e_ = map(float, bb.split(","))
-        for sub in tiles({"minlat": s_, "minlon": w_, "maxlat": n_, "maxlon": e_}, (n_ - s_) / 2):
-            els = call(s, q_tile(iso, sub)) or []
-            for el in els: seen[(el["type"], el["id"])] = el
-    with open(path, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS); w.writeheader()
-        for el in seen.values(): w.writerow(row(el, iso))
-    print(f"[{iso}] DONE {len(seen)} facilities from {len(tl)} tiles ({len(failed)} tiles needed retry)", flush=True)
+        for t, n in ex.map(work, todo):
+            done += 1
+            if n is None: failed += 1
+            else: total += n
+            if done % 50 == 0 or n and n > 500:
+                print(f"{done}/{len(todo)} tiles, {total} facilities so far, {failed} failed (tile {t[0]},{t[1]}: {n})", flush=True)
+    print(f"FETCH DONE: {done} tiles, {total} facilities, {failed} failed (re-run to retry failed)", flush=True)
 
-def merge(outdir, out):
-    n = 0
+def build(tiledir, ne_path, out):
+    from shapely.geometry import shape, Point
+    from shapely.strtree import STRtree
+    ne = json.load(open(ne_path, encoding="utf-8"))
+    geoms, isos = [], []
+    for f in ne["features"]:
+        p = f["properties"]; iso = p.get("ISO_A2_EH") or p.get("ISO_A2") or ""
+        if iso == "-99": iso = p.get("ISO_A2_EH", "")
+        if p.get("NAME") == "Kosovo": iso = "XK"
+        geoms.append(shape(f["geometry"])); isos.append(iso)
+    tree = STRtree(geoms)
+    seen = {}
+    for p in glob.glob(os.path.join(tiledir, "*.json")):
+        for el in json.load(open(p)):
+            seen[(el["type"], el["id"])] = el
+    n = 0; unassigned = 0; per = {}
     with open(out, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS); w.writeheader()
-        for p in sorted(glob.glob(os.path.join(outdir, "*.csv"))):
-            for r in csv.DictReader(open(p, encoding="utf-8")): w.writerow(r); n += 1
-    print(f"merged {n} rows -> {out}")
+        for el in seen.values():
+            t = el.get("tags", {})
+            lat = el.get("lat") or el.get("center", {}).get("lat"); lon = el.get("lon") or el.get("center", {}).get("lon")
+            if lat is None: continue
+            pt = Point(lon, lat); iso = ""
+            for i in tree.query(pt):
+                if geoms[i].contains(pt): iso = isos[i]; break
+            if not iso:
+                # coastal points just outside polygons: nearest country
+                i = tree.nearest(pt); iso = isos[i] if geoms[i].distance(pt) < 0.05 else ""
+            if iso not in EUROPE:
+                unassigned += 1; continue
+            w.writerow({"osm_id": el["id"], "osm_type": el["type"], "country": iso,
+                "name": t.get("name") or t.get("name:en") or "", "operator": t.get("operator",""), "brand": t.get("brand",""),
+                "kind": t.get("amenity") or t.get("social_facility") or "",
+                "addr_street": t.get("addr:street",""), "addr_housenumber": t.get("addr:housenumber",""),
+                "addr_postcode": t.get("addr:postcode",""), "addr_city": t.get("addr:city",""),
+                "website": t.get("website") or t.get("contact:website") or "", "email": t.get("email") or t.get("contact:email") or "",
+                "phone": t.get("phone") or t.get("contact:phone") or "", "opening_hours": t.get("opening_hours",""),
+                "capacity": t.get("capacity",""), "lat": lat, "lon": lon,
+                "source_url": f"https://www.openstreetmap.org/{el['type']}/{el['id']}"})
+            n += 1; per[iso] = per.get(iso, 0) + 1
+    print(f"BUILD DONE: {n} facilities in Europe written to {out} ({unassigned} outside Europe dropped)")
+    for k, v in sorted(per.items(), key=lambda x: -x[1]): print(f"  {k}: {v}")
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--countries", nargs="*", default=EUROPE); ap.add_argument("--outdir", default="osm_out")
-    ap.add_argument("--workers", type=int, default=3); ap.add_argument("--step", type=float)
-    ap.add_argument("--merge", metavar="OUTDIR"); ap.add_argument("--out", default="osm_kindergartens_europe.csv")
+    ap.add_argument("mode", choices=["fetch", "build"])
+    ap.add_argument("--tiledir", default="tiles"); ap.add_argument("--workers", type=int, default=2)
+    ap.add_argument("--step", type=float, default=1.0); ap.add_argument("--ne", default="ne_10m_admin_0_countries.geojson")
+    ap.add_argument("--out", default="osm_kindergartens_europe.csv")
     a = ap.parse_args()
-    if a.merge: merge(a.merge, a.out); sys.exit()
-    os.makedirs(a.outdir, exist_ok=True)
-    for iso in a.countries: pull_country(iso, a.outdir, a.workers, a.step)
+    fetch(a.tiledir, a.workers, a.step) if a.mode == "fetch" else build(a.tiledir, a.ne, a.out)
